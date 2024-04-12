@@ -1,15 +1,7 @@
-<?php 
-require_once('database/connection.php');
-require_once('database/categories.php');
-
-$db = getDatabaseConnection();
-$categories = getAllCategories($db);
-?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>Store</title>
 </head>
@@ -44,9 +36,9 @@ $categories = getAllCategories($db);
         <!-- Filters -->
     </header>
     <main>
-        <section id="Start_buying">
-        <h1>Consegues resistir a estes produtos incriveis?</h1>
-        <img src="" alt="imagem principal" id= "main_img">
+        <section id="Shop_Brand">
+        <h1>Shop by brand</h1>
+        <img src="" alt="imagem ilustrativa" id= "brand_img">
         <a href="">Start Buying</a>
         </section>
         

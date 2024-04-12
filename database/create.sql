@@ -5,8 +5,15 @@ CREATE TABLE Users (
     username TEXT NOT NULL,
     name TEXT NOT NULL,
     email TEXT NOT NULL,
+    phone_number TEXT NOT NULL,
+    Country TEXT NOT NULL,
+    Adress TEXT NOT NULL,
+    Zip_code TEXT NOT NULL,
+    Cidade TEXT,
+    description TEXT,
     password TEXT NOT NULL,
-    isAdmin BOOLEAN NOT NULL DEFAULT false
+    isAdmin BOOLEAN NOT NULL DEFAULT false,
+    isSeller BOOLEAN NOT NULL DEFAULT false
 
 );
 
@@ -37,9 +44,11 @@ CREATE TABLE Item (
     description TEXT,
     price NUMERIC NOT NULL,
     seller_id NUMERIC NOT NULL REFERENCES Users(UserID) ON DELETE CASCADE,
-    size_id NUMERIC NOT NULL REFERENCES Sizes(SizeID) ON DELETE CASCADE,
+    size_id NUMERIC REFERENCES Sizes(SizeID) ON DELETE CASCADE,
     condition_id NUMERIC NOT NULL REFERENCES Conditions(condition_id) ON DELETE CASCADE,
-    category_id NUMERIC NOT NULL REFERENCES Categories(category_id) ON DELETE CASCADE
+    category_id NUMERIC NOT NULL REFERENCES Categories(category_id) ON DELETE CASCADE,
+    transaction_id NUMERIC REFERENCES Transactions(transaction_id) ON DELETE CASCADE,
+    shopping_cart_id NUMERIC NOT NULL REFERENCES ShoppingCarts(shopping_cart_id) ON DELETE CASCADE
 
 );
 
@@ -63,6 +72,6 @@ CREATE TABLE Messages (
 
 DROP TABLE IF EXISTS ShoppingCarts;
 CREATE TABLE ShoppingCarts (
-    user_id INTEGER NOT NULL REFERENCES Users(UserID),
-    item_id INTEGER NOT NULL REFERENCES Items(item_id)
+    shopping_cart_id NUMERIC NOT NULL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES Users(UserID)
 );
