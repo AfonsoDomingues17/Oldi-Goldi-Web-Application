@@ -1,0 +1,41 @@
+body{
+    margin-right: 2em ;
+    margin-left: 2em;
+}
+#Start_buying {
+    text-align: center; /* This will center the text */
+
+}
+
+#Start_buying h1 {
+    margin-bottom: 20px; /* This will add some space below the heading */
+}
+
+.image-container {
+    position: relative; /* This will allow absolute positioning of child elements */
+    display: inline-block; /* This will allow the container to fit the size of the image */
+}
+
+#Start_buying img {
+    width: 100%; /* This will make the image take up half the width of the section */
+    max-height: 300px; /* This will limit the height of the image */
+    object-fit: cover; /* This will make the image cover the area without distorting its aspect ratio */
+    border-radius: 5px; /* This will round the corners */
+    display: block; /* This will allow the image to be centered */
+}
+
+#Start_buying a {
+    display: inline-block; /* This will allow padding to be added */
+    padding: 10px 20px; /* This will add some space around the text */
+    background-color: darkgoldenrod; /* This will change the background color */
+    color: white; /* This will change the text color */
+    text-decoration: none; /* This will remove the underline */
+    position: absolute; /* This will allow the link to be positioned over the image */
+    bottom: 20px; /* This will position the link at the bottom of the section */
+    left: 20px; /* This will position the link at the left of the section */
+    border-radius: 5px; /* This will round the corners */
+}
+
+#Start_buying a:hover {
+    background-color: #0056b3; /* This will change the background color when hovering over the link */
+}

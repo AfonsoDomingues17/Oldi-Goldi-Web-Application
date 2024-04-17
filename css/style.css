@@ -11,6 +11,7 @@ body > header section#main_nav_bar {
     color: white;
     font-size: 1.2em;
 }
+
 body > header section#main_nav_bar form{
     display: flex;
     flex-direction: row;
@@ -19,7 +20,7 @@ body > header section#main_nav_bar form{
 }
 
 form select{
-    width: 100px;
+    width: 150px;
     height: 2em;
     border: 0px;
     font-size: 16px;
@@ -29,7 +30,7 @@ form select{
     
 }
 form input[type="text"]{
-    width: 400px;
+    width: 800px;
     height: 2em;
     border: 0px;
     font-size: 16px;
@@ -53,9 +54,12 @@ form p {
     margin-left: 2em;
 }
 
-body > header section#main_nav_bar h1 a{
+body > header section#main_nav_bar h1{
+    font-size: medium;
+    margin-left: 1em;
+    a{
     color: white;
-    text-decoration: none;
+    text-decoration: none;}
 
 }
 #signup a:first-child{
@@ -99,4 +103,44 @@ body > header > form {
     flex-direction: row; 
     align-items: center; 
     justify-content: space-between; 
+}
+
+footer {
+    background-color: #333;
+    color: #f8f8f8;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0; /* This will remove the default margin from the paragraph */
+}
+
+#loged_in{
+    padding-right: 1em;
+  
+    i {
+        background-color: darkgrey;
+        padding: 0.8em;
+        border: solid 1px white;
+        border-radius: 50%;
+        margin-right: 1em;
+        color: #333;
+    }
+    #Sell_now{
+        font-weight: bold;
+        padding-right: 0.6em;
+        border-right: solid 2px white;
+    }
+    #logout{
+        padding-left: 0.5em;
+    }
+}
+#loged_in a{
+    text-decoration: none;
+    color: white;
 }

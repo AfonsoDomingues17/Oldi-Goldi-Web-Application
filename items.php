@@ -1,103 +1,57 @@
+<?php 
+require_once('database/connection.php');
+require_once('database/categories.php');
+require_once('templates/common.php');
+require_once('templates/display_categories.php');
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Store</title>
-</head>
-<body>
-    <header>
-        <h1><a href = "index.php">Our Super Cool Store</a></h1> 
-        <section id = "navsection">
-        <form action="" method="get">
-            <select name="Categories">
-            <option value="Clothing">Clothing</option>
-            <option value="Shoewear">Shoewear</option>
-            <option value="Sweatshirts">Sweatshirts</option>
-            <option value="Trousers">Trousers</option>
-            </select>
-            <!-- Search bar -->
-            <input id = "search" type = "text" placeholder = "Find your dream item!">
-            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <img src="" alt="shopping cart">
-            <p>3 items</p>
-        </form>
-        </section>
-        <a href = "login.php">Iniciar Sessão</a>
-        <a href = "register.php">Registar</a>
-        <ul id="Category_filters">
-            <li><a href = "">T-shirts</a></li>
-            <li><a href = "">Shoewear</a></li>
-            <li><a href = "">Sweatshirts</a></li>
-            <li><a href = "">Trousers</a></li>
-            <li><a href = "">Other</a></li>
-        </ul>
-        <!-- Shopping Cart -->
-        <!-- Filters -->
-    </header>
+$db = getDatabaseConnection();
+$categories = getAllCategories($db);
+$brands = getAllBrands($db);
+output_header();
+display_categories($categories);
+$items = getAllItems($db);
+
+?>
+
+<aside id="Filters">
+    <h3>Filters</h3>
+    <form>
+        <details>
+            <summary>Size <i class="fa-solid fa-chevron-down"></i></summary>
+            <section id="sizeSection">
+                <input type="checkbox" id="size1" name="size1">
+                <label for="size1">Size 1</label><br>
+                <!-- Add more sizes as needed -->
+            </section>
+        </details>
+
+        <details>
+            <summary>Brand <i class="fa-solid fa-chevron-down"></i></summary>
+            <section id="brandSection">
+                <input type="checkbox" id="brand1" name="brand1">
+                <label for="brand1">Brand 1 </i></label><br>
+                <!-- Add more brands as needed -->
+            </section>
+        </details>   
+    </form>
+</aside>
+
+    <!-- Items for sale -->
     <main>
-        <section id="Shop_Brand">
-        <h1>Shop by brand</h1>
-        <img src="" alt="imagem ilustrativa" id= "brand_img">
-        <a href="">Start Buying</a>
-        </section>
-        
-        <!-- Shop by brand -->
-        <section id="Shop_by_brand">
-            <h3>Shop by brand</h3>
-            <ul>
-                <li><a href = "">Nike</a></li>
-                <li><a href = "">Adidas</a></li>
-                <li><a href = "">Converse</a></li>
-                <li><a href = "">Element</a></li>
-                <li><a href = "">Levi's</a></li>
-                <li><a href = "">Other1</a></li>
-                <li><a href = "">Other2</a></li>
-                <li><a href = "">Other3</a></li>
-                <li><a href = "">Other4</a></li>
-            </ul>
-        </section>
-        
-        <!-- Popular categories -->
-        <section id="Popular_categories">
-            <h1>Most Popular Category</h1>
-            <h2>Shoewear</h2>
-            <article>
-                <img src="" alt="sapatilhas">
-                <p>40€</p>
-                <p>Size</p>
-                <p>Brand</p>
-                <p>Condition</p>
-            </article>
-        </section>
-        <section id="General articles">
-            <h1>Popular Items</h1>
-        <article>
-            <img src="" alt="tshirt branca">
-            <p>100€</p>
-            <p>tamanho</p>
-            <p>brand</p>
-            <p>condition</p>
+        <h1>Items for Sale</h1>
+        <?php foreach($items as $item) {?>
+        <article class="item">
+            <?php $photos = getPhotos($db,$item['ItemID']);?>
+            <img src=<?= $photos[0]['photo_url']?> alt="Item 1">
+            <h2><?= $item['item_name']?></h2>
+            <p><?= $item['price']?></p>
+            <p><?php $brand = getBrand($db,$item['brand_id']);
+            echo $brand['brand_name'];?></p>
+            <p><?php $size = getSize($db,$item['size_id']);
+            echo $size['size_value'];?></p>
         </article>
-        </section>
-        <section id="Popular_users">
-            <h1>Popular Users</h1>
-            <p>name</p>
-            <p>number_reviews</p>
-            <a href="">View more</a>
-            <article>
-            <img src="" alt="tshirt branca">
-            <p>100€</p>
-            <p>tamanho</p>
-            <p>brand</p>
-            <p>condition</p>
-            </article>
-            <a href="">See all the 100 articles this user sells</a>
-        </section>
-
+        <?php } ?>
+        <!-- Add more items as needed -->
     </main>
-    <footer>
-        
-    </footer>
-</body>
-</html>
+    <?php output_footer();
+?>

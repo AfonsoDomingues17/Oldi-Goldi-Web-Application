@@ -14,7 +14,7 @@ function userExists($username, $password) : bool{
 function newUser($username, $name, $email, $phone_number, $password, $C_password) : bool{
     $password = sha1($password);
     $db = getDatabaseConnection();
-    $stmt = $db->prepare("INSERT OR IGNORE INTO Users VALUES ('$username','$name','$email','$phone_number','$password',null,null,null,null,null,false,false)");
+    $stmt = $db->prepare("INSERT OR IGNORE INTO Users VALUES ('$username','$name','$email','$phone_number','$password',null,null,null,null,null,null,false,false)");
     $stmt->execute();
     return true;
 }

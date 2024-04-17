@@ -6,6 +6,7 @@ CREATE TABLE Users (
     email TEXT NOT NULL,
     phone_number TEXT NOT NULL,
     password TEXT NOT NULL,
+    photo_url TEXT,
     Country TEXT,
     Adress TEXT,
     Zip_code TEXT,
@@ -13,6 +14,7 @@ CREATE TABLE Users (
     description TEXT,
     isAdmin BOOLEAN NOT NULL DEFAULT false,
     isSeller BOOLEAN NOT NULL DEFAULT false
+
 
 );
 
@@ -79,4 +81,11 @@ DROP TABLE IF EXISTS ShoppingCarts;
 CREATE TABLE ShoppingCarts (
     shopping_cart_id NUMERIC NOT NULL PRIMARY KEY,
     userID INTEGER NOT NULL REFERENCES Users(username)
+);
+
+DROP TABLE IF EXISTS Photos;
+CREATE TABLE Photos (
+    photo_id INTEGER PRIMARY KEY,
+    photo_url TEXT NOT NULL,
+    item_id INTEGER NOT NULL REFERENCES Item(ItemID) ON DELETE CASCADE
 );

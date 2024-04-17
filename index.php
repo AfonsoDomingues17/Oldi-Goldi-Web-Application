@@ -13,11 +13,13 @@ display_categories($categories);
 
 
     <main>
-        <section id="Start_buying">
-        <h1>Consegues resistir a estes produtos incriveis?</h1>
+    <section id="Start_buying">
+    <h1>Consegues resistir a estes produtos incriveis?</h1>
+    <div class="image-container">
         <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*iAu65xDmvpVdBJgps6EDEw.png" alt="imagem principal" id= "main_img">
-        <a href="">Start Buying</a>
-        </section>
+        <a href="items.php">Start Buying</a>
+    </div>
+</section>
         
         <!-- Shop by brand -->
         <section id="Shop_by_brand">

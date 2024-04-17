@@ -1,0 +1,70 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Style the filters bar */
+#Filters {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 20%; /* Adjust as needed */
+    height: 100vh;
+    padding: 20px;
+    background-color: #f8f8f8; /* Light grey */
+    overflow-y: auto; /* Add scroll if content is too long */
+}
+
+/* Style the filter sections */
+#Filters details {
+    margin-bottom: 20px;
+}
+
+/* Style the items section */
+main {
+    width: 80%; /* Adjust as needed */
+    margin-left: auto; /* Push content to the right */
+    margin-top: 60px; /* Adjust this value to the height of your header */
+    padding: 20px;
+}
+
+/* Style each item */
+.item {
+    width: 30%; /* Adjust as needed */
+    margin-bottom: 20px;
+    float: left; /* Arrange items in a grid */
+}
+
+/* Clear floats after items */
+main::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the item image */
+.item img {
+    width: 100%;
+    height: auto;
+}
+
+/* Style the item details */
+.item h2, .item p {
+    margin: 0;
+}
+
+/* Remove the default disclosure triangle */
+summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Remove the default disclosure triangle in Firefox */
+summary {
+    list-style: none;
+}
+
+
+/* Push the icon to the right */
+summary i {
+    float: ;
+}
