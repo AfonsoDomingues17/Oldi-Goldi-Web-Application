@@ -53,7 +53,7 @@
         <h3>Personal Info</h3>
         <span class="email">aureliomadureira@gmail.com</span>
         <span class="phonenumber">+351 999 456 778</span>
-        <span class="address">Rua José Regio, N8, 3ºDto, Alhos Vedros 2860-006</span>
+        <span class="address">Rua José Regio, N8, 3ºDto, Alhos Vedros 2860-113</span>
         
     </section>
     <!--

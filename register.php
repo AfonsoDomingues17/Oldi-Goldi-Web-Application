@@ -1,15 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-</head>
-<body>
+<?php
+      require_once('database/connection.php');
+      require_once('database/categories.php');
+      require_once('templates/common.php');
+      require_once('templates/display_categories.php');
+  
+      $db = getDatabaseConnection();
+      $categories = getAllCategories($db);
+      output_header();
+      display_categories($categories);
+?>
+
 
 <section>
     <h2>Register</h2>
-    <form action="your_registration_endpoint" method="POST">
+    <form action="action_register.php" method="post">
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username" required><br>
         <label for="name">Name:</label><br>
@@ -20,6 +24,7 @@
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password" required><br><br>
         <label>Confirm Password: <input type="password" name="cpassword" required></label><br>
+        <button type="submit">Register</button>
 
     
         
@@ -27,5 +32,5 @@
     </form>
 </section>
 
-</body>
-</html>
+
+<?php output_footer();?>
