@@ -13,6 +13,7 @@ function output_header(){ ?>
 </head>
 <body>
     <header>
+        <section id="main_nav_bar">
         <h1><a href = "index.php">Our Super Cool Store</a></h1> 
         <section id = "navsection">
         <form action="" method="get">
@@ -25,20 +26,22 @@ function output_header(){ ?>
             <!-- Search bar -->
             <input id = "search" type = "text" placeholder = "Find your dream item!">
             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <img src="" alt="shopping cart">
-            <p>3 items</p>
+            <p> <i class="fa-solid fa-cart-plus"></i> 3</p>
         </form>
         </section>
         <?php if(isset($_SESSION['username'])) {?>
+        <section id="loged_in">
         <a href="profile.php" id="profile"><i class="fa-solid fa-user"></i></a>
         <a href="sell.php" id="Sell now">Sell Now</a>
         <a href="action_logout.php" id="logout">Logout</a>
+        </section>
       <?php } 
       else { ?>
         <div id="signup">
         <a href = "login.php">Login</a>
         <a href = "register.php">Register</a>
         </div>
+        </section>
       <?php } ?>
        
 
