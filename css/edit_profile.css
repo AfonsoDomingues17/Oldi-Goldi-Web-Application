@@ -1,0 +1,71 @@
+main {
+    width: 70%;
+    margin: auto;
+    font-family: Arial, sans-serif;
+}
+
+main > h1, h2 {
+    font-size: 1.6em;
+    color: #333;
+}
+
+section#update_profile > section#user_picture{
+    background-color: #a0a1a5;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+section#update_profile > section#user_details{
+    background-color: #a0a1a5;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+section#update_profile > section#shipping{
+    background-color: #a0a1a5;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+section#update_profile p {
+    font-weight: bold;
+}
+
+section#update_profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+section#update_profile label {
+    display: block;
+    margin-top: 10px;
+}
+
+section#update_profile textarea, section#update_profile input[type="password"] {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+}
+
+section#update_profile textarea {
+    resize: none;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}

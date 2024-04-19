@@ -4,6 +4,7 @@
     <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/edit_profile.css">
     <title>User Profile</title>
 </head>
 <body>
@@ -39,24 +40,34 @@
     </header>
 
 <main>
-    <h1>Update you profile</h1>
-   <section id="update profile">
-    <p>You picture</p>
-    <img src="" alt="profile picture">
-    <label>About you: <textarea name="About you" id="About you"></textarea></label>
-    <label>Username: <textarea name="username" id="username"></textarea></label>
-    <label>Email: <textarea name="username" id="username"></textarea></label>
-    <label>Name: <textarea name="username" id="username"></textarea></label>
-    <label>Phone Number: <textarea name="phonenumber" id="phonenumber"></textarea></label>
-    <label>New Password: <input type="password" name="npassword"></label>
-    <label>Confirm new Password: <input type="password" name = "cnpassword"></label>
-    <h2>Shipping Information</h2>
+    <h1>Update your profile</h1>
+        <form action="" id="edit_profile">
+            <section id="update_profile">
+            <section id="user_picture">
+                <p>Your picture</p>
+            <img src="https://picsum.photos/200/300" alt="profile picture">
+            <label>About you: <textarea name="About you" id="About_you" placeholder="Let everyone know more about you!"></textarea></label>
+            </section>
+        
+            <section id="user_details">
+                <label>Username: <textarea name="username" id="username"></textarea></label>
+                <label>Email: <textarea name="username" id="username"></textarea></label>
+                <label>Name: <textarea name="username" id="username"></textarea></label>
+                <label>Phone Number: <textarea name="phonenumber" id="phonenumber"></textarea></label>
+                <label>New Password: <input type="password" name="npassword"></label>
+                <label>Confirm new Password: <input type="password" name = "cnpassword"></label>
+            </section>
+            <section id="shipping">
+                <h2>Shipping Information</h2>
 
-    <label>Adress: <textarea name="username" id="username"></textarea></label>
-    <label>Zip-Code: <textarea name="username" id="username"></textarea></label>
-    <label>Country: <textarea name="username" id="username"></textarea></label>
-    <label>City: <textarea name="username" id="username"></textarea></label>
-   </section>
+                <label>Adress: <textarea name="username" id="username"></textarea></label>
+                <label>Zip-Code: <textarea name="username" id="username"></textarea></label>
+                <label>Country: <textarea name="username" id="username"></textarea></label>
+                <label>City: <textarea name="username" id="username"></textarea></label>
+            </section>
+        </section>
+    </form>
+    
    <footer><button type="submit">Update Profile</button></footer>
 </main>
 
