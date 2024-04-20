@@ -4,7 +4,6 @@
 /* Header styles for common.php as a shopping nav bar */
 body > header section#main_nav_bar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 10px;
     background-color: #333;
@@ -16,21 +15,22 @@ body > header section#main_nav_bar form{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
 }
 
 form select{
-    width: 150px;
+    width: 125px;
     height: 2em;
     border: 0px;
     font-size: 16px;
     color: #333;
     background-color: #f8f8f8;
     border-right: solid 1px black;
+    margin-left: 1em;
+   
     
 }
-form input[type="text"]{
-    width: 800px;
+form input {
+    width: 600px;
     height: 2em;
     border: 0px;
     font-size: 16px;
@@ -48,14 +48,16 @@ form button {
     padding: 0;
     padding-left: 1em;
     padding-right: 1em;
+    margin-right: 0;
 
 }
 form p {
-    margin-left: 2em;
+    font-size: 18px;
+    margin-left: 0;
 }
 
 body > header section#main_nav_bar h1{
-    font-size: medium;
+    font-size: 10px;
     margin-left: 1em;
     a{
     color: white;
@@ -66,8 +68,13 @@ body > header section#main_nav_bar h1{
     padding-right: 1em;
     
 }
+#signup a:last-child{
+    padding-left: 0.5em;
+}
 body > header section#main_nav_bar #signup{
-    padding-right: 1em;
+    padding-right: 1.5em;
+    margin-left: auto;
+    
 }
 body > header section#main_nav_bar #signup a{
     text-decoration: none;
@@ -110,7 +117,6 @@ footer {
     color: #f8f8f8;
     text-align: center;
     padding: 20px;
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -124,19 +130,23 @@ footer p {
     padding-right: 1em;
   
     i {
+        font-size: small;
         background-color: darkgrey;
         padding: 0.8em;
         border: solid 1px white;
         border-radius: 50%;
         margin-right: 1em;
         color: #333;
+        margin-left: 1em;
     }
     #Sell_now{
+        font-size: 14;
         font-weight: bold;
         padding-right: 0.6em;
         border-right: solid 2px white;
     }
     #logout{
+        font-size: 14;
         padding-left: 0.5em;
     }
 }
@@ -144,3 +154,15 @@ footer p {
     text-decoration: none;
     color: white;
 }
+
+form p i {
+margin: 0;
+padding: 0;
+padding-left: 1em;
+}
+
+#signup a:first-child{
+    padding-right: 0.7em;
+    border-right: solid 1px white;
+}
+

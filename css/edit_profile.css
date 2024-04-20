@@ -56,16 +56,23 @@ section#update_profile textarea {
     resize: none;
 }
 
-footer {
-    text-align: center;
-    margin-top: 20px;
-}
 
-footer button {
+
+form#edit_profile button {
     padding: 10px 20px;
     border: none;
     background-color: #007BFF;
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 1.7em;
+}
+main {
+    background-color: white;
 }

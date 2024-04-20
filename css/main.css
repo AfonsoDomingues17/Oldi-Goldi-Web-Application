@@ -1,41 +1,218 @@
-body{
-    margin-right: 2em ;
-    margin-left: 2em;
-}
-#Start_buying {
-    text-align: center; /* This will center the text */
 
+main{
+    background-color: lightgray;
 }
-
 #Start_buying h1 {
-    margin-bottom: 20px; /* This will add some space below the heading */
+    margin-top: 0;
+    padding-top: 1em;
+    padding-left: 0.5em;
 }
 
-.image-container {
-    position: relative; /* This will allow absolute positioning of child elements */
-    display: inline-block; /* This will allow the container to fit the size of the image */
+
+
+#Start_buying {
+    position: relative; /* Add this line */
 }
 
 #Start_buying img {
-    width: 100%; /* This will make the image take up half the width of the section */
-    max-height: 300px; /* This will limit the height of the image */
-    object-fit: cover; /* This will make the image cover the area without distorting its aspect ratio */
-    border-radius: 5px; /* This will round the corners */
-    display: block; /* This will allow the image to be centered */
+    width: 80%; 
+    border-radius: 5px; 
+    display: block; 
+    padding-left: 0.5em;
 }
 
 #Start_buying a {
-    display: inline-block; /* This will allow padding to be added */
-    padding: 10px 20px; /* This will add some space around the text */
-    background-color: darkgoldenrod; /* This will change the background color */
-    color: white; /* This will change the text color */
-    text-decoration: none; /* This will remove the underline */
-    position: absolute; /* This will allow the link to be positioned over the image */
-    bottom: 20px; /* This will position the link at the bottom of the section */
-    left: 20px; /* This will position the link at the left of the section */
-    border-radius: 5px; /* This will round the corners */
+    display: inline-block; 
+    padding: 10px 20px; 
+    background-color: darkgoldenrod; 
+    color: white; 
+    text-decoration: none; 
+    position: absolute; 
+    bottom: 20px; 
+    left: 20px; 
+    border-radius: 5px; 
 }
 
 #Start_buying a:hover {
-    background-color: #0056b3; /* This will change the background color when hovering over the link */
+    background-color: #333; 
+}
+
+#Shop_by_brand {
+    h1 {
+        padding-left: 0.5em;
+    }
+    ul {
+    list-style-type: none; 
+    padding: 0; 
+    }
+
+    li {
+        display: inline-block;
+        flex-wrap: wrap;
+        margin: 10px; 
+
+        a {
+            display: inline-block; 
+            padding: 10px 20px; 
+            background-color: #333; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+        }
+    }
+}
+
+#Popular_categories{
+    h1 {
+        padding-left: 0.5em;
+    }
+
+    h2 {
+        padding-left: 1em;
+
+        a {
+            text-decoration: none; 
+            color: black; 
+        }
+    }
+}
+
+
+
+#articles {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+#articles article{
+    flex: 1 0 20%; 
+    margin: 10px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 1em;
+    box-sizing: border-box;
+
+    p {
+        padding-left: 0.5em;
+    }
+}
+
+#articles article img {
+    width: 100%;
+}
+
+#Garticles {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    grid-gap: 10px; 
+}
+
+#Garticles article{
+    background-color: white;
+    border-radius: 5px;
+    padding: 1em;
+    margin: 5px;
+
+    box-sizing: border-box;
+
+    p {
+        padding-left: 0.5em;
+    }
+}
+
+#Garticles article img {
+    width: 100%;
+}
+
+section.article-info {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+section.article-info p {
+    margin: 0;
+    padding: 5px 0;
+}
+
+section.article-info p:first-child {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #007BFF;
+}
+
+section.article-info * {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+#General_articles {
+    h1 {
+        padding-left: 0.5em;
+    }
+}
+
+/* */
+#Popular_users {
+    h1 {
+        padding-left: 0.5em;
+    }
+}
+
+#U_info {
+    display: flex;
+
+    img {
+    border-radius: 50%; 
+    width: 70px; 
+    height: 70px; 
+    object-fit: cover;
+    padding-left: 1.5em;
+    }
+    div.name-container {
+        display: flex;
+        flex-direction: column;
+        padding-left: 1.5em
+    }
+    
+}
+#U_info a:last-child{
+    align-self: center;
+        margin-left: auto;
+        border: 1px solid lightblue;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        background-color: #007BFF;
+        height: 1em;
+        padding: 10px;
+        margin-right: 2em;
+}
+#U_info p:first-child {
+    margin-bottom: 0.5em;
+}
+#U_info p:last-child{
+    margin-top: 0;
+    font-size: small;
+    i {
+        color: darkgoldenrod;
+    }
+
+    span.R {
+        padding-left: 0.5em;
+    }
+}
+
+article#More {
+    background-color: #6c757d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    a {
+        color: white;
+        text-decoration: none;
+    }    
 }
