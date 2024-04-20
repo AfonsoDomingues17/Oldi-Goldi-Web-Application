@@ -103,6 +103,7 @@ body > header section#main_nav_bar #signup a{
     text-align: center;
     text-decoration: none;
     color: black;
+    font-weight: 700;
 }
 
 body > header > form {

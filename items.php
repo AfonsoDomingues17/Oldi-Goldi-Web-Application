@@ -13,45 +13,76 @@ $items = getAllItems($db);
 
 ?>
 
-<aside id="Filters">
-    <h3>Filters</h3>
-    <form>
-        <details>
-            <summary>Size <i class="fa-solid fa-chevron-down"></i></summary>
-            <section id="sizeSection">
-                <input type="checkbox" id="size1" name="size1">
-                <label for="size1">Size 1</label><br>
-                <!-- Add more sizes as needed -->
-            </section>
-        </details>
 
-        <details>
-            <summary>Brand <i class="fa-solid fa-chevron-down"></i></summary>
-            <section id="brandSection">
-                <input type="checkbox" id="brand1" name="brand1">
-                <label for="brand1">Brand 1 </i></label><br>
-                <!-- Add more brands as needed -->
-            </section>
-        </details>   
-    </form>
-</aside>
 
     <!-- Items for sale -->
     <main>
+        <section class="items">
+        <aside id="Filters">
+        <h3>Filters</h3>
+        <form>
+            <details>
+                <summary>Size <i class="fa-solid fa-chevron-down"></i></summary>
+                <section id="sizeSection">
+                    <label><input type="checkbox" id="size1" name="size1">S</label>
+                    <label><input type="checkbox" id="size1" name="size1">M</label>
+                    <label><input type="checkbox" id="size1" name="size1">L</label>
+                    <label><input type="checkbox" id="size1" name="size1">XL</label>
+
+                    <!-- Add more sizes as needed -->
+                </section>
+            </details>
+
+            <details>
+                <summary>Brand <i class="fa-solid fa-chevron-down"></i></summary>
+                <section id="brandSection">
+                    <label><input type="checkbox" id="brand1" name="brand1">cartier</label>
+                    <label><input type="checkbox" id="brand1" name="brand1">Gucci</label>
+                    <label><input type="checkbox" id="brand1" name="brand1">Nike</label>
+                    <label><input type="checkbox" id="brand1" name="brand1">Adidas</label>
+
+                    <!-- Add more brands as needed -->
+                </section>
+            </details>   
+        </form>
+        </aside>
+        <section id="Item_for_sell">
+        <section class = "heading">
         <h1>Items for Sale</h1>
+        <div id="action_buttons">
+        <p id="Show_Filter">Hide filters <i class="fa-solid fa-sliders"></i></p>
+
+        <div id="dropdownContainer">
+        <p id="orderBy">Order by <i class="fa-solid fa-chevron-down"></i></p>
+        <section id="dropdownMenu" class="dropdown-menu">
+            <a href="#">Preço: Ascendente</a>
+            <a href="#">Preço: Descendente</a>
+            <a href="#">Mais Recente</a>
+        </section>
+        </div>
+        </div>
+        
+        </section>
+        <section id="Garticles">
         <?php foreach($items as $item) {?>
-        <article class="item">
+        <article>
             <?php $photos = getPhotos($db,$item['ItemID']);?>
-            <img src=<?= $photos[0]['photo_url']?> alt="Item 1">
+            <a href=""><img src=<?= $photos[0]['photo_url']?> alt="Item 1"> </a>
+            <section class="article-info">
             <h2><?= $item['item_name']?></h2>
-            <p><?= $item['price']?></p>
+            <p><?= $item['price']?>€</p>
             <p><?php $brand = getBrand($db,$item['brand_id']);
             echo $brand['brand_name'];?></p>
             <p><?php $size = getSize($db,$item['size_id']);
             echo $size['size_value'];?></p>
+            </section>
         </article>
+        
         <?php } ?>
-        <!-- Add more items as needed -->
+        </section>
+                <!-- Add more items as needed -->
+        </section>
+        </section>
     </main>
     <?php output_footer();
 ?>

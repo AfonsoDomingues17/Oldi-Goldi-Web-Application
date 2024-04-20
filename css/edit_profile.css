@@ -1,6 +1,4 @@
 main {
-    width: 70%;
-    margin: auto;
     font-family: Arial, sans-serif;
 }
 
@@ -73,6 +71,6 @@ form#edit_profile button {
     margin-right: auto;
     padding-bottom: 1.7em;
 }
-main {
+section#edit {
     background-color: white;
 }

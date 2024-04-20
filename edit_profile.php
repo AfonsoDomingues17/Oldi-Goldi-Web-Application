@@ -12,6 +12,7 @@ display_categories($categories);
 ?>
 
 <main>
+    <section class="edit">
     <h1>Update your profile</h1>
         <form action="" id="edit_profile">
             <section id="update_profile">
@@ -41,6 +42,7 @@ display_categories($categories);
         <button type="submit">Update Profile</button>
 
     </form>
+    </section>
     
 </main>
 

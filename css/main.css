@@ -1,24 +1,30 @@
 
-main{
+section#main_page{
     background-color: lightgray;
 }
 #Start_buying h1 {
     margin-top: 0;
     padding-top: 1em;
     padding-left: 0.5em;
+    font-size: 1.5em;
 }
+
 
 
 
 #Start_buying {
-    position: relative; /* Add this line */
+    position: relative; 
 }
 
+
 #Start_buying img {
-    width: 80%; 
+    width: 80%;
+    height: 400px;
     border-radius: 5px; 
     display: block; 
-    padding-left: 0.5em;
+    padding-left: 2em;
+    align-items: center;
+    justify-content: center;
 }
 
 #Start_buying a {
@@ -29,7 +35,7 @@ main{
     text-decoration: none; 
     position: absolute; 
     bottom: 20px; 
-    left: 20px; 
+    left: 60px; 
     border-radius: 5px; 
 }
 
@@ -39,11 +45,12 @@ main{
 
 #Shop_by_brand {
     h1 {
-        padding-left: 0.5em;
+        padding-left: 1em;
+        font-size: 1.5em;
     }
     ul {
     list-style-type: none; 
-    padding: 0; 
+    padding-left: 1em; 
     }
 
     li {
@@ -64,11 +71,12 @@ main{
 
 #Popular_categories{
     h1 {
-        padding-left: 0.5em;
+        padding-left: 1em;
+        font-size: 1.5em;
     }
 
     h2 {
-        padding-left: 1em;
+        padding-left: 1.5em;
 
         a {
             text-decoration: none; 
@@ -83,6 +91,8 @@ main{
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 #articles article{
@@ -92,6 +102,8 @@ main{
     border-radius: 5px;
     padding: 1em;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 
     p {
         padding-left: 0.5em;
@@ -100,12 +112,15 @@ main{
 
 #articles article img {
     width: 100%;
+  
 }
 
 #Garticles {
     display: grid;
     grid-template-columns: repeat(5, 1fr); 
     grid-gap: 10px; 
+    padding-right: 1em;
+    padding-left: 1em;
 }
 
 #Garticles article{
@@ -115,7 +130,8 @@ main{
     margin: 5px;
 
     box-sizing: border-box;
-
+    display: flex;
+    flex-direction: column;
     p {
         padding-left: 0.5em;
     }
@@ -129,7 +145,9 @@ section.article-info {
     background-color: #f8f9fa;
     padding: 10px;
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: auto;
+
+   
 }
 
 section.article-info p {
@@ -150,14 +168,16 @@ section.article-info * {
 
 #General_articles {
     h1 {
-        padding-left: 0.5em;
+        padding-left: 1.5em;
+        font-size: 1.5em;
     }
 }
 
 /* */
 #Popular_users {
     h1 {
-        padding-left: 0.5em;
+        padding-left: 1.5em;
+        font-size: 1.5em;
     }
 }
 

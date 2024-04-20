@@ -10,7 +10,6 @@ function output_header(){ ?>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/items.css">
     <link rel="stylesheet" href="css/edit_profile.css">
-
     <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
 
@@ -57,6 +56,7 @@ function output_header(){ ?>
     <footer>
     <p>&copy; 2024 Your Online Store. All rights reserved.</p>
     </footer>
+    <script src="script.js"></script>
     </body>
 </html>
 <?php }?>

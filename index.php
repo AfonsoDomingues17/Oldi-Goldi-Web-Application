@@ -13,13 +13,15 @@ display_categories($categories);
 
 
     <main>
+    <section id="main_page">
     <section id="Start_buying">
     <h1>Consegues resistir a estes produtos incriveis?</h1>
     <div class="image-container">
-        <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*iAu65xDmvpVdBJgps6EDEw.png" alt="imagem principal" id= "main_img">
+        <img src="transferir.png" alt="imagem principal" id= "main_img">
         <a href="items.php">Start Buying</a>
     </div>
-</section>
+    
+    </section>
         
         <!-- Shop by brand -->
         <section id="Shop_by_brand">
@@ -44,7 +46,7 @@ display_categories($categories);
                 <p>Size</p>
                 <p>Brand</p>
                 <p>Condition</p>
-                </span>
+                </section>
             </article>
             
             <article>
@@ -54,7 +56,7 @@ display_categories($categories);
                 <p>Size</p>
                 <p>Brand</p>
                 <p>Condition</p>
-                </span>
+                </section>
             </article>
             <article>
                 <a href=""><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcS4zK3eemkv_6On3WPF10bU_QJgiFtulpcRd7FfBeTjLrHsWPB9JAM74v8iRwwXBYn299XR1ATIU3BgIrClPndrAxv0e3zev9XY0hi4pDScgx22_dMzNCTf" alt="sapatilhas"></a>
@@ -63,7 +65,7 @@ display_categories($categories);
                 <p>Size</p>
                 <p>Brand</p>
                 <p>Condition</p>
-                </span>
+                </section>
             </article>
             <article>
                 <a href=""><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcS4zK3eemkv_6On3WPF10bU_QJgiFtulpcRd7FfBeTjLrHsWPB9JAM74v8iRwwXBYn299XR1ATIU3BgIrClPndrAxv0e3zev9XY0hi4pDScgx22_dMzNCTf" alt="sapatilhas"></a>
@@ -72,7 +74,7 @@ display_categories($categories);
                 <p>Size</p>
                 <p>Brand</p>
                 <p>Condition</p>
-                </span>
+                </section>
             </article>
             
             <article id="More">           
@@ -232,7 +234,7 @@ display_categories($categories);
                 </section>
             </article>
             <article>
-                <a href=""><img src="https://armazemdasmalhas.com/wp-content/uploads/2021/05/t-shirt-branca-2-scaled.jpg" alt="sapatilhas"></a>
+                <a href=""><img src="https://nude-project.com/cdn/shop/files/LOOKBOOK_CULT_18_0035.jpg?v=1696612637" alt="sapatilhas"></a>
                 <section class="article-info">
                 <p>40€</p>
                 <p>Size</p>
@@ -248,7 +250,7 @@ display_categories($categories);
         </section>
 
         
-
+    </section>
     </main>
 <?php output_footer();
 ?>
