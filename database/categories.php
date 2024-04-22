@@ -42,6 +42,11 @@
         return $stmt->fetch();
     }
     
+    function getCondition($db, $condition_id) {
+        $stmt = $db->prepare("SELECT condition_value FROM Conditions WHERE condition_id = ?");
+        $stmt->execute([$condition_id]);
+        return $stmt->fetch();
+    }
     
    
 ?>

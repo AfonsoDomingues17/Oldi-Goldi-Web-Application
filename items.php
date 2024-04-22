@@ -67,14 +67,18 @@
                         <section class="article-info">
                             <h2><?= $item['item_name']?></h2>
                             <p><?= $item['price']?>€</p>
-                            <p><?php $brand = getBrand($db, $item['brand_id']);
-                            if (is_array($brand)) {
-                                echo $brand['brand_name'];
-                            }?></p>
-                            <p><?php $size = getSize($db, $item['size_id']); 
-                            if (is_array($size)) {
-                                echo $size['size_value'];
-                            }?></p>
+                            <?php $brand = getBrand($db, $item['brand_id']);
+                            if (is_array($brand) && !empty($brand['brand_name'])) { ?>
+                                <p><?= $brand['brand_name']?></p>
+                            <?php } ?>
+                            <?php $size = getSize($db, $item['size_id']); 
+                            if (is_array($size) && !empty($size['size_value'])) { ?>
+                                <p><?= $size['size_value']?></p>
+                            <?php } ?>
+                            <?php $condition = getCondition($db, $item['condition_id']); 
+                            if (is_array($condition) && !empty($condition['condition_value'])) { ?>
+                                <p><?= $condition['condition_value']?></p>
+                            <?php } ?>
                         </section>
                     </article>
                 <?php } ?>

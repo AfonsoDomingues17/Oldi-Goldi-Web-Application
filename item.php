@@ -20,6 +20,7 @@ function display_item($db, $item_id) {
     $photos = getPhotos($db, $item_id);
     $brand = getBrand($db, $item['brand_id']);
     $size = getSize($db, $item['size_id']);
+    $condition = getCondition($db, $item['condition_id']);
 
     echo '<section class="product">';
         echo '<article class="product-image">';
@@ -32,13 +33,17 @@ function display_item($db, $item_id) {
         echo '<article class="product-details">';
             echo '<h1 class="product-name">'. htmlspecialchars($item['item_name']). '</h1>';
             echo '<p class="product-price">'. htmlspecialchars($item['price']). '€</p>';
-            echo '<p class="product-description">'. htmlspecialchars($item['description']). '</p>';
+            if(is_array($condition) ){
+                echo '<p class="product-condition">Condition: '. htmlspecialchars($condition['condition_value']). '</p>';
+            } 
             if (is_array($brand)) {
-                echo '<p class="product-brand">Brand: '. htmlspecialchars($brand['name']). '</p>';
+                echo '<p class="product-brand">Brand: '. htmlspecialchars($brand['brand_name']). '</p>';
             }
             if (is_array($size)) {
                 echo '<p class="product-size">Size: '. htmlspecialchars($size['size_value']). '</p>';
             }
+            echo '<p class="product-description">'. htmlspecialchars($item['description']). '</p>';
+            
             echo '<div class="product-actions">';
                 echo '<button class="btn btn-primary">Add to Cart</button>';
                 echo '<button class="btn btn-secondary"><i class="fas fa-heart"></i> Favorite</button>';
