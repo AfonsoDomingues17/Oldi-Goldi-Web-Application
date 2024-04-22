@@ -35,4 +35,13 @@
         $photos = $stmt->fetchAll();
         return $photos;
     }
+
+    function getItem($db, $item_id) {
+        $stmt = $db->prepare("SELECT * FROM Item WHERE ItemID = ?");
+        $stmt->execute([$item_id]);
+        return $stmt->fetch();
+    }
+    
+    
+   
 ?>
