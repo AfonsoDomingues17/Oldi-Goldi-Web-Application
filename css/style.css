@@ -30,7 +30,7 @@ form select{
     
 }
 form input {
-    width: 600px;
+    width: 550px;
     height: 2em;
     border: 0px;
     font-size: 16px;
@@ -50,10 +50,6 @@ form button {
     padding-right: 1em;
     margin-right: 0;
 
-}
-form p {
-    font-size: 18px;
-    margin-left: 0;
 }
 
 body > header section#main_nav_bar h1{
@@ -121,6 +117,8 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
+    padding-right: 0;
+    padding-left: 0;
 }
 
 footer p {
@@ -129,7 +127,7 @@ footer p {
 
 #loged_in{
     padding-right: 1em;
-  
+    margin-left: auto;
     i {
         font-size: small;
         background-color: darkgrey;
@@ -156,10 +154,12 @@ footer p {
     color: white;
 }
 
-form p i {
+form a p i {
 margin: 0;
 padding: 0;
-padding-left: 1em;
+margin-left: 1em;
+color: white;
+margin-right: 1em;
 }
 
 #signup a:first-child{

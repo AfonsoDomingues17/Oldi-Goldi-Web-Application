@@ -32,7 +32,10 @@ function output_header(){ ?>
             <!-- Search bar -->
             <input id = "search" type = "text" placeholder = "Find your dream item!">
             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <p> <i class="fa-solid fa-cart-plus"></i></p>
+            <a href=""><p> <i class="fa-solid fa-cart-plus"></i></p></a>
+            <a href=""><p><i class="fa-solid fa-message"></i></p></a>
+            <a href="whish_list.php"><p><i class="fa-solid fa-heart"></i></p></a>
+
         </form>
         </section>
         <?php if(isset($_SESSION['username'])) {?>
@@ -57,7 +60,6 @@ function output_header(){ ?>
     <footer>
     <p>&copy; 2024 Your Online Store. All rights reserved.</p>
     </footer>
-    <script src="script.js"></script>
     </body>
 </html>
 <?php }?>

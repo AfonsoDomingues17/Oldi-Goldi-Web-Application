@@ -41,12 +41,36 @@
         $stmt->execute([$item_id]);
         return $stmt->fetch();
     }
+    function getCategorie($db, $categorie_id) {
+        $stmt = $db->prepare("SELECT * FROM Categories WHERE category_id = ?");
+        $stmt->execute([$categorie_id]);
+        return $stmt->fetch();
+    }
     
     function getCondition($db, $condition_id) {
         $stmt = $db->prepare("SELECT condition_value FROM Conditions WHERE condition_id = ?");
         $stmt->execute([$condition_id]);
         return $stmt->fetch();
     }
+    function Popular_categories($db){
+
+        $stmt = $db->prepare("SELECT category_id, count(*) as Item_count FROM Item GROUP BY category_id ORDER BY Item_count DESC LIMIT 2");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+    function get_Items_ByCategory($db, $category_id){
+        $stmt = $db->prepare("SELECT * FROM Item where category_id = ? LIMIT 5");
+        $stmt->execute([$category_id]);
+        return $stmt->fetchAll();
+    }
+
+    function getItemsByWhislist($db, $username){
+        $stmt = $db->prepare('SELECT item_id FROM Whishlists WHERE username = ?');
+        $stmt->execute(array($username));
+        $items = $stmt->fetchAll();
+        return $items;
+    }
     
+
    
 ?>

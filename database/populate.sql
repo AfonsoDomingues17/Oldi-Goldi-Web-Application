@@ -47,7 +47,7 @@ VALUES
 (7, 'Cannon'),
 (8, 'Honda'),
 (9, 'Rolex'),
-(10, 'Ralph Lauren');
+(10, 'Ralph La');
 
 
 -- Conditions
@@ -63,15 +63,25 @@ VALUES
 INSERT INTO Item (ItemID, model, item_name, description, price, seller, size_id, condition_id, category_id, brand_id) 
 VALUES 
 (23456, 'DEF789', 'Womens Dress', 'Elegant evening dress perfect for special occasions.', 79.99, 'jane_smith', 3, 1, 1, NULL),
+(23457, 'DEF790', 'Womens Casual Shirt', 'Comfortable shirt for everyday wear.', 29.99, 'jane_smith', 5, 1, 1, NULL),
+(23458, 'DEF791', 'Mens Summer Shorts', 'Light and airy shorts perfect for summer.', 39.99, 'jane_smith', 4, 1, 1, NULL),
+(23459, 'DEF792', 'Unisex Formal Suit', 'Formal suit suitable for office wear.', 99.99, 'jane_smith', 3, 1, 1, NULL),
+(23460, 'DEF793', 'Kids Party Dress', 'Stylish dress for kids parties and events.', 49.99, 'jane_smith', 2, 1, 1, NULL),
+(23461, 'DEF794', 'Womens Maxi Skirt', 'Long, flowing skirt for a chic look.', 59.99, 'jane_smith', 6, 1, 1, NULL),
+(90124, 'YZA891', 'Laptop', 'High-performance laptop for work and play.', 899.99, 'adam_wilson', 10, 2, 2, NULL),
+(10124, 'BCD124', 'Bluetooth Speaker', 'Portable speaker with excellent sound quality.', 59.99, 'olivia_tan', 15, 2, 2, NULL),
+(11235, 'EFG457', 'Smartphone', 'Latest model smartphone with advanced features.', 699.99, 'john_doe', 20, 2, 2, NULL),
+(12345, 'HIJ890', 'Digital Camera', 'High-resolution digital camera for photography.', 499.99, 'jane_smith', 5, 2, 2, NULL),
+(13456, 'KLM123', 'Gaming Console', 'Next generation gaming console for immersive gaming.', 399.99, 'sam_jones', 8, 2, 2, NULL),
 (34567, 'GHI012', 'Smartphone Case', 'Protective case compatible with iPhone 12 models.', 19.99, 'sam_jones', 6, 1, 2, NULL),
 (45678, 'JKL345', 'Cookbook', 'Collection of delicious recipes from around the world.', 29.99, 'lisa_white', NULL, 3, 3, NuLL),
 (56789, 'MNO678', 'Garden Table', 'Outdoor table made of weather-resistant materials.', 149.99, 'mike_brown', NULL, 1, 4, NULL),
-(67890, 'PQR901', 'Nike dunks', 'Comfortable shoes designed for long-distance running.', 99.99, 'sara_green', 7, 1, 5, 1),
-(78901, 'STU234', 'Samsung a12', 'Educational toy for children to enhance creativity.', 39.99, 'chris_taylor', NULL, 1, 6, 3),
-(89012, 'VWX567', 'Iphone 14 Pro', 'Gentle cleanser to remove impurities and refresh skin.', 24.99, 'emily_clark', NULL, 1, 7, 2),
-(90123, 'YZA890', 'Cannon Camera', 'High-performance battery for various car models.', 129.99, 'adam_wilson', NULL, 1, 8, 7),
+(67890, 'PQR901', 'Nike dunks', 'Comfortable shoes designed for long-distance running.', 99.99, 'sara_green', 7, 1, 1, 1),
+(78901, 'STU234', 'Samsung a12', 'Educational toy for children to enhance creativity.', 39.99, 'chris_taylor', NULL, 1, 2, 3),
+(89012, 'VWX567', 'Iphone 14 Pro', 'Gentle cleanser to remove impurities and refresh skin.', 24.99, 'emily_clark', NULL, 1, 2, 2),
+(90123, 'YZA890', 'Cannon Camera', 'High-performance battery for various car models.', 129.99, 'adam_wilson', NULL, 1, 2, 7),
 (10123, 'BCD123', 'Gold Necklace', 'Exquisite necklace featuring sparkling diamonds.', 999.99, 'olivia_tan', NULL, 1, 9, NULL),
-(11234, 'EFG456', 'Rolex Watch', 'Indulgent chocolates crafted from premium cocoa beans.', 19.99, 'john_doe', NULL, 1, 10, 9);
+(11234, 'EFG456', 'Rolex Watch', 'Indulgent chocolates crafted from premium cocoa beans.', 19.99, 'john_doe', NULL, 1, 9, 9);
 
 
 -- Transactions
@@ -130,5 +140,17 @@ VALUES
 (9, 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphone15prohero-202309_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1693086369818', 89012),
 (10, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVI9dWrjv1Cs6iGLXBaetE94Ytug3KR56IxR3NzBWffg&s', 90123),
 (11, 'https://zoandco.ie/cdn/shop/files/Zo_Co23rdMay0098.jpg?v=1685374882', 10123),
-(12, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 11234);
+(12, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 23457),
+(13, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 23458),
+(14, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 23459),
+(15, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 23460),
+(16, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 23461),
+(17, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 90124),
+(18, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 10124),
+(19, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 11235),
+(20, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 12345),
+(21, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 11234),
+(22, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 13456);
+
+
 

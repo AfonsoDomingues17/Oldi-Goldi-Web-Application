@@ -10,7 +10,10 @@ section#main_page{
 }
 
 
-
+#Wlist h1 {
+    padding-left: 1em;
+    font-size: 1.5em;
+}
 
 #Start_buying {
     position: relative; 
@@ -112,7 +115,7 @@ section#main_page{
 
 #articles article img {
     width: 100%;
-  
+    margin-bottom: 0.5em;
 }
 
 #Garticles {
@@ -139,6 +142,7 @@ section#main_page{
 
 #Garticles article img {
     width: 100%;
+
 }
 
 section.article-info {
@@ -146,6 +150,7 @@ section.article-info {
     padding: 10px;
     border-radius: 5px;
     margin-top: auto;
+;
 
    
 }
@@ -153,6 +158,11 @@ section.article-info {
 section.article-info p {
     margin: 0;
     padding: 5px 0;
+    i {
+        float: right;
+        font-size: 2em;
+        margin-right: 0.3em;
+    }
 }
 
 section.article-info p:first-child {

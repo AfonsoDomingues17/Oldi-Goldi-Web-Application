@@ -56,7 +56,6 @@
         transaction_id NUMERIC REFERENCES Transactions(transaction_id) ON DELETE CASCADE,
         shopping_cart_id NUMERIC REFERENCES ShoppingCarts(shopping_cart_id) ON DELETE CASCADE,
         brand_id NUMERIC REFERENCES Brands(brand_id) ON DELETE CASCADE
-
     );
 
     DROP TABLE IF EXISTS Transactions;
@@ -82,7 +81,13 @@
         shopping_cart_id NUMERIC NOT NULL PRIMARY KEY,
         userID INTEGER NOT NULL REFERENCES Users(username)
     );
+    DROP TABLE IF EXISTS Whishlists;
+    CREATE TABLE Whishlists (
 
+        item_id NUMERIC NOT NULL,
+        username INTEGER NOT NULL,
+        PRIMARY KEY (item_id, username)
+    );
     DROP TABLE IF EXISTS Photos;
     CREATE TABLE Photos (
         photo_id INTEGER PRIMARY KEY,

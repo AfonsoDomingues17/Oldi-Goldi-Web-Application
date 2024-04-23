@@ -37,84 +37,46 @@ display_categories($categories);
         <!-- Popular categories -->
         <section id="Popular_categories">
             <h1>Most Popular Categories</h1>
-            <h2><a href="">Shoewear</a></h2>
+            <?php 
+            $top_categories = Popular_categories($db);
+            foreach($top_categories as $tcate){
+            $cate = getCategorie($db,$tcate['category_id']);?>
+            <h2><a href=""><?=$cate['category_name']?></a></h2>
             <section id="articles">
-            <article>
-            <a href=""><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcS4zK3eemkv_6On3WPF10bU_QJgiFtulpcRd7FfBeTjLrHsWPB9JAM74v8iRwwXBYn299XR1ATIU3BgIrClPndrAxv0e3zev9XY0hi4pDScgx22_dMzNCTf" alt="sapatilhas"></a>
-                <section class="article-info">
-                <p>40€</p>
-                <p>Size</p>
-                <p>Brand</p>
-                <p>Condition</p>
-                </section>
-            </article>
-            
-            <article>
-            <a href=""><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcS4zK3eemkv_6On3WPF10bU_QJgiFtulpcRd7FfBeTjLrHsWPB9JAM74v8iRwwXBYn299XR1ATIU3BgIrClPndrAxv0e3zev9XY0hi4pDScgx22_dMzNCTf" alt="sapatilhas"></a>
-                <section class="article-info">
-                <p>40€</p>
-                <p>Size</p>
-                <p>Brand</p>
-                <p>Condition</p>
-                </section>
-            </article>
-            <article>
-                <a href=""><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcS4zK3eemkv_6On3WPF10bU_QJgiFtulpcRd7FfBeTjLrHsWPB9JAM74v8iRwwXBYn299XR1ATIU3BgIrClPndrAxv0e3zev9XY0hi4pDScgx22_dMzNCTf" alt="sapatilhas"></a>
-                <section class="article-info">
-                <p>40€</p>
-                <p>Size</p>
-                <p>Brand</p>
-                <p>Condition</p>
-                </section>
-            </article>
-            <article>
-                <a href=""><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcS4zK3eemkv_6On3WPF10bU_QJgiFtulpcRd7FfBeTjLrHsWPB9JAM74v8iRwwXBYn299XR1ATIU3BgIrClPndrAxv0e3zev9XY0hi4pDScgx22_dMzNCTf" alt="sapatilhas"></a>
-                <section class="article-info">
-                <p>40€</p>
-                <p>Size</p>
-                <p>Brand</p>
-                <p>Condition</p>
-                </section>
-            </article>
-            
-            <article id="More">           
-                 <a href="">See all the 100 articles this user sells</a>
-            </article>
-            </section>
+                
+            <?php $items = get_Items_ByCategory($db, $cate['category_id']);
 
-            <h2><a href="">Clothing</a></h2>
-            <section id="articles">
+            foreach($items as $item){ ?>
+            
             <article>
-                <a href=""><img src="https://nude-project.com/cdn/shop/files/LOOKBOOK_CULT_18_0035.jpg?v=1696612637" alt="sapatilhas"></a>
-                <section class="article-info">
-                <p>40€</p>
-                <p>Size</p>
-                <p>Brand</p>
-                <p>Condition</p>
+            <?php $photos = getPhotos($db, $item['ItemID']);
+            ?>
+            <a href="item.php?item_id=<?= $item['ItemID'] ?>"><img src="<?= $photos[0]['photo_url']?>" alt="Item 1"></a>
+            <section class="article-info">
+                <h2><?= $item['item_name']?></h2>
+                <p><?= $item['price']?>€</p>
+                <?php $brand = getBrand($db, $item['brand_id']);
+                if (is_array($brand) && !empty($brand['brand_name'])) { ?>
+                    <p><?= $brand['brand_name']?></p>
+                <?php } ?>
+                <?php $size = getSize($db, $item['size_id']); 
+                if (is_array($size) && !empty($size['size_value'])) { ?>
+                    <p><?= $size['size_value']?></p>
+
+                <?php } ?>
+                <?php $condition = getCondition($db, $item['condition_id']); 
+                if (is_array($condition) && !empty($condition['condition_value'])) { ?>
+                    <p id="heart"><?= $condition['condition_value']?> <i class="fa-regular fa-heart" data-item-id="<?= $item['ItemID'] ?>"></i></p>
+                <?php } ?>
                 </section>
             </article>
-            <article>
-            <a href=""><img src="https://nude-project.com/cdn/shop/files/LOOKBOOK_CULT_18_0035.jpg?v=1696612637" alt="sapatilhas"></a>
-                <section class="article-info">
-                <p>40€</p>
-                <p>Size</p>
-                <p>Brand</p>
-                <p>Condition</p>
-                </section>
-            </article>
-            <article>
-                <a href=""><img src="https://nude-project.com/cdn/shop/files/LOOKBOOK_CULT_18_0035.jpg?v=1696612637" alt="sapatilhas"></a>
-                <section class="article-info">
-                <p>40€</p>
-                <p>Size</p>
-                <p>Brand</p>
-                <p>Condition</p>
-                </section>
-            </article>
+            
+            <?php }?>
             <article id="More">           
                  <a href="">See all the 100 articles this user sells</a>
             </article>
             </section>
+            <?php }?>
         </section>
         <section id="General_articles">
             <h1>Popular Items</h1>
@@ -251,6 +213,7 @@ display_categories($categories);
 
         
     </section>
+    <script src="script.js" defer></script>
     </main>
 <?php output_footer();
 ?>

@@ -2,12 +2,15 @@
 require_once('database/connection.php');
 require_once('templates/common.php');
 require_once('database/categories.php');
+require_once('templates/display_categories.php');
 
 $db = getDatabaseConnection();
+$categories = getAllCategories($db);
 
 if (isset($_GET['item_id'])) {
     $item_id = $_GET['item_id'];
     output_header();
+    display_categories($categories);
     display_item($db, $item_id);
     output_footer();
 } else {
