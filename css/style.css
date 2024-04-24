@@ -126,8 +126,7 @@ footer p {
 }
 
 #loged_in{
-    padding-right: 1em;
-    margin-left: auto;
+ 
     i {
         font-size: small;
         background-color: darkgrey;

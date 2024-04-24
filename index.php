@@ -213,7 +213,7 @@ display_categories($categories);
 
         
     </section>
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
     </main>
 <?php output_footer();
 ?>

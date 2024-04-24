@@ -20,7 +20,6 @@ const hearts = document.querySelectorAll('#heart i');
 hearts.forEach(function(heart) {
     heart.addEventListener('click', function() {
         const itemID = this.dataset.itemId;
-        console.log(itemID);
         fetch('add_to_whishlist.php?item_id=' + encodeURIComponent(itemID))
         .then(response => response.text())
         .then(text => {

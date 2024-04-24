@@ -37,3 +37,18 @@ summaries.forEach(function(summary) {
         }
     });
 });
+ window.addEventListener('DOMContentLoaded', (event) => {
+    const checkboxes = document.querySelectorAll('section#sizeSection input[type="checkbox"]');
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            const SizeID = this.dataset.sizeId;
+            fetch('filter_items_size.php?size_id=' + encodeURIComponent(SizeID))
+            .then(response => response.text())
+            .then(html => {
+                const itemsContainer = document.querySelector('#Garticles');
+                itemsContainer.innerHTML = html;
+        });
+        });
+    });
+
+});

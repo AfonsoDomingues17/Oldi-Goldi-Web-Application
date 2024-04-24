@@ -5,6 +5,13 @@
         $brands = $stmt->fetchAll();
         return $brands;
     }
+
+    function getAllSizes($db){
+        $stmt = $db -> prepare('SELECT * FROM Sizes');
+        $stmt->execute();
+        $sizes = $stmt->fetchAll();
+        return $sizes;
+    }
     function getAllCategories($db){
         $stmt = $db->prepare('SELECT category_name FROM Categories');
         $stmt->execute();
@@ -16,6 +23,13 @@
         $stmt->execute();
         $items = $stmt->fetchAll();
         return $items;
+    }
+
+    function getAllConditions($db){
+        $stmt = $db->prepare('SELECT condition_value FROM Conditions');
+        $stmt->execute();
+        $conditions = $stmt->fetchAll();
+        return $conditions;
     }
     function getBrand($db, $brand_id){
         $stmt = $db->prepare('SELECT brand_name FROM Brands WHERE brand_id = ?');
@@ -64,11 +78,43 @@
         return $stmt->fetchAll();
     }
 
+    function getItemsBySize($db, $size_id){
+        $stmt = $db->prepare('SELECT * FROM Item WHERE size_id = ?');
+        $stmt->execute(array($size_id));
+        $items = $stmt->fetchAll();
+        return $items;
+    }
+
     function getItemsByWhislist($db, $username){
         $stmt = $db->prepare('SELECT item_id FROM Whishlists WHERE username = ?');
         $stmt->execute(array($username));
         $items = $stmt->fetchAll();
         return $items;
+    }
+
+    function display_items($db, $items){
+        foreach($items as $item) {?>
+            <article>
+                <?php $photos = getPhotos($db, $item['ItemID']);?>
+                <a href="item.php?item_id=<?= $item['ItemID'] ?>"><img src="<?= $photos[0]['photo_url']?>" alt="Item 1"></a>
+                <section class="article-info">
+                    <h2><?= $item['item_name']?></h2>
+                    <p><?= $item['price']?>€</p>
+                    <?php $brand = getBrand($db, $item['brand_id']);
+                    if (is_array($brand) && !empty($brand['brand_name'])) { ?>
+                        <p><?= $brand['brand_name']?></p>
+                    <?php } ?>
+                    <?php $size = getSize($db, $item['size_id']); 
+                    if (is_array($size) && !empty($size['size_value'])) { ?>
+                        <p><?= $size['size_value']?></p>
+                    <?php } ?>
+                    <?php $condition = getCondition($db, $item['condition_id']); 
+                    if (is_array($condition) && !empty($condition['condition_value'])) { ?>
+                        <p><?= $condition['condition_value']?></p>
+                    <?php } ?>
+                </section>
+            </article>
+        <?php }
     }
     
 
