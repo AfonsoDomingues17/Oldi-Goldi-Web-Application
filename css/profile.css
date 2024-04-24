@@ -1,0 +1,43 @@
+section#Info{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    background-color: #c6c7cd;    
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.user_profile_picture  img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.user_profile_details{
+    margin-left: 10px;
+}
+
+.user_profile_details > #user_name{
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.user_profile_details > #user_username{
+    opacity: 50%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+section#Personal_Info{
+    display: grid;
+    grid-template-rows: 1fr;
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}

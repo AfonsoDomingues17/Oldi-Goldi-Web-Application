@@ -11,18 +11,19 @@ output_header();
 display_categories($categories);
 ?>
 
-<main>
+<main id = "edit_profile_main">
     <section class="edit">
     <h1>Update your profile</h1>
         <form action="" id="edit_profile">
             <section id="update_profile">
             <section id="user_picture">
-                <p>Your picture</p>
+                <h2>Your picture</h2>
             <img src="https://picsum.photos/200/300" alt="profile picture">
             <label>About you: <textarea name="About you" id="About_you" placeholder="Let everyone know more about you!"></textarea></label>
             </section>
         
             <section id="user_details">
+                <h2>User Details</h2>
                 <label>Username: <textarea name="username" id="username"></textarea></label>
                 <label>Email: <textarea name="username" id="username"></textarea></label>
                 <label>Name: <textarea name="username" id="username"></textarea></label>

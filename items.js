@@ -11,6 +11,7 @@ document.getElementById('orderBy').addEventListener('click', function() {
     }
 });
 
+
 document.getElementById('Show_Filter').addEventListener('click', function() {
     const Aside = document.getElementById('Filters');
     const ItemsSection = document.querySelector('section.items');
@@ -61,18 +62,18 @@ function updateItems() {
 
     const selectedCategories = Array.from(categoryCheckboxes)
     .filter(checkbox => checkbox.checked)
+    
     .map(checkbox => checkbox.dataset.categoryId);
-
-    localStorage.setItem('selectedCategories', JSON.stringify(selectedCategories)); //guarda numa local storage as cetegorias selecionadas
-    localStorage.setItem('selectedSizes', JSON.stringify(selectedSizes));
-    localStorage.setItem('selectedBrands', JSON.stringify(selectedBrands));
-    localStorage.setItem('selectedConditions', JSON.stringify(selectedConditions));
+    //localStorage.setItem('selectedCategories', JSON.stringify(selectedCategories)); //guarda numa local storage as cetegorias selecionadas
+    //localStorage.setItem('selectedSizes', JSON.stringify(selectedSizes));
+    //localStorage.setItem('selectedBrands', JSON.stringify(selectedBrands));
+    //localStorage.setItem('selectedConditions', JSON.stringify(selectedConditions));
 
     const minPrice = minPriceInput.value;
     const maxPrice = maxPriceInput.value;
 
-    localStorage.setItem('minPrice', minPrice);
-    localStorage.setItem('maxPrice', maxPrice);
+    //localStorage.setItem('minPrice', minPrice);
+    //localStorage.setItem('maxPrice', maxPrice);
     let url = 'filter_items.php';
     if (selectedSizes.length > 0) {
         url += '?size_ids=' + encodeURIComponent(JSON.stringify(selectedSizes));
@@ -104,7 +105,7 @@ function updateItems() {
             itemsContainer.innerHTML = html;
         });
 }
-
+/*
 document.addEventListener('DOMContentLoaded', (event) => {
     const selectedCategories = JSON.parse(localStorage.getItem('selectedCategories')) || [];
     const selectedSizes = JSON.parse(localStorage.getItem('selectedSizes')) || [];
@@ -135,7 +136,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     updateItems();
 });
-
+*/
 sizeCheckboxes.forEach(function(checkbox) {
     checkbox.addEventListener('change', updateItems);
 });

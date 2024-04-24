@@ -1,5 +1,4 @@
 
-
 const hearts = document.querySelectorAll('#heart i');
 hearts.forEach(function(heart) {
     heart.addEventListener('click', async function() {
@@ -13,6 +12,9 @@ hearts.forEach(function(heart) {
         });
     
 });
+
+
+
 
 
 

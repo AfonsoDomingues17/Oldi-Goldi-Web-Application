@@ -88,7 +88,6 @@
             </section>
         </section>
     </section>
-    <script src="items.js" defer></script>
 
 </main>
 

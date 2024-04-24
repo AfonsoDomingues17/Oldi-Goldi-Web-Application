@@ -6,13 +6,6 @@ require_once('is_on_whishlist.php');
         $brands = $stmt->fetchAll();
         return $brands;
     }
-
-    function getAllSizes($db){
-        $stmt = $db -> prepare('SELECT * FROM Sizes');
-        $stmt->execute();
-        $sizes = $stmt->fetchAll();
-        return $sizes;
-    }
     function getAllCategories($db){
         $stmt = $db->prepare('SELECT * FROM Categories');
         $stmt->execute();
@@ -32,6 +25,13 @@ require_once('is_on_whishlist.php');
         $conditions = $stmt->fetchAll();
         return $conditions;
     }
+    function getAllSizes($db){
+        $stmt = $db->prepare('SELECT * FROM Sizes');
+        $stmt->execute();
+        $sizes = $stmt->fetchAll();
+        return $sizes;
+    }
+    
     function getBrand($db, $brand_id){
         $stmt = $db->prepare('SELECT brand_name FROM Brands WHERE brand_id = ?');
         $stmt->execute(array($brand_id));
@@ -79,6 +79,11 @@ require_once('is_on_whishlist.php');
         return $stmt->fetchAll();
     }
 
+    function getItemsByUser($db, $username){
+        $stmt = $db->prepare('SELECT * FROM Item WHERE username = ?');
+        $stmt->execute(array($username));
+        return $stmt->fetchAll();
+    }
     function getItemsBySizes($db, $size_ids){
         $size_ids_str = implode(',', $size_ids); //this joins the element of the array with a comma
         $stmt = $db->prepare("SELECT * FROM Item WHERE size_id IN ($size_ids_str)");
