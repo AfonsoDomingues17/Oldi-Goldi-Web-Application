@@ -32,12 +32,16 @@ function output_header(){ ?>
             <!-- Search bar -->
             <input id = "search" type = "text" placeholder = "Find your dream item!">
             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <a href=""><p> <i class="fa-solid fa-cart-plus"></i></p></a>
-            <a href=""><p><i class="fa-solid fa-message"></i></p></a>
-            <a href="whish_list.php"><p><i class="fa-solid fa-heart"></i></p></a>
-
+            
         </form>
+        
         </section>
+        
+        <div class="icon-links">
+            <a href=""><i class="fa-solid fa-cart-plus"></i></a>
+            <a href=""><i class="fa-solid fa-message"></i></a>
+            <a href="wish_list.php"><i class="fa-solid fa-heart"></i></a>
+        </div>
         <?php if(isset($_SESSION['username'])) {?>
         <section id="loged_in">
         <a href="profile.php" id="profile"><i class="fa-solid fa-user"></i></a>
