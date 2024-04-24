@@ -36,25 +36,28 @@ function output_header(){ ?>
         </form>
         
         </section>
+        <div class="navbar-right">
+            <div class="icon-links">
+                <a href=""><i class="fa-solid fa-cart-plus"></i></a>
+                <a href=""><i class="fa-solid fa-message"></i></a>
+                <a href="wish_list.php"><i class="fa-solid fa-heart"></i></a>
+            </div>
+            <?php if(isset($_SESSION['username'])) {?>
+            <section id="loged_in">
+            <a href="profile.php" id="profile"><i class="fa-solid fa-user"></i></a>
+            <a href="sell.php" id="Sell_now">Sell Now</a>
+            <a href="action_logout.php" id="logout">Logout</a>
+            </section>
+            <?php } 
+            else { ?>
+                <div id="signup">
+                <a href = "login.php">Login</a>
+                <a href = "register.php">Register</a>
+                </div>
+            <?php } ?>
+        </div>
         
-        <div class="icon-links">
-            <a href=""><i class="fa-solid fa-cart-plus"></i></a>
-            <a href=""><i class="fa-solid fa-message"></i></a>
-            <a href="wish_list.php"><i class="fa-solid fa-heart"></i></a>
-        </div>
-        <?php if(isset($_SESSION['username'])) {?>
-        <section id="loged_in">
-        <a href="profile.php" id="profile"><i class="fa-solid fa-user"></i></a>
-        <a href="sell.php" id="Sell_now">Sell Now</a>
-        <a href="action_logout.php" id="logout">Logout</a>
-        </section>
-      <?php } 
-      else { ?>
-        <div id="signup">
-        <a href = "login.php">Login</a>
-        <a href = "register.php">Register</a>
-        </div>
-      <?php } ?>
+      
       </section>
 
 <?php } ?>
