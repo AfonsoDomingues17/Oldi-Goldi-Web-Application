@@ -99,6 +99,10 @@ section#ConditionSection label:last-child{
     margin-bottom: 1em;
 }
 
+section#CategorySection label:last-child{
+    
+    margin-bottom: 1em;
+}
 section#brandSection{
     display: flex;
     flex-direction: column;

@@ -1,6 +1,7 @@
 <?php
+require_once('is_on_whishlist.php');
     function getAllBrands($db){
-        $stmt = $db -> prepare('SELECT brand_name FROM Brands');
+        $stmt = $db -> prepare('SELECT * FROM Brands');
         $stmt->execute();
         $brands = $stmt->fetchAll();
         return $brands;
@@ -13,7 +14,7 @@
         return $sizes;
     }
     function getAllCategories($db){
-        $stmt = $db->prepare('SELECT category_name FROM Categories');
+        $stmt = $db->prepare('SELECT * FROM Categories');
         $stmt->execute();
         $categories = $stmt->fetchAll();
         return $categories;
@@ -26,7 +27,7 @@
     }
 
     function getAllConditions($db){
-        $stmt = $db->prepare('SELECT condition_value FROM Conditions');
+        $stmt = $db->prepare('SELECT * FROM Conditions');
         $stmt->execute();
         $conditions = $stmt->fetchAll();
         return $conditions;
@@ -78,13 +79,22 @@
         return $stmt->fetchAll();
     }
 
-    function getItemsBySize($db, $size_id){
-        $stmt = $db->prepare('SELECT * FROM Item WHERE size_id = ?');
-        $stmt->execute(array($size_id));
+    function getItemsBySizes($db, $size_ids){
+        $size_ids_str = implode(',', $size_ids); //this joins the element of the array with a comma
+        $stmt = $db->prepare("SELECT * FROM Item WHERE size_id IN ($size_ids_str)");
+        $stmt->execute();
+        $items = $stmt->fetchAll();
+        return $items;
+    }
+    function getItemsByBrands($db, $brand_ids){
+        $brand_ids_str = implode(',', $brand_ids); //this joins the element of the array with a comma
+        $stmt = $db->prepare("SELECT * FROM Item WHERE brand_id IN ($brand_ids_str)");
+        $stmt->execute();
         $items = $stmt->fetchAll();
         return $items;
     }
 
+  
     function getItemsByWhislist($db, $username){
         $stmt = $db->prepare('SELECT item_id FROM Whishlists WHERE username = ?');
         $stmt->execute(array($username));
@@ -110,7 +120,9 @@
                     <?php } ?>
                     <?php $condition = getCondition($db, $item['condition_id']); 
                     if (is_array($condition) && !empty($condition['condition_value'])) { ?>
-                        <p><?= $condition['condition_value']?></p>
+                         <p id="heart"><?= $condition['condition_value']?> 
+                    <i class="<?= isOnwhishlist($db,$item['ItemID'],$_SESSION['username'])? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>" data-item-id="<?= $item['ItemID'] ?>">
+                </i></p>
                     <?php } ?>
                 </section>
             </article>

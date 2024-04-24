@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 function output_header(){ ?>
     <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +10,7 @@ function output_header(){ ?>
     <link rel="stylesheet" href="css/items.css">
     <link rel="stylesheet" href="css/edit_profile.css">
     <link rel="stylesheet" href="css/item.css">
+    <script src="script.js" defer></script>
     <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
 

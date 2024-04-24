@@ -36,7 +36,7 @@
                     <summary>Brand <i class="fa-solid fa-chevron-down"></i></summary>
                     <section id="brandSection">
                         <?php foreach($brands as $brand) {?>
-                        <label><input type="checkbox" id="brand1" name="brand1"><?= $brand['brand_name']?></label>
+                        <label><input type="checkbox" id="brand1" name="brand1" data-brand-id="<?= $brand['brand_id'] ?>"><?= $brand['brand_name']?></label>
                         <?php }?>
                     </section>
                 </details>
@@ -44,7 +44,15 @@
                     <summary>Condition <i class="fa-solid fa-chevron-down"></i></summary>
                     <section id="ConditionSection">
                         <?php foreach($conditions as $condition) {?>
-                        <label><input type="checkbox" id="condition1" name="condition1"><?= $condition['condition_value']?></label>
+                        <label><input type="checkbox" id="condition1" name="condition1" data-condition-id="<?= $condition['condition_id'] ?>"><?= $condition['condition_value']?></label>
+                        <?php }?>
+                    </section>
+                </details>
+                <details>
+                    <summary>Category<i class="fa-solid fa-chevron-down"></i></summary>
+                    <section id="CategorySection">
+                    <?php foreach($categories as $category) {?>
+                        <label><input type="checkbox" id="category1" name="category1" data-category-id="<?= $category['category_id'] ?>"><?= $category['category_name']?></label>
                         <?php }?>
                     </section>
                 </details>

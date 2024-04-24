@@ -9,6 +9,7 @@ $categories = getAllCategories($db);
 $brands = getAllBrands($db);
 output_header();
 display_categories($categories);
+
 ?>
 
 <main>

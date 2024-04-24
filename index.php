@@ -3,7 +3,7 @@ require_once('database/connection.php');
 require_once('database/categories.php');
 require_once('templates/common.php');
 require_once('templates/display_categories.php');
-
+require_once('is_on_whishlist.php');
 $db = getDatabaseConnection();
 $categories = getAllCategories($db);
 $brands = getAllBrands($db);
@@ -49,7 +49,7 @@ display_categories($categories);
             foreach($items as $item){ ?>
             
             <article>
-            <?php $photos = getPhotos($db, $item['ItemID']);
+            <?php $photos = getPhotos($db, $item['ItemID']); 
             ?>
             <a href="item.php?item_id=<?= $item['ItemID'] ?>"><img src="<?= $photos[0]['photo_url']?>" alt="Item 1"></a>
             <section class="article-info">
@@ -66,7 +66,9 @@ display_categories($categories);
                 <?php } ?>
                 <?php $condition = getCondition($db, $item['condition_id']); 
                 if (is_array($condition) && !empty($condition['condition_value'])) { ?>
-                    <p id="heart"><?= $condition['condition_value']?> <i class="fa-regular fa-heart" data-item-id="<?= $item['ItemID'] ?>"></i></p>
+                    <p id="heart"><?= $condition['condition_value']?> 
+                    <i class="<?= isOnwhishlist($db,$item['ItemID'],$_SESSION['username'])? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>" data-item-id="<?= $item['ItemID'] ?>">
+                </i></p>
                 <?php } ?>
                 </section>
             </article>
@@ -213,7 +215,6 @@ display_categories($categories);
 
         
     </section>
-    <script src="script.js"></script>
     </main>
 <?php output_footer();
 ?>
