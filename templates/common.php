@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 function output_header(){ ?>
     <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +11,12 @@ function output_header(){ ?>
     <link rel="stylesheet" href="css/edit_profile.css">
     <link rel="stylesheet" href="css/item.css">
     <link rel="stylesheet" href="css/profile.css">
+<<<<<<< HEAD
+=======
+    <script src="script.js" defer></script>
+
+    <script src="items.js" defer></script>
+>>>>>>> f8dde69f425d70cc75c1255c75a8a1ae47cbe9be
     <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
 
@@ -33,9 +38,7 @@ function output_header(){ ?>
             <!-- Search bar -->
             <input id = "search" type = "text" placeholder = "Find your dream item!">
             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            
         </form>
-        
         </section>
         <div class="navbar-right">
             <div class="icon-links">

@@ -1,9 +1,4 @@
 <?php 
-require_once('database/connection.php');
-require_once('database/categories.php');
-$db = getDatabaseConnection();
-$categories = getAllCategories($db);
-
 function display_categories($categories){
 ?>
 

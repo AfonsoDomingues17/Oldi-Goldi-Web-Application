@@ -1,5 +1,4 @@
 <?php
-require_once("database/connection.php");
 
 function userExists($username, $password) : bool{
     $password = sha1($password);

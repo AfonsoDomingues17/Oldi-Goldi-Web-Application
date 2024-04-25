@@ -1,12 +1,13 @@
 <?php
+require_once('is_on_whishlist.php');
     function getAllBrands($db){
-        $stmt = $db -> prepare('SELECT brand_name FROM Brands');
+        $stmt = $db -> prepare('SELECT * FROM Brands');
         $stmt->execute();
         $brands = $stmt->fetchAll();
         return $brands;
     }
     function getAllCategories($db){
-        $stmt = $db->prepare('SELECT category_name FROM Categories');
+        $stmt = $db->prepare('SELECT * FROM Categories');
         $stmt->execute();
         $categories = $stmt->fetchAll();
         return $categories;
@@ -17,6 +18,21 @@
         $items = $stmt->fetchAll();
         return $items;
     }
+
+
+    function getAllConditions($db){
+        $stmt = $db->prepare('SELECT * FROM Conditions');
+        $stmt->execute();
+        $conditions = $stmt->fetchAll();
+        return $conditions;
+    }
+    function getAllSizes($db){
+        $stmt = $db->prepare('SELECT * FROM Sizes');
+        $stmt->execute();
+        $sizes = $stmt->fetchAll();
+        return $sizes;
+    }
+    
     function getBrand($db, $brand_id){
         $stmt = $db->prepare('SELECT brand_name FROM Brands WHERE brand_id = ?');
         $stmt->execute(array($brand_id));
@@ -68,13 +84,57 @@
         $stmt = $db->prepare('SELECT * FROM Item WHERE username = ?');
         $stmt->execute(array($username));
         return $stmt->fetchAll();
+
+    }
+    function getItemsBySizes($db, $size_ids){
+        $size_ids_str = implode(',', $size_ids); //this joins the element of the array with a comma
+        $stmt = $db->prepare("SELECT * FROM Item WHERE size_id IN ($size_ids_str)");
+        $stmt->execute();
+        $items = $stmt->fetchAll();
+        return $items;
+    }
+    function getItemsByBrands($db, $brand_ids){
+        $brand_ids_str = implode(',', $brand_ids); //this joins the element of the array with a comma
+        $stmt = $db->prepare("SELECT * FROM Item WHERE brand_id IN ($brand_ids_str)");
+        $stmt->execute();
+        $items = $stmt->fetchAll();
+        return $items;
     }
 
+  
     function getItemsByWhislist($db, $username){
         $stmt = $db->prepare('SELECT item_id FROM Whishlists WHERE username = ?');
         $stmt->execute(array($username));
         $items = $stmt->fetchAll();
         return $items;
+    }
+
+
+    function display_items($db, $items){
+        foreach($items as $item) {?>
+            <article>
+                <?php $photos = getPhotos($db, $item['ItemID']);?>
+                <a href="item.php?item_id=<?= $item['ItemID'] ?>"><img src="<?= $photos[0]['photo_url']?>" alt="Item 1"></a>
+                <section class="article-info">
+                    <h2><?= $item['item_name']?></h2>
+                    <p><?= $item['price']?>€</p>
+                    <?php $brand = getBrand($db, $item['brand_id']);
+                    if (is_array($brand) && !empty($brand['brand_name'])) { ?>
+                        <p><?= $brand['brand_name']?></p>
+                    <?php } ?>
+                    <?php $size = getSize($db, $item['size_id']); 
+                    if (is_array($size) && !empty($size['size_value'])) { ?>
+                        <p><?= $size['size_value']?></p>
+                    <?php } ?>
+                    <?php $condition = getCondition($db, $item['condition_id']); 
+                    if (is_array($condition) && !empty($condition['condition_value'])) { ?>
+                         <p id="heart"><?= $condition['condition_value']?> 
+                    <i class="<?= isOnwhishlist($db,$item['ItemID'],$_SESSION['username'])? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>" data-item-id="<?= $item['ItemID'] ?>">
+                </i></p>
+                    <?php } ?>
+                </section>
+            </article>
+        <?php }
     }
     
 
