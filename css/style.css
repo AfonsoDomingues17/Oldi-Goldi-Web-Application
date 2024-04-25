@@ -18,7 +18,7 @@ body > header section#main_nav_bar form {
 }
 
 form select {
-    width: 125px;
+    max-width: 200px;
     height: 2em;
     border: 0px;
     font-size: 16px;
@@ -29,7 +29,6 @@ form select {
 }
 
 form input {
-    width: 550px;  /* Makes input flexible */
     max-width: 550px; /* Maximum width */
     height: 2em;
     border: 0px;
@@ -184,10 +183,31 @@ form a p i {
     width: 100%;
 }
 
+#Category_filters {
+    display: none;
+}
 
-@media (max-width: 768px) {
+#hamburger {
+    display: none;
+}
+
+#hamburger + label {
+    display: block;
+    background-color: #2a2f33;
+    color: white;
+    padding: 1em;
+}
+
+#hamburger + label:before {
+    content: '\2630';
+}
+
+#hamburger:checked + label:before {
+    content: '\2715';
+}
+
+@media (max-width: 860px) {
     form input, form select, form button {
-        width: 100%;
         margin-top: 10px;
     }
 
@@ -206,7 +226,6 @@ form a p i {
         display: flex;
         justify-content: center;
         width: 100%;
-        
     }
 
     .icon-links a {
@@ -240,4 +259,21 @@ form a p i {
         justify-content: center;
         width: 100%;
     }
-}   
+
+    #hamburger {
+        display: none;
+    }
+
+    #hamburger:checked ~ #Category_filters {
+        display: flex;
+    }
+}
+@media (min-width: 861px) {
+    #hamburger,
+    #hamburger + label {
+        display: none;
+    }
+    #Category_filters {
+        display: flex !important;
+    }
+}
