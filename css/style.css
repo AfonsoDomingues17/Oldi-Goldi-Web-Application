@@ -124,7 +124,7 @@ footer p {
 #loged_in {
     padding-right: 1em;
     margin-left: auto;
-
+}
 
 #loged_in i {
     font-size: small;
@@ -241,5 +241,3 @@ form a p i {
         width: 100%;
     }
 }   
-
-}

@@ -11,12 +11,10 @@ function output_header(){ ?>
     <link rel="stylesheet" href="css/edit_profile.css">
     <link rel="stylesheet" href="css/item.css">
     <link rel="stylesheet" href="css/profile.css">
-<<<<<<< HEAD
-=======
+
     <script src="script.js" defer></script>
 
     <script src="items.js" defer></script>
->>>>>>> f8dde69f425d70cc75c1255c75a8a1ae47cbe9be
     <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
 
