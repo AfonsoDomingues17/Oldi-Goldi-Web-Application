@@ -99,7 +99,7 @@ section#main_page{
 }
 
 #articles article{
-    flex: 1 0 20%; 
+    flex: 1 0 15%; 
     margin: 10px;
     background-color: white;
     border-radius: 5px;
@@ -135,6 +135,7 @@ section#main_page{
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    flex-basis: 15%;
     p {
         padding-left: 0.5em;
     }
