@@ -10,7 +10,8 @@
     output_header();
     display_categories($categories);
     $items = getAllItems($db);
-
+    $sizes = getAllSizes($db);
+    $conditions = getAllConditions($db);
 
 ?>
 
@@ -25,20 +26,35 @@
                 <details>
                     <summary>Size <i class="fa-solid fa-chevron-down"></i></summary>
                     <section id="sizeSection">
-                        <label><input type="checkbox" id="size1" name="size1">S</label>
-                        <label><input type="checkbox" id="size1" name="size1">M</label>
-                        <label><input type="checkbox" id="size1" name="size1">L</label>
-                        <label><input type="checkbox" id="size1" name="size1">XL</label>
+                        <?php foreach($sizes as $size) {?>
+                        <label><input type="checkbox" id="size1" name="size1" data-size-id="<?= $size['size_id'] ?>"><?= $size['size_value']?></label>
+                        <?php }?>
                     </section>
                 </details>
 
                 <details>
                     <summary>Brand <i class="fa-solid fa-chevron-down"></i></summary>
                     <section id="brandSection">
-                        <label><input type="checkbox" id="brand1" name="brand1">cartier</label>
-                        <label><input type="checkbox" id="brand1" name="brand1">Gucci</label>
-                        <label><input type="checkbox" id="brand1" name="brand1">Nike</label>
-                        <label><input type="checkbox" id="brand1" name="brand1">Adidas</label>
+                        <?php foreach($brands as $brand) {?>
+                        <label><input type="checkbox" id="brand1" name="brand1"><?= $brand['brand_name']?></label>
+                        <?php }?>
+                    </section>
+                </details>
+                <details>
+                    <summary>Condition <i class="fa-solid fa-chevron-down"></i></summary>
+                    <section id="ConditionSection">
+                        <?php foreach($conditions as $condition) {?>
+                        <label><input type="checkbox" id="condition1" name="condition1"><?= $condition['condition_value']?></label>
+                        <?php }?>
+                    </section>
+                </details>
+                <details>
+                    <summary>Price<i class="fa-solid fa-chevron-down"></i></summary>
+                    <section id="PriceSection">
+                        <label>From:<input type="number" id="Sprice"></label><br>
+                        <label>To:<input type="number" id="Finalprice"></label>
+
+                        
                     </section>
                 </details>
             </form>
@@ -60,28 +76,7 @@
                 </div>
             </section>
             <section id="Garticles">
-                <?php foreach($items as $item) {?>
-                    <article>
-                        <?php $photos = getPhotos($db, $item['ItemID']);?>
-                        <a href="item.php?item_id=<?= $item['ItemID'] ?>"><img src="<?= $photos[0]['photo_url']?>" alt="Item 1"></a>
-                        <section class="article-info">
-                            <h2><?= $item['item_name']?></h2>
-                            <p><?= $item['price']?>€</p>
-                            <?php $brand = getBrand($db, $item['brand_id']);
-                            if (is_array($brand) && !empty($brand['brand_name'])) { ?>
-                                <p><?= $brand['brand_name']?></p>
-                            <?php } ?>
-                            <?php $size = getSize($db, $item['size_id']); 
-                            if (is_array($size) && !empty($size['size_value'])) { ?>
-                                <p><?= $size['size_value']?></p>
-                            <?php } ?>
-                            <?php $condition = getCondition($db, $item['condition_id']); 
-                            if (is_array($condition) && !empty($condition['condition_value'])) { ?>
-                                <p><?= $condition['condition_value']?></p>
-                            <?php } ?>
-                        </section>
-                    </article>
-                <?php } ?>
+                <?php display_items($db, $items); ?>
             </section>
         </section>
     </section>

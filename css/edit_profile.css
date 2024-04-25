@@ -1,8 +1,10 @@
-main {
+main#edit_profile_main {
+    margin: auto;
+    width: 80%;
     font-family: Arial, sans-serif;
 }
 
-main > h1, h2 {
+main#edit_profile_main > h1, h2 {
     font-size: 1.6em;
     color: #333;
 }

@@ -11,6 +11,7 @@ function output_header(){ ?>
     <link rel="stylesheet" href="css/items.css">
     <link rel="stylesheet" href="css/edit_profile.css">
     <link rel="stylesheet" href="css/item.css">
+    <link rel="stylesheet" href="css/profile.css">
     <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
 
@@ -55,9 +56,8 @@ function output_header(){ ?>
                 <a href = "register.php">Register</a>
                 </div>
             <?php } ?>
+
         </div>
-        
-      
       </section>
 
 <?php } ?>

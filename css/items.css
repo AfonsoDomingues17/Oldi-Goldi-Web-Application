@@ -64,6 +64,12 @@ aside {
     margin-right: 0.5em;
     
 }
+#Filters input[type="number"] {
+    width: 30px;
+    height: 20px;
+    margin-right: 0.5em;
+    
+}
 summary {
     list-style-type: none;
     padding-top: 1em;
@@ -81,6 +87,14 @@ section#sizeSection{
 }
 
 section#sizeSection label:last-child{
+    
+    margin-bottom: 1em;
+}
+section#brandSection label:last-child{
+    
+    margin-bottom: 1em;
+}
+section#ConditionSection label:last-child{
     
     margin-bottom: 1em;
 }

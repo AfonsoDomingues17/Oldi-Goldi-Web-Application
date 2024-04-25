@@ -64,6 +64,12 @@
         return $stmt->fetchAll();
     }
 
+    function getItemsByUser($db, $username){
+        $stmt = $db->prepare('SELECT * FROM Item WHERE username = ?');
+        $stmt->execute(array($username));
+        return $stmt->fetchAll();
+    }
+
     function getItemsByWhislist($db, $username){
         $stmt = $db->prepare('SELECT item_id FROM Whishlists WHERE username = ?');
         $stmt->execute(array($username));
