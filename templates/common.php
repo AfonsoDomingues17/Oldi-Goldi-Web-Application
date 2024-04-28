@@ -12,9 +12,9 @@ function output_header(){ ?>
     <link rel="stylesheet" href="css/item.css">
     <link rel="stylesheet" href="css/profile.css">
 
+    <script src="items.js" defer></script>
     <script src="script.js" defer></script>
 
-    <script src="items.js" defer></script>
     <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
 
@@ -39,11 +39,13 @@ function output_header(){ ?>
         </form>
         </section>
         <div class="navbar-right">
+            <?php if(isset($_SESSION['username'])) { ?>
             <div class="icon-links">
                 <a href=""><i class="fa-solid fa-cart-plus"></i></a>
                 <a href=""><i class="fa-solid fa-message"></i></a>
                 <a href="wish_list.php"><i class="fa-solid fa-heart"></i></a>
             </div>
+            <?php } ?>
             <?php if(isset($_SESSION['username'])) {?>
             <section id="loged_in">
             <a href="profile.php" id="profile"><i class="fa-solid fa-user"></i></a>

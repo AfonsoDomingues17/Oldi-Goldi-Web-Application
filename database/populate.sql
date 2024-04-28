@@ -2,14 +2,14 @@ INSERT INTO Users (username, name, email, phone_number, password, photo_url, Cou
 VALUES 
 ('john_doe', 'John Doe', 'john@example.com', '+1234567890', 'password123', 'https://example.com/photo.jpg', 'USA', '123 Main St', '12345', 'New York', 'I love hiking and photography', false, true),
 ('jane_smith', 'Jane Smith', 'jane@example.com', '+1987654321', 'qwerty456', 'https://example.com/profile.jpg', 'Canada', '456 Maple Ave', '56789', 'Toronto', 'Passionate about cooking and travel', true, false),
-('sam_jones', 'Sam Jones', 'sam@example.com', '+1122334455', 'samspassword', NULL, 'UK', '789 Oak St', '67890', 'London', 'Tech enthusiast and gamer', false, true),
+('sam_jones', 'Sam Jones', 'sam@example.com', '+1122334455', 'samspassword', 'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg', 'UK', '789 Oak St', '67890', 'London', 'Tech enthusiast and gamer', false, true),
 ('lisa_white', 'Lisa White', 'lisa@example.com', '+4433221100', 'lisapass', 'https://example.com/lisa.jpg', 'Australia', '101 Palm St', '45678', 'Sydney', 'Fitness freak and nature lover', false, true),
 ('mike_brown', 'Mike Brown', 'mike@example.com', '+1555098765', 'mikepass123', NULL, 'Germany', '321 Elm St', '23456', 'Berlin', 'Musician and coffee addict', false, true),
-('sara_green', 'Sara Green', 'sara@example.com', '+6667778889', 'green123', NULL, 'France', '543 Birch St', '34567', 'Paris', 'Art enthusiast and traveler', false, true),
+('sara_green', 'Sara Green', 'sara@example.com', '+6667778889', 'green123', 'https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8', 'France', '543 Birch St', '34567', 'Paris', 'Art enthusiast and traveler', false, true),
 ('chris_taylor', 'Chris Taylor', 'chris@example.com', '+9876543210', 'taylorpass', 'https://example.com/chris.jpg', 'Brazil', '876 Pine St', '78901', 'Rio de Janeiro', 'Surfer and beach lover', false, true),
 ('emily_clark', 'Emily Clark', 'emily@example.com', '+1122334455', 'clarkpass', NULL, 'Japan', '234 Cedar St', '34567', 'Tokyo', 'Anime fan and foodie', false, true),
 ('adam_wilson', 'Adam Wilson', 'adam@example.com', '+1555098765', 'wilson123', NULL, 'Spain', '567 Walnut St', '90123', 'Madrid', 'History buff and language learner', false, true),
-('olivia_tan', 'Olivia Tan', 'olivia@example.com', '+6667778889', 'tanpass', 'https://example.com/olivia.jpg', 'China', '890 Oak St', '23456', 'Beijing', 'Fashion designer and cat lover', false, true);
+('olivia_tan', 'Olivia Tan', 'olivia@example.com', '+6667778889', 'tanpass', 'https://external-preview.redd.it/half-profile-portrait-of-a-young-22-year-old-woman-with-few-v0-0oEj7tQYK6jLKd6dZBL6Nvm6fUyAJbhoLgWBMMnn4TU.jpg?auto=webp&s=77a66a0c543ae960b220fed4660efb4a1de8f98d', 'China', '890 Oak St', '23456', 'Beijing', 'Fashion designer and cat lover', false, true);
 
 
 -- Categories

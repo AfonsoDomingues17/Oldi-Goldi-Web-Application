@@ -39,8 +39,10 @@ foreach($items as $Witem){
     <?php } ?>
     <?php $condition = getCondition($db, $item['condition_id']); 
     if (is_array($condition) && !empty($condition['condition_value'])) { ?>
-        <p id="heart"><?= $condition['condition_value']?> <i class="fa-regular fa-heart" data-item-id="<?= $item['ItemID'] ?>"></i></p>
-    <?php } ?>
+                    <p id="heart"><?= $condition['condition_value']?> 
+                    <i class="<?= isOnwhishlist($db,$item['ItemID'],$_SESSION['username'])? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>" data-item-id="<?= $item['ItemID'] ?>">
+                </i></p>
+                <?php } ?>
     </section>
 </article>
 
@@ -49,5 +51,4 @@ foreach($items as $Witem){
             
     </section>
 </section>
-<script src="script.js" defer></script>
 </main>

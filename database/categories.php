@@ -109,6 +109,24 @@ require_once('is_on_whishlist.php');
         return $items;
     }
 
+    function getItemsBySeller($db, $seller){
+        $stmt = $db->prepare('SELECT * FROM Item WHERE seller = ?');
+        $stmt->execute(array($seller));
+        $items = $stmt->fetchAll();
+        return $items;
+    }
+
+    function get_Top_Sellers($db){
+        $stmt = $db->prepare('SELECT seller, count(*) as Item_count FROM Transactions GROUP BY seller ORDER BY Item_count DESC LIMIT 3');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    function getUser($db, $username){
+        $stmt = $db->prepare('SELECT * FROM Users WHERE username = ?');
+        $stmt->execute(array($username));
+        return $stmt->fetch();
+    }
 
     function display_items($db, $items){
         foreach($items as $item) {?>
@@ -129,8 +147,10 @@ require_once('is_on_whishlist.php');
                     <?php $condition = getCondition($db, $item['condition_id']); 
                     if (is_array($condition) && !empty($condition['condition_value'])) { ?>
                          <p id="heart"><?= $condition['condition_value']?> 
-                    <i class="<?= isOnwhishlist($db,$item['ItemID'],$_SESSION['username'])? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>" data-item-id="<?= $item['ItemID'] ?>">
-                </i></p>
+                         <?php if(isset($_SESSION['username'])){?> <i class="<?= isOnwhishlist($db,$item['ItemID'],$_SESSION['username'])? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>" data-item-id="<?= $item['ItemID'] ?>">
+                </i>
+                <?php } ?>
+            </p>
                     <?php } ?>
                 </section>
             </article>

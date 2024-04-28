@@ -1,20 +1,14 @@
 
-const hearts = document.querySelectorAll('#heart i');
-hearts.forEach(function(heart) {
-    heart.addEventListener('click', async function() {
-        const itemID = this.dataset.itemId;
+
+document.body.addEventListener('click', function(event) {
+    if (event.target.matches('#heart i')) {
+        const heart = event.target;
+        const itemID = heart.dataset.itemId;
         fetch('add_to_whishlist.php?item_id=' + encodeURIComponent(itemID))
         .then(response => response.text())
         .then(text => {
-                heart.className = text;
-        
-    })
+            heart.className = text;
         });
-    
+    }
 });
-
-
-
-
-
 

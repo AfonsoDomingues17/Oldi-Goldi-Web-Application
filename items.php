@@ -12,7 +12,8 @@
     $items = getAllItems($db);
     $sizes = getAllSizes($db);
     $conditions = getAllConditions($db);
-
+    $cat_display = $_GET['category_id'];
+    $brand_display = $_GET['brand_id'];
 ?>
 
 <main>
@@ -35,8 +36,12 @@
                 <details>
                     <summary>Brand <i class="fa-solid fa-chevron-down"></i></summary>
                     <section id="brandSection">
-                        <?php foreach($brands as $brand) {?>
-                        <label><input type="checkbox" id="brand1" name="brand1" data-brand-id="<?= $brand['brand_id'] ?>"><?= $brand['brand_name']?></label>
+                        <?php foreach($brands as $brand) {
+                            if($brand_display == $brand['brand_id']){ ?>
+                            <label><input type="checkbox" id="brand<?= $brand['brand_id']?>" name="brand1" data-brand-id="<?= $brand['brand_id'] ?>" checked><?= $brand['brand_name']?></label>
+                          <?php } else {?>
+                        <label><input type="checkbox" id="brand<? $brand['brand_id']?>" name="brand1" data-brand-id="<?= $brand['brand_id'] ?>"><?= $brand['brand_name']?></label>
+                        <?php } ?>
                         <?php }?>
                     </section>
                 </details>
@@ -51,8 +56,12 @@
                 <details>
                     <summary>Category<i class="fa-solid fa-chevron-down"></i></summary>
                     <section id="CategorySection">
-                    <?php foreach($categories as $category) {?>
-                        <label><input type="checkbox" id="category1" name="category1" data-category-id="<?= $category['category_id'] ?>"><?= $category['category_name']?></label>
+                    <?php foreach($categories as $category) {
+                        if($category['category_id'] == $cat_display){ ?>
+                            <label><input type="checkbox" id="category<?= $category['category_id']?>" name="category1" data-category-id="<?= $category['category_id'] ?>" checked><?= $category['category_name']?></label>
+                        <?php } else {?>
+                        <label><input type="checkbox" id="category1" name="category<?= $category['category_id']?>" data-category-id="<?= $category['category_id'] ?>"><?= $category['category_name']?></label>
+                        <?php } ?>
                         <?php }?>
                     </section>
                 </details>
@@ -90,5 +99,5 @@
     </section>
 
 </main>
+<?php output_footer(); ?>
 
-<?php output_footer();

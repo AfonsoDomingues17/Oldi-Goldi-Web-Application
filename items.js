@@ -48,6 +48,7 @@ const maxPriceInput = document.querySelector('section#PriceSection input#Finalpr
 const itemsContainer = document.querySelector('#Garticles');
 
 function updateItems() {
+    console.log('updateItems');
     const selectedSizes = Array.from(sizeCheckboxes)
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.dataset.sizeId);
@@ -104,6 +105,7 @@ function updateItems() {
         .then(html => {
             itemsContainer.innerHTML = html;
         });
+        console.log('finished');
 }
 /*
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -137,6 +139,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     updateItems();
 });
 */
+
 sizeCheckboxes.forEach(function(checkbox) {
     checkbox.addEventListener('change', updateItems);
 });
@@ -157,3 +160,7 @@ minPriceInput.addEventListener('input', updateItems);
 
 maxPriceInput.addEventListener('input', updateItems);
 
+
+window.onload = function() {
+    updateItems();
+}
