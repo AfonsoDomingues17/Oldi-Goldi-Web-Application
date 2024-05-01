@@ -6,7 +6,7 @@
         email TEXT NOT NULL,
         phone_number TEXT NOT NULL,
         password TEXT NOT NULL,
-        photo_url TEXT,
+        photo_url TEXT DEFAULT "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/uni-connect-4nugh7/assets/rpm3muv6rtc6/user_default.jpg",
         Country TEXT,
         Adress TEXT,
         Zip_code TEXT,

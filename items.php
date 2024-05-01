@@ -93,7 +93,16 @@
                 </div>
             </section>
             <section id="Garticles">
-                <?php display_items($db, $items); ?>
+                <?php if(isset($cat_display)){
+                    $items2 = get_Items_ByCategory($db, $cat_display);
+                    display_items($db,$items2);
+                }
+                else if(isset($brand_display)){
+                    $items3 = getItemsByBrand($db,$brand_display);
+                    display_items($db,$items3);
+                }
+                else{
+                display_items($db, $items); }?>
             </section>
         </section>
     </section>

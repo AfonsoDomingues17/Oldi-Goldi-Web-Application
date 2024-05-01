@@ -14,7 +14,10 @@ function output_header(){ ?>
 
     <script src="items.js" defer></script>
     <script src="script.js" defer></script>
-
+    <script src="update_profile.js" defer></script>
+    <script src="change_password.js" defer></script>
+    <script src="register.js" defer></script>
+    <script src="search.js" defer></script>
     <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
 
@@ -34,10 +37,11 @@ function output_header(){ ?>
             <option value="Trousers">Trousers</option>
             </select>
             <!-- Search bar -->
-            <input id = "search" type = "text" placeholder = "Find your dream item!">
+            <input id = "search" type = "text" placeholder = "Find your dream item!" oninput="searchFunction()">
             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
         </section>
+        <section id="searchResult"></section>
         <div class="navbar-right">
             <?php if(isset($_SESSION['username'])) { ?>
             <div class="icon-links">

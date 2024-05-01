@@ -9,35 +9,35 @@ $categories = getAllCategories($db);
 $brands = getAllBrands($db);
 output_header();
 display_categories($categories);
+$user = getUser($db,$_GET['username']);
 ?>
 
 <main id = "edit_profile_main">
     <section class="edit">
     <h1>Update your profile</h1>
-        <form action="" id="edit_profile">
+        <form method="post" action="action_update_profile.php" id="edit_profile " enctype="multipart/form-data">
             <section id="update_profile">
             <section id="user_picture">
                 <h2>Your picture</h2>
-            <img src="https://picsum.photos/200/300" alt="profile picture">
-            <label>About you: <textarea name="About you" id="About_you" placeholder="Let everyone know more about you!"></textarea></label>
+            <img id="profilePicture" src="<?=$user['photo_url']?>" alt="profile picture">
+            <input type="hidden" id="hidden_input" name="imgSrc" value="">
+            <input type="file" id="fileInput">
+            <label>About you: <textarea name="description" id="About_you" placeholder="Let everyone know more about you!"><?= $user['description']?></textarea></label>
             </section>
         
             <section id="user_details">
                 <h2>User Details</h2>
-                <label>Username: <textarea name="username" id="username"></textarea></label>
-                <label>Email: <textarea name="username" id="username"></textarea></label>
-                <label>Name: <textarea name="username" id="username"></textarea></label>
-                <label>Phone Number: <textarea name="phonenumber" id="phonenumber"></textarea></label>
-                <label>New Password: <input type="password" name="npassword"></label>
-                <label>Confirm new Password: <input type="password" name = "cnpassword"></label>
+                <label>Email: <input type="text" value="<?= $user['email']?>" name="email" id="email"></label>
+                <label>Name: <input type="text" value="<?= $user['name']?>" name="name" id="name"></label>
+                <label>Phone Number: <input type="text" value="<?= $user['phone_number']?>" name="pn" id="pn"></label>
             </section>
             <section id="shipping">
                 <h2>Shipping Information</h2>
 
-                <label>Adress: <textarea name="username" id="username"></textarea></label>
-                <label>Zip-Code: <textarea name="username" id="username"></textarea></label>
-                <label>Country: <textarea name="username" id="username"></textarea></label>
-                <label>City: <textarea name="username" id="username"></textarea></label>
+                <label>Adress: <textarea name="address" id="address"><?= $user['Adress']?></textarea></label>
+                <label>Zip-Code: <input type="text" value="<?= $user['Zip_code']?>" name="ZP" id="XP"></label>
+                <label>Country: <input type="text" value="<?= $user['Country']?>" name="Country" id="Country"></label>
+                <label>City: <input type="text" value="<?= $user['Cidade']?>" name="City" id="City">
             </section>
         </section>
         <button type="submit">Update Profile</button>

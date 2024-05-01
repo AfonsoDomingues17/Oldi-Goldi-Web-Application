@@ -16,13 +16,14 @@
         <p>Please fill in this form to create an account.</p>
     </article>
     <article id="form-container register">
-        <form action="action_register.php" method="post">
+        <form action="action_register.php" id="register_action" method="post">
             <input type="text" id="username" name="username" placeholder="Username" required><br>
             <input type="text" id="name" name="name" placeholder="Name" required><br>
             <input type="email" id="email" name="email" placeholder="Email" required><br>
             <input type="password" id="password" name="password" placeholder="Password" required><br>
             <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password" required><br><br>
-            <button type="submit">Register</button>
+            <p id="message_error_register"></p>
+            <button id="reg_button" type="submit">Register</button>
         </form>
     </article>
 </section>

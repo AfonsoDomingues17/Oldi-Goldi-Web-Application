@@ -75,10 +75,11 @@ require_once('is_on_whishlist.php');
         return $stmt->fetchAll();
     }
     function get_Items_ByCategory($db, $category_id){
-        $stmt = $db->prepare("SELECT * FROM Item where category_id = ? LIMIT 5");
+        $stmt = $db->prepare("SELECT * FROM Item where category_id = ?");
         $stmt->execute([$category_id]);
         return $stmt->fetchAll();
     }
+
 
     function getItemsByUser($db, $username){
         $stmt = $db->prepare('SELECT * FROM Item WHERE username = ?');
@@ -93,10 +94,9 @@ require_once('is_on_whishlist.php');
         $items = $stmt->fetchAll();
         return $items;
     }
-    function getItemsByBrands($db, $brand_ids){
-        $brand_ids_str = implode(',', $brand_ids); //this joins the element of the array with a comma
-        $stmt = $db->prepare("SELECT * FROM Item WHERE brand_id IN ($brand_ids_str)");
-        $stmt->execute();
+    function getItemsByBrand($db, $brand_id){
+        $stmt = $db->prepare("SELECT * FROM Item WHERE brand_id = ?");
+        $stmt->execute(array($brand_id));
         $items = $stmt->fetchAll();
         return $items;
     }
@@ -154,6 +154,19 @@ require_once('is_on_whishlist.php');
                     <?php } ?>
                 </section>
             </article>
+        <?php }
+    }
+
+    function get_Popular_items($db){
+
+        $stmt = $db->prepare("SELECT item_id, count(*) as Item_count from Whishlists Group BY item_id ORDER BY Item_count DESC LIMIT 10");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    function display_results($results){
+        foreach($results as $result){?>
+        <li><a href=""><?=$result['item_name'] ?></a></li>
         <?php }
     }
     

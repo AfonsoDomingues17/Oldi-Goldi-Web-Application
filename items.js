@@ -160,7 +160,3 @@ minPriceInput.addEventListener('input', updateItems);
 
 maxPriceInput.addEventListener('input', updateItems);
 
-
-window.onload = function() {
-    updateItems();
-}

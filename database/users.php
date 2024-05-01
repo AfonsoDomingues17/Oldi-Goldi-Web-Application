@@ -17,4 +17,32 @@ function newUser($username, $name, $email, $phone_number, $password, $C_password
     $stmt->execute();
     return true;
 }
+
+function verify_UserPassword($db,$username,$password) : bool{
+    $stmt = $db->prepare("SELECT password from Users where username = ?");
+    $stmt->execute(array($username));
+    $result = $stmt->fetch();
+    $current_pass = $result['password'];
+    $password = sha1($password);
+    if($current_pass == $password) return true;
+    else return false;
+}
+
+function verify_UsernameExists($db,$username) : bool{
+    $stmt = $db->prepare("SELECT count(*) from Users where username = ?");
+    $stmt->execute(array($username));
+    $result = $stmt->fetchColumn();
+    if($result > 0) return true;
+    else return false;
+}
+
+function verify_EmailExists($db,$email) : bool{
+    $stmt = $db->prepare("SELECT count(*) from Users where email = ?");
+    $stmt->execute(array($email));
+    $result = $stmt->fetchColumn();
+    if($result > 0) return true;
+    else return false;
+}
+
+
 ?>
