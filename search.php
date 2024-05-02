@@ -3,13 +3,13 @@ session_start();
 require_once('database/connection.php');
 require_once('database/categories.php');
 $db = getDatabaseConnection();
-$search_term = $_GET['search'];
+$input = $_POST['inputbar'];
 
-$stmt = $db->prepare("SELECT item_name from Item where item_name like ?");
-$stmt->execute(array("%$search_term%"));
+if($input != ""){
+    $encodedInput = urldecode($input);
+    header('Location: items.php?input=' . $encodedInput);
+}
+else header('Location: index.php');
 
-$results = $stmt->fetchAll();
 
-
-echo display_results($results);
 ?>

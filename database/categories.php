@@ -166,8 +166,14 @@ require_once('is_on_whishlist.php');
 
     function display_results($results){
         foreach($results as $result){?>
-        <li><a href=""><?=$result['item_name'] ?></a></li>
+        <li><a href="item.php?item_id=<?=$result['ItemID'] ?>"><?=$result['item_name'] ?></a></li>
         <?php }
+    }
+
+    function get_Items_ByName($db,$name){
+        $stmt = $db->prepare("SELECT * from Item where item_name like ?");
+        $stmt->execute(array("%$name%"));
+        return $stmt->fetchAll();
     }
     
 

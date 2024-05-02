@@ -28,7 +28,7 @@ function output_header(){ ?>
         <section id="main_nav_bar">
         <h1><a href = "index.php">Our Super Cool Store</a></h1> 
         <section id = "navsection">
-        <form action="" method="get">
+        <form action="search.php" method="post">
             <select name="Categories">
             <option value="All" selected>All Categories</option>
             <option value="Clothing">Clothing</option>
@@ -37,7 +37,7 @@ function output_header(){ ?>
             <option value="Trousers">Trousers</option>
             </select>
             <!-- Search bar -->
-            <input id = "search" type = "text" placeholder = "Find your dream item!" oninput="searchFunction()">
+            <input id = "search" type = "text" placeholder = "Find your dream item!" name="inputbar" oninput="searchFunction()">
             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
         </section>

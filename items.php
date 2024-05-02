@@ -14,6 +14,7 @@
     $conditions = getAllConditions($db);
     $cat_display = $_GET['category_id'];
     $brand_display = $_GET['brand_id'];
+    $searchTerm = $_GET['input'];
 ?>
 
 <main>
@@ -23,6 +24,12 @@
     <section class="items">
         <aside id="Filters">
             <h3>Filters</h3>
+            <?php if(isset($searchTerm)){ ?>
+            <section class="search-term-container">
+                <span class="search-term"><?= htmlspecialchars($searchTerm) ?></span>
+                <span class="remove-search-term"><i class="fa-solid fa-xmark"></i></span>
+            </section>
+            <?php }?>
             <form>
                 <details>
                     <summary>Size <i class="fa-solid fa-chevron-down"></i></summary>
@@ -94,15 +101,18 @@
             </section>
             <section id="Garticles">
                 <?php if(isset($cat_display)){
-                    $items2 = get_Items_ByCategory($db, $cat_display);
-                    display_items($db,$items2);
+                    $items = get_Items_ByCategory($db, $cat_display);
+                    
                 }
                 else if(isset($brand_display)){
-                    $items3 = getItemsByBrand($db,$brand_display);
-                    display_items($db,$items3);
+                    $items = getItemsByBrand($db,$brand_display);
+                    
                 }
-                else{
-                display_items($db, $items); }?>
+                else if(isset($searchTerm)){
+                    $items = get_Items_ByName($db,$searchTerm);
+                }
+                
+                display_items($db, $items);?>
             </section>
         </section>
     </section>

@@ -130,3 +130,24 @@ section#brandSection{
     text-decoration: none;
     display: block;
 }
+
+.search-term-container {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 50px;
+    background-color: #f2f2f2;
+    margin-bottom: 1em;
+}
+
+.search-term {
+    margin-right: 10px;
+}
+
+.remove-search-term i{
+    color: red;
+    cursor: pointer;
+    padding-right: 0;
+   
+}

@@ -6,7 +6,7 @@ function searchFunction() {
     timeoutId = setTimeout(() => {
         const searchTerm = document.getElementById('search').value;
         if (searchTerm != '') {
-            fetch('search.php?search=' + encodeURIComponent(searchTerm))
+            fetch('action_search.php?search=' + encodeURIComponent(searchTerm))
             .then(response => response.text())
             .then(data => {
                 document.getElementById('searchResult').innerHTML = data;
