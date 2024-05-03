@@ -10,7 +10,6 @@ $brands = getAllBrands($db);
 output_header($db);
 display_categories($categories);
 $pageOwner = $_GET['username'];
-$loggedUser = $_SESSION['username'];
 if(isset($pageOwner))$user = getUser($db,$pageOwner);
 else $user = getUser($db,$_SESSION['username']);
 
