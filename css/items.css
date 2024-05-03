@@ -131,7 +131,7 @@ section#brandSection{
     display: block;
 }
 
-.search-term-container {
+#search-term-container {
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
@@ -141,13 +141,16 @@ section#brandSection{
     margin-bottom: 1em;
 }
 
-.search-term {
+#search-term {
     margin-right: 10px;
 }
 
-.remove-search-term i{
+#remove-search-term i{
     color: red;
     cursor: pointer;
     padding-right: 0;
    
+}
+#search_filter {
+    display: none;
 }

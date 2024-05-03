@@ -1,6 +1,8 @@
 <?php
+require_once('database/connection.php');
+require_once('database/categories.php');
 session_start();
-function output_header(){ ?>
+function output_header($db){ ?>
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,12 +31,12 @@ function output_header(){ ?>
         <h1><a href = "index.php">Our Super Cool Store</a></h1> 
         <section id = "navsection">
         <form action="search.php" method="post">
-            <select name="Categories">
+            <select id="Select_Categories" name="Categories">
             <option value="All" selected>All Categories</option>
-            <option value="Clothing">Clothing</option>
-            <option value="Shoewear">Shoewear</option>
-            <option value="Sweatshirts">Sweatshirts</option>
-            <option value="Trousers">Trousers</option>
+            <?php $categories = getAllCategories($db);
+            foreach($categories as $category) {?>
+            <option value="<?=$category['category_name'] ?>"><?=$category['category_name'] ?></option>
+            <?php } ?>
             </select>
             <!-- Search bar -->
             <input id = "search" type = "text" placeholder = "Find your dream item!" name="inputbar" oninput="searchFunction()">

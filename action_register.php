@@ -6,10 +6,7 @@ if(newUser($_POST['username'],$_POST['name'],$_POST['email'],$_POST['phonenumber
     header('Location: login.php');
     exit;
 }
-else{
-    //passwords do not match
-    
-}
+
 
 header('Location: index.php');        // redirect to the page we came from
 ?>

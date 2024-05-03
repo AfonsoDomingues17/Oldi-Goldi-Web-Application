@@ -11,7 +11,7 @@ $condition_ids = isset($_GET['condition_ids']) ? json_decode($_GET['condition_id
 $category_ids = isset($_GET['category_ids']) ? json_decode($_GET['category_ids']) : null;
 $min_price = isset($_GET['min_price']) ? $_GET['min_price'] : null;
 $max_price = isset($_GET['max_price']) ? $_GET['max_price'] : null;
-
+$search_term = isset($_GET['search']) ? $_GET['search'] : null;
 $conditions = [];
 $params = [];
 
@@ -45,6 +45,12 @@ if($max_price){
     $conditions[] = "price <= ?";
     $params[] = $max_price;
 }
+
+if($search_term){
+    $conditions[] = "item_name LIKE ?";
+    $params[] = '%' . $search_term . '%';
+}
+
 if ($conditions) {
     $sql = "SELECT * FROM Item WHERE " . implode(' AND ', $conditions);
     $stmt = $db->prepare($sql);

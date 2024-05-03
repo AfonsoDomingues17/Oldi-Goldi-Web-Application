@@ -7,7 +7,7 @@ require_once('templates/display_categories.php');
 $db = getDatabaseConnection();
 $categories = getAllCategories($db);
 $brands = getAllBrands($db);
-output_header();
+output_header($db);
 display_categories($categories);
 $pageOwner = $_GET['username'];
 if(isset($pageOwner))$user = getUser($db,$pageOwner);
@@ -38,7 +38,7 @@ else $user = getUser($db,$_SESSION['username']);
         <section class="user_profile_details">
             <p id="user_name"><?= $user['name']; ?></p>
             <p id="user_username"><?= $user['username']; ?></p>
-            <p><i class="fa-solid fa-location-dot"></i> <?= $user['Cidade']?>, <?= $user['Country']?></p>
+            <?php if(isset($user['Cidade']) || isset($user['Country'])){ ?><p><i class="fa-solid fa-location-dot"></i> <?= $user['Cidade']?>, <?= $user['Country']?></p> <?php } ?>
             <p><?= $user['description']?></p>
             <?php if (isset($pageOwner)){?>
                 <a href="">Message <?= $user['name']; ?></a>

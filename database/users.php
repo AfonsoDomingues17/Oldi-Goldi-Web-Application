@@ -44,5 +44,15 @@ function verify_EmailExists($db,$email) : bool{
     else return false;
 }
 
+function verify_IfPasswordMatch($db,$username,$password){
+    $password = sha1($password);
+    $stmt = $db->prepare("SELECT password from Users where username = ?");
+    $stmt->execute(array($username));
+    $result = $stmt->fetchColumn();
+    if($result == $password) return true;
+    else return false;
+
+}
+
 
 ?>

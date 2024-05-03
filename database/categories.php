@@ -12,6 +12,12 @@ require_once('is_on_whishlist.php');
         $categories = $stmt->fetchAll();
         return $categories;
     }
+
+    function getCategorieByName($db,$category_name){
+        $stmt = $db->prepare("SELECT category_id from Categories where category_name = ?");
+        $stmt->execute(array($category_name));
+        return $stmt->fetchColumn();
+    }
     function getAllItems($db){
         $stmt = $db->prepare('SELECT * FROM Item');
         $stmt->execute();
@@ -77,6 +83,13 @@ require_once('is_on_whishlist.php');
     function get_Items_ByCategory($db, $category_id){
         $stmt = $db->prepare("SELECT * FROM Item where category_id = ?");
         $stmt->execute([$category_id]);
+        return $stmt->fetchAll();
+    }
+
+
+    function get_ItemsByCategoryANDname($db,$name,$categorie_id){
+        $stmt = $db->prepare("SELECT * FROM Item where category_id = ? AND item_name LIKE ?");
+        $stmt->execute(array($categorie_id,"%$name%"));
         return $stmt->fetchAll();
     }
 

@@ -47,6 +47,9 @@ const minPriceInput = document.querySelector('section#PriceSection input#Sprice'
 const maxPriceInput = document.querySelector('section#PriceSection input#Finalprice');
 const itemsContainer = document.querySelector('#Garticles');
 
+const searchCheckbox = document.querySelector('#search_filter');
+
+
 function updateItems() {
     console.log('updateItems');
     const selectedSizes = Array.from(sizeCheckboxes)
@@ -72,7 +75,13 @@ function updateItems() {
 
     const minPrice = minPriceInput.value;
     const maxPrice = maxPriceInput.value;
+    let searchTerm = null;
 
+    const searchTermElement = document.getElementById('search-term');
+    
+    if (searchTermElement && searchCheckbox.checked) {
+    searchTerm = searchTermElement.textContent;
+    }
     //localStorage.setItem('minPrice', minPrice);
     //localStorage.setItem('maxPrice', maxPrice);
     let url = 'filter_items.php';
@@ -99,7 +108,12 @@ function updateItems() {
         const separator = url.includes('?') ? '&' : '?';
         url += separator + 'max_price=' + encodeURIComponent(maxPrice);
     }
-
+    
+    if(searchTerm){
+        const separator = url.includes('?') ? '&' : '?';
+        url += separator + 'search=' + encodeURIComponent(searchTerm);
+    }
+    
     fetch(url)
         .then(response => response.text())
         .then(html => {
@@ -140,12 +154,52 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 */
 
+
+const remove_search = document.getElementById('remove-search-term');
+if(remove_search){
+remove_search.addEventListener('click', function(){
+
+    document.getElementById('search-term-container').style.display = "none";
+
+    document.getElementById('search_filter').checked = false;
+
+    updateItems();
+    
+
+    const url = new URL(window.location.href);
+
+    
+    const params = new URLSearchParams(url.search); //gets the part after the ?
+
+    params.delete('input'); //delets the part of input
+
+    url.search = params.toString();
+
+    window.history.replaceState({}, '', url.toString());
+    
+
+});
+
+}
+
+
+
 sizeCheckboxes.forEach(function(checkbox) {
     checkbox.addEventListener('change', updateItems);
 });
 
 brandCheckboxes.forEach(function(checkbox) {
-    checkbox.addEventListener('change', updateItems);
+    checkbox.addEventListener('change', function() {
+        updateItems();
+
+        if (!checkbox.checked) {
+            const url = new URL(window.location.href);
+            const params = new URLSearchParams(url.search);
+            params.delete('brand_id');
+            url.search = params.toString();
+            window.history.replaceState({}, '', url.toString());
+        }
+    });
 });
 
 conditionCheckboxes.forEach(function(checkbox) {
@@ -153,8 +207,20 @@ conditionCheckboxes.forEach(function(checkbox) {
 });
 
 categoryCheckboxes.forEach(function(checkbox) {
-    checkbox.addEventListener('change', updateItems);
+    checkbox.addEventListener('change', function() {
+        updateItems();
+
+        if (!checkbox.checked) {
+            const url = new URL(window.location.href);
+            const params = new URLSearchParams(url.search);
+            params.delete('category_id');
+            url.search = params.toString();
+            window.history.replaceState({}, '', url.toString());
+        }
+    });
 });
+
+searchCheckbox.addEventListener('change',updateItems);
 
 minPriceInput.addEventListener('input', updateItems);
 

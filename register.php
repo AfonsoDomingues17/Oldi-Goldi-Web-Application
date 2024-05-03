@@ -6,7 +6,7 @@
 
     $db = getDatabaseConnection();
     $categories = getAllCategories($db);
-    output_header();
+    output_header($db);
     display_categories($categories);
 ?>
 

@@ -9,7 +9,7 @@ $categories = getAllCategories($db);
 
 if (isset($_GET['item_id'])) {
     $item_id = $_GET['item_id'];
-    output_header();
+    output_header($db);
     display_categories($categories);
     display_item($db, $item_id);
     output_footer();

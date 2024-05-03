@@ -8,7 +8,7 @@ require_once('is_on_whishlist.php');
 $db = getDatabaseConnection();
 $categories = getAllCategories($db);
 $brands = getAllBrands($db);
-output_header();
+output_header($db);
 display_categories($categories);
 ?>
 

@@ -7,7 +7,7 @@
     $db = getDatabaseConnection();
     $categories = getAllCategories($db);
     $brands = getAllBrands($db);
-    output_header();
+    output_header($db);
     display_categories($categories);
     $items = getAllItems($db);
     $sizes = getAllSizes($db);
@@ -25,12 +25,17 @@
         <aside id="Filters">
             <h3>Filters</h3>
             <?php if(isset($searchTerm)){ ?>
-            <section class="search-term-container">
-                <span class="search-term"><?= htmlspecialchars($searchTerm) ?></span>
-                <span class="remove-search-term"><i class="fa-solid fa-xmark"></i></span>
+            <section id="search-term-container">
+                <span id="search-term"><?= htmlspecialchars($searchTerm) ?></span>
+                <span id="remove-search-term"><i class="fa-solid fa-xmark"></i></span>
             </section>
             <?php }?>
             <form>
+                <?php if(isset($searchTerm)) {?>
+                    <input type="checkbox" id="search_filter" name="search_filter" checked>
+                    <?php } else { ?>
+                    <input type="checkbox" id="search_filter" name="search_filter">
+                <?php } ?>
                 <details>
                     <summary>Size <i class="fa-solid fa-chevron-down"></i></summary>
                     <section id="sizeSection">
@@ -100,7 +105,13 @@
                 </div>
             </section>
             <section id="Garticles">
-                <?php if(isset($cat_display)){
+                <?php 
+                
+                if(isset($cat_display) && isset($searchTerm)){
+                    $items = get_ItemsByCategoryANDname($db,$searchTerm,$cat_display);
+                }
+                
+                else if(isset($cat_display)){
                     $items = get_Items_ByCategory($db, $cat_display);
                     
                 }
