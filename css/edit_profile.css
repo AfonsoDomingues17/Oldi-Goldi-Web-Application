@@ -1,6 +1,6 @@
 main#edit_profile_main {
     margin: auto;
-    width: 80%;
+    width: 40%;
     font-family: Arial, sans-serif;
 }
 
@@ -56,8 +56,6 @@ section#update_profile textarea {
     resize: none;
 }
 
-
-
 form#edit_profile button {
     padding: 10px 20px;
     border: none;
@@ -75,4 +73,22 @@ form#edit_profile button {
 }
 section#edit {
     background-color: white;
+}
+
+#updateProfileButton{
+    margin:auto;
+    display:block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+}
+
+#updateProfileLabel {
+    display: block;
+}
+#updateProfileLabel #updateProfileText {
+    display: block;
+    margin-top: 5px;
 }

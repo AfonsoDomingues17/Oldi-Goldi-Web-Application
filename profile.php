@@ -10,8 +10,9 @@ $brands = getAllBrands($db);
 output_header();
 display_categories($categories);
 $pageOwner = $_GET['username'];
-if(isset($pageOwner))$user = getUser($db,$pageOwner);
-else $user = getUser($db,$_SESSION['username']);
+$loggedUser = $_SESSION['username'];
+$user = getUser($db,$pageOwner);
+
 ?>
 
 <main id = "user_profile">
@@ -40,7 +41,7 @@ else $user = getUser($db,$_SESSION['username']);
             <p id="user_username"><?= $user['username']; ?></p>
             <p><i class="fa-solid fa-location-dot"></i> <?= $user['Cidade']?>, <?= $user['Country']?></p>
             <p><?= $user['description']?></p>
-            <?php if (isset($pageOwner)){?>
+            <?php if ($loggedUser != $pageOwner){?>
                 <a href="">Message <?= $user['name']; ?></a>
             <?php } else {?>
                 <a href="edit_profile.php?username=<?=$_SESSION['username']?>">Edit your profile</a>
@@ -48,7 +49,7 @@ else $user = getUser($db,$_SESSION['username']);
             <?php }?>
         </section>
     </section>
-    <?php if(!isset($pageOwner)){?>
+    <?php if($loggedUser == $pageOwner){?>
     <section id="Personal_Info">
             
             <h3>Contacts</h3>

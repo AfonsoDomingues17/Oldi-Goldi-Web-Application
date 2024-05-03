@@ -52,7 +52,7 @@ function output_header(){ ?>
             <?php } ?>
             <?php if(isset($_SESSION['username'])) {?>
             <section id="loged_in">
-            <a href="profile.php" id="profile"><i class="fa-solid fa-user"></i></a>
+            <a href="profile.php?username=<?php echo $_SESSION['username']; ?>" id="profile"><i class="fa-solid fa-user"></i></a>
             <a href="sell.php" id="Sell_now">Sell Now</a>
             <a href="action_logout.php" id="logout">Logout</a>
             </section>
