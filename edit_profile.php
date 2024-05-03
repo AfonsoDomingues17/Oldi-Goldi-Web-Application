@@ -22,25 +22,25 @@ $user = getUser($db,$_GET['username']);
             <img id="profilePicture" src="<?=$user['photo_url']?>" alt="profile picture">
             <input type="hidden" id="hidden_input" name="imgSrc" value="">
             <input type="file" id="fileInput">
-            <label>About you: <textarea name="description" id="About_you" placeholder="Let everyone know more about you!"><?= $user['description']?></textarea></label>
+            <label id="updateProfileLabel">About you: <textarea name="description" id="About_you" placeholder="Let everyone know more about you!"><?= $user['description']?></textarea></label>
             </section>
         
             <section id="user_details">
                 <h2>User Details</h2>
-                <label>Email: <input type="text" value="<?= $user['email']?>" name="email" id="email"></label>
-                <label>Name: <input type="text" value="<?= $user['name']?>" name="name" id="name"></label>
-                <label>Phone Number: <input type="text" value="<?= $user['phone_number']?>" name="pn" id="pn"></label>
+                <label id="updateProfileLabel">Email: <input type="text" id="updateProfileText" value="<?= $user['email']?>" name="email" id="email"></label>
+                <label id="updateProfileLabel">Name: <input type="text" id="updateProfileText" value="<?= $user['name']?>" name="name" id="name"></label>
+                <label id="updateProfileLabel">Phone Number: <input type="text" id="updateProfileText" value="<?= $user['phone_number']?>" name="pn" id="pn"></label>
             </section>
             <section id="shipping">
                 <h2>Shipping Information</h2>
 
-                <label>Adress: <textarea name="address" id="address"><?= $user['Adress']?></textarea></label>
-                <label>Zip-Code: <input type="text" value="<?= $user['Zip_code']?>" name="ZP" id="XP"></label>
-                <label>Country: <input type="text" value="<?= $user['Country']?>" name="Country" id="Country"></label>
-                <label>City: <input type="text" value="<?= $user['Cidade']?>" name="City" id="City">
+                <label id="updateProfileLabel">Adress: <input type="text" id="updateProfileText" value="<?= $user['Adress']?>" name ="address"></label>
+                <label id="updateProfileLabel">Zip-Code: <input type="text" id="updateProfileText" value="<?= $user['Zip_code']?>" name="ZP" id="XP"></label>
+                <label id="updateProfileLabel">Country: <input type="text" id="updateProfileText" value="<?= $user['Country']?>" name="Country" id="Country"></label>
+                <label id="updateProfileLabel">City: <input type="text" id="updateProfileText" value="<?= $user['Cidade']?>" name="City" id="City">
             </section>
         </section>
-        <button type="submit">Update Profile</button>
+        <button type="submit" id="updateProfileButton">Update Profile</button>
 
     </form>
     </section>
