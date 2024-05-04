@@ -11,7 +11,7 @@ output_header($db);
 display_categories($categories);
 ?>
 
-<main>
+<main id="SellItem">
 
 <h1>Sell an Item</h1>
 <section id="item_photos">

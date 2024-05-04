@@ -1,0 +1,20 @@
+#SellItem {
+    width: 80%;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+#SellItem > h1 {
+    color: #333;
+    text-align: center;
+}
+
+/* Styling for the form sections */
+#item_photos form {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+}

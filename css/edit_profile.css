@@ -10,22 +10,25 @@ main#edit_profile_main > h1, h2 {
 }
 
 section#update_profile > section#user_picture{
-    background-color: #a0a1a5;
+    background-color: white;
     padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-bottom: 30px;
 }
 
 section#update_profile > section#user_details{
-    background-color: #a0a1a5;
+    background-color: white;
     padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-bottom: 30px;
 }
 
 section#update_profile > section#shipping{
-    background-color: #a0a1a5;
+    background-color: white;
     padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 

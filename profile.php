@@ -44,21 +44,20 @@ else $user = getUser($db,$_SESSION['username']);
             <?php if (isset($pageOwner)){?>
                 <a href="">Message <?= $user['name']; ?></a>
             <?php } else {?>
-                <a href="edit_profile.php?username=<?=$_SESSION['username']?>">Edit your profile</a>
+                <a href="edit_profile.php?username=<?=$_SESSION['username']?>" id="EditProfileButton">Edit your profile</a>
                 <button id="changePasswordBtn">Change Password</button>
             <?php }?>
         </section>
     </section>
     <?php if(!isset($pageOwner)){?>
-    <section id="Personal_Info">
-            
-            <h3>Contacts</h3>
-            <span class="email"><i class="fa fa-envelope" aria-hidden="true"></i> <?=$user['email']?></span>
-            <span class="phonenumber"><i class="fa fa-phone" aria-hidden="true"></i> <?= $user['phone_number']?></span>
-            <span class="address"><i class="fa fa-home" aria-hidden="true"></i> <?= $user['Adress']?></span>
-            <span class="zip_code"><?= $user['Zip_code']?></span>
-            
-    </section>
+    <section id="Info_StartSelling">
+        <section id="Personal_Info">
+                <h3>Contacts</h3>
+                <span class="email"><i class="fa fa-envelope" aria-hidden="true"></i> <?=$user['email']?></span>
+                <span class="phonenumber"><i class="fa fa-phone" aria-hidden="true"></i> <?= $user['phone_number']?></span>
+                <span class="address"><i class="fa fa-home" aria-hidden="true"></i> <?= $user['Adress']?></span>
+                <span class="zip_code"><?= $user['Zip_code']?></span>
+        </section>
     <?php }?>
     <!--
     <section id="orders">
@@ -75,9 +74,11 @@ else $user = getUser($db,$_SESSION['username']);
     <!-- Só aparece se o perfil for da pessoa logada -->
     <?php $user_items = getItemsBySeller($db, $user['username']);
     if(count($user_items) < 1){ ?>
-        <h3>Add Items to Sell</h3>
-        <p>Sell Items that you do not use anymore and earn some money with it!</p>
-        <a href="sell.php">Sell Now</a>
+    <section id="ProfileStartSelling">
+        <h3>List items to start selling</h3>
+        <a href="sell.php" id="SellNowButton">Sell Now</a>
+    </section>
+    </section>
    <?php } 
     foreach($user_items as $item) {?>
             <section id="articles">

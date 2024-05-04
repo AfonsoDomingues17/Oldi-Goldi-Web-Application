@@ -1,80 +1,129 @@
 section#Info{
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    width: 70%;
-    margin: auto;
-    margin-top: 20px;
-    background-color: #c6c7cd;    
-    padding: 20px;
-    border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  width: 70%;
+  margin: auto;
+  margin-top: 20px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .user_profile_picture  img{
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 }
 
 .user_profile_details{
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .user_profile_details > #user_name{
-    font-size: 1.3em;
-    font-weight: bold;
-    margin-top: 0;
-    margin-bottom: 0;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .user_profile_details > #user_username{
-    opacity: 50%;
-    margin-top: 0;
-    margin-bottom: 0;
+  opacity: 50%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+section#Info_StartSelling{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: auto;
+  width: 70%;
 }
 
 section#Personal_Info{
-    display: grid;
-    grid-template-rows: 1fr;
-    width: 70%;
-    margin: auto;
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 10px;
+  display: grid;
+  grid-template-rows: 1fr;
+  width: 70%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section#ProfileStartSelling{
+  display: grid;
+  place-items: center;
+  text-align: center;
+  margin: auto;
+  width: 70%;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+#SellNowButton{
+  margin: auto;
+  display:block;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#EditProfileButton{
+  width: 115px;
+  display:block;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 3px;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
 }
 
 .PopUp {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    padding-top: 100px; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
-  }
-  
-  /* Modal Content */
-  .PopUpcontent {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.user_profile_picture img{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal Content */
+.PopUpcontent {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
