@@ -18,6 +18,17 @@ require_once('is_on_whishlist.php');
         $stmt->execute(array($category_name));
         return $stmt->fetchColumn();
     }
+    function getSizeByName($db,$size_name){
+        $stmt = $db->prepare("SELECT size_id from Sizes where size_value = ?");
+        $stmt->execute(array($size_name));
+        return $stmt->fetchColumn();
+    }
+
+    function getBrandByName($db,$brand_name){
+        $stmt = $db->prepare("SELECT brand_id from Brands where brand_name = ?");
+        $stmt->execute(array($brand_name));
+        return $stmt->fetchColumn();
+    }
     function getAllItems($db){
         $stmt = $db->prepare('SELECT * FROM Item');
         $stmt->execute();
@@ -189,6 +200,34 @@ require_once('is_on_whishlist.php');
         return $stmt->fetchAll();
     }
     
+    function getCurrentItem_id($db){
+        $stmt = $db->prepare("SELECT MAX(ItemID) FROM Item");
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
 
+    function getCurrentSize_id($db){
+        $stmt = $db->prepare("SELECT MAX(size_id) FROM Sizes");
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+    function getCurrentBrand_id($db){
+        $stmt = $db->prepare("SELECT MAX(brand_id) FROM Brands");
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+    function getCurrentPhoto_id($db){
+        $stmt = $db->prepare("SELECT MAX(photo_id) FROM Photos");
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+    function getConditionByName($db,$condition_name){
+        $stmt = $db->prepare("SELECT condition_id from Conditions where condition_value = ?");
+        $stmt->execute(array($condition_name));
+        return $stmt->fetchColumn();
+    }
    
 ?>

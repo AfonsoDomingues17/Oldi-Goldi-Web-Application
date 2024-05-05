@@ -1,3 +1,18 @@
+const deleteBTn = document.getElementById('delete_item');
+console.log(deleteBTn);
+deleteBTn.addEventListener('click',function(event){
+    event.preventDefault();
+ document.getElementById('Pop_Up_delete').style.display = "block";
+
+
+});
+
+const cancelBTn = document.getElementById('cancelBtn');
+cancelBTn.addEventListener('click',function(event){
+    event.preventDefault();
+    document.getElementById('Pop_Up_delete').style.display = "none";
+});
+
 document.getElementById('orderBy').addEventListener('click', function() {
     const dropdownMenu = document.getElementById('dropdownMenu');
     const icon = document.getElementById('orderBy').querySelector('i');

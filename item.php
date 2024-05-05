@@ -50,6 +50,21 @@ function display_item($db, $item_id) {
             echo '<div class="product-actions">';
                 echo '<button class="btn btn-primary">Add to Cart</button>';
                 echo '<button class="btn btn-secondary"><i class="fas fa-heart"></i> Favorite</button>';
+                if($item['seller'] == $_SESSION['username']){?>
+                <a href="sell.php?item_id=<?= $item['ItemID'] ?>">Edit Item</a>
+                <p id="delete_item">Delete Item</p>
+                <section id="Pop_Up_delete">
+                    <section class="Pop_Up-content">
+                        <p>Are you sure you want to delete this item?</p>
+                        <form action="action_delete_item.php" method="get">
+                            <input type="hidden" name="item_id" value="<?= $item_id ?>">
+                            <button id="confirmBtn" type="submit">Confirm</button>
+                            <button id="cancelBtn">Cancel</button>
+                        </form>
+                    
+                    </section>
+                </section>
+            <?php }
             echo '</div>';
         echo '</article>';
     echo '</section>';
