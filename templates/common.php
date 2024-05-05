@@ -13,6 +13,7 @@ function output_header($db){ ?>
     <link rel="stylesheet" href="css/edit_profile.css">
     <link rel="stylesheet" href="css/item.css">
     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/sell.css">
 
     <script src="items.js" defer></script>
     <script src="script.js" defer></script>

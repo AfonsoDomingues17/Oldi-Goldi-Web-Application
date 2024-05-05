@@ -15,6 +15,8 @@ $country = $_POST['Country'];
 $city = $_POST['City'];
 $photo_url = $_POST['imgSrc'];
 
+if($country == "") $country = null;
+if($city == "") $city = null;   
 if ($photo_url === "") {
     $query = "UPDATE Users SET description = ?, email = ?, name = ?, phone_number = ?, Adress = ?, Zip_code = ?, Country = ?, Cidade = ? WHERE username = ?";
     $stmt = $db->prepare($query);

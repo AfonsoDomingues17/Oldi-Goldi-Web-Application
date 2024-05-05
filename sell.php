@@ -17,7 +17,7 @@ $brand = getBrand($db,$item['brand_id']);
 $photos = getPhotos($db,$item_id);
 ?>
 
-<main>
+<main id="SellItem">
 
 <h1>Sell an Item</h1>
 <section id="item_photos">
