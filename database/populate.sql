@@ -98,20 +98,6 @@ VALUES
 (11, 'john_doe', 'olivia_tan', 19.99, '2024-04-30');
 
 
--- Messages
-INSERT INTO Messages (message_id, message_text, sent_at, sender, receiver) 
-VALUES 
-(3, 'Hi John, I would like to purchase the dress. Could you provide more photos?', '2024-04-22 11:00:00', 'sam_jones', 'john_doe'),
-(4, 'Sure, I will send you additional photos shortly.', '2024-04-22 11:05:00', 'john_doe', 'sam_jones'),
-(5, 'Hi Jane, do you have any other colors available for the dress?', '2024-04-23 12:00:00', 'lisa_white', 'jane_smith'),
-(6, 'Yes, we have it in black as well. Would you like to see photos?', '2024-04-23 12:05:00', 'jane_smith', 'lisa_white'),
-(7, 'Mike, I am interested in the garden table. Could you confirm the dimensions?', '2024-04-24 13:00:00', 'sara_green', 'mike_brown'),
-(8, 'The dimensions are 60" x 36" x 30". Let me know if you need more information.', '2024-04-24 13:05:00', 'mike_brown', 'sara_green'),
-(9, 'Chris, can you recommend building blocks suitable for a 5-year-old?', '2024-04-25 14:00:00', 'emily_clark', 'chris_taylor'),
-(10, 'Certainly, I suggest our Classic Building Blocks set. It is ideal for that age range.', '2024-04-25 14:05:00', 'chris_taylor', 'emily_clark'),
-(11, 'Adam, is the car battery compatible with a Honda Civic?', '2024-04-26 15:00:00', 'adam_wilson', 'adam_wilson'),
-(12, 'Yes, it is compatible with various Honda models including the Civic.', '2024-04-26 15:05:00', 'adam_wilson', 'adam_wilson'),
-(13, 'Olivia, your necklace design is stunning! Do you offer customization options?', '2024-04-27 16:00:00', 'olivia_tan', 'olivia_tan');
 
 
 -- ShoppingCarts

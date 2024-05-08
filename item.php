@@ -64,7 +64,10 @@ function display_item($db, $item_id) {
                     
                     </section>
                 </section>
-            <?php }
+            <?php } ?>
+                <a href="messages.php?item_id=<?= $item['ItemID'] ?>&seller=<?= $item['seller']?>">Send Message</a>
+                <button>Propose another Price</button>
+            <?php 
             echo '</div>';
         echo '</article>';
     echo '</section>';

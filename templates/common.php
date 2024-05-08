@@ -14,6 +14,7 @@ function output_header($db){ ?>
     <link rel="stylesheet" href="css/item.css">
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/sell.css">
+    <link rel="stylesheet" href="css/messages.css">
 
     <script src="items.js" defer></script>
     <script src="script.js" defer></script>
@@ -21,6 +22,7 @@ function output_header($db){ ?>
     <script src="change_password.js" defer></script>
     <script src="register.js" defer></script>
     <script src="search.js" defer></script>
+    <script src="messages.js" defer></script>
     <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
 
@@ -49,7 +51,7 @@ function output_header($db){ ?>
             <?php if(isset($_SESSION['username'])) { ?>
             <div class="icon-links">
                 <a href=""><i class="fa-solid fa-cart-plus"></i></a>
-                <a href=""><i class="fa-solid fa-message"></i></a>
+                <a href="messages.php"><i class="fa-solid fa-message"></i></a>
                 <a href="wish_list.php"><i class="fa-solid fa-heart"></i></a>
             </div>
             <?php } ?>

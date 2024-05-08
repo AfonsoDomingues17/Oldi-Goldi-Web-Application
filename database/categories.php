@@ -229,5 +229,11 @@ require_once('is_on_whishlist.php');
         $stmt->execute(array($condition_name));
         return $stmt->fetchColumn();
     }
+
+    function getMessage($db,$message_id){
+        $stmt = $db->prepare("SELECT * FROM messages WHERE message_id = ?");
+        $stmt->execute([$message_id]);
+        return $stmt->fetch();
+    }
    
 ?>

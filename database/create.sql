@@ -67,14 +67,7 @@
         transaction_date TEXT NOT NULL
     );
 
-    DROP TABLE IF EXISTS Messages;
-    CREATE TABLE Messages (
-        message_id INTEGER PRIMARY KEY,
-        message_text TEXT NOT NULL,
-        sent_at TEXT,
-        sender NUMERIC NOT NULL REFERENCES Users(username),
-        receiver NUMERIC NOT NULL REFERENCES Users(username)
-    );
+
 
     DROP TABLE IF EXISTS ShoppingCarts;
     CREATE TABLE ShoppingCarts (
@@ -93,4 +86,23 @@
         photo_id INTEGER PRIMARY KEY,
         photo_url TEXT NOT NULL,
         item_id INTEGER NOT NULL REFERENCES Item(ItemID) ON DELETE CASCADE
+    );
+
+    DROP TABLE IF EXISTS chats;
+    CREATE TABLE chats (
+    chat_id INTEGER PRIMARY KEY,
+    seller INTEGER NOT NULL REFERENCES Users(username) ON DELETE CASCADE,
+    buyer INTEGER NOT NULL REFERENCES Users(username) ON DELETE CASCADE,
+    item_id INTEGER NOT NULL REFERENCES Item(ItemID) ON DELETE CASCADE
+    );
+
+    DROP TABLE IF EXISTS messages;
+    CREATE TABLE messages (
+    message_id INTEGER NOT NULL PRIMARY KEY,
+    chat_id INTEGER NOT NULL REFERENCES chats(chat_id) ON DELETE CASCADE,
+    sender_id INTEGER NOT NULL REFERENCES Users(username) ON DELETE CASCADE,
+    message TEXT NOT NULL,
+    timestamp TIMESTAMP,
+    is_price_proposal BOOLEAN NOT NULL DEFAULT false,
+    price_proposal NUMERIC
     );
