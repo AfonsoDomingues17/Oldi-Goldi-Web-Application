@@ -7,7 +7,7 @@ $name = $_POST['item_name'];
 $description = isset($_POST['item_description']) ? $_POST['item_description'] : null;
 $size = $_POST['Sell_Size'];
 $condition = $_POST['Sell_Conditions'];
-$brand = isset($_POST['item_brand']) ? $_POST['item_brand'] : null;
+$brand = $_POST['Sell_Brand'];
 $price = $_POST['item_price'];
 $category =  $_POST['Sell_Categories'];
 $photos_string = $_POST['img_URL'];
@@ -18,7 +18,7 @@ $item_id = isset($_POST['item_id']) ? $_POST['item_id'] : null;
 if($item_id != null){
     if($size != 'Nosize')$size_id = getSizeByName($db,$size);
     else $size_id = null;
-    if($brand != null)$brand = getBrandByName($db,$brand);
+    if($brand != "Other")$brand = getBrandByName($db,$brand);
     $condition_id = getConditionByName($db,$condition);
     $category_id = getCategorieByName($db,$category);
     $stmt = $db->prepare("UPDATE Item SET item_name = ?, description = ?, price = ?, size_id = ?, condition_id = ?, category_id = ?, brand_id = ? WHERE ItemID = ?");
@@ -41,14 +41,8 @@ if($size != 'Nosize'){
 else $size_id = null;
 
 
-if($brand != null){
+if($brand != "Other"){
     $brand_id = getBrandByName($db,$brand);
-    if(!$brand_id){
-        $brand_id = getCurrentBrand_id($db) + 1;
-        $stmt = $db->prepare("INSERT INTO Brands (brand_id, brand_name) VALUES (?,?)");
-        $stmt->execute(array($brand_id,$brand));
-    }
-    
 }
 
 $current_id = getCurrentItem_id($db) + 1;

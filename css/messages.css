@@ -1,45 +1,4 @@
-#message_page {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    height: 100vh;
-    gap: 20px;
-}
 
-#chats {
-    border-right: 1px solid #ccc;
-    padding-right: 20px;
-    overflow-y: auto;
-    ul {
-        list-style-type: none;
-        padding: 0  ;
-        cursor: pointer;
-    }
-}
-
-#message_area {
-    margin: 20px;
-    background-color: goldenrod;
-    padding-left: 20px;
-    
-}
-
-#message_area ul {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 20px;
-}
-
-#message_input_container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-#message_box {
-    flex: 1;
-    
-    
-}
 
 #newPrice_PopUp {
     display: none;

@@ -26,13 +26,15 @@ $photos = getPhotos($db,$item_id);
             
             <?php foreach($photos as $photo){ ?>  
                 <div class="img-wrapper">
-                <img src="<?=$photo['photo_url']?>" width="200" height="200" alt="item photo">
-                <i class="fa-solid fa-xmark"></i>
+                <img id="item_photo" data-photo-id="<?= $photo['photo_id'] ?>" src="<?=$photo['photo_url']?>" width="200" height="200" alt="item photo">
+                <span id="delete_image" data-item-id="<?= $item_id ?>"><i class="fa-solid fa-xmark"></i></span>
+                
                 </div>
             <?php } ?>
         </section>
         <label><input type="file" name="photo" id="item_img" accept="image/png,image/jpeg" multiple></label><br>
         <input type="hidden" id="item_hidden_input" name="img_URL" value="" >
+        <input type="hidden" id="remove_img_URL" name="ImageRM" value="">
         <input type="hidden" id="id_user_item" name="item_id" value="<?=$item_id?>">
         Item Name:<label><input type="text" name="item_name" value="<?=$item['item_name'] ?>" required></label><br>
         Description:<label><textarea name="item_description"><?=$item['description'] ?></textarea></label><br>
@@ -50,7 +52,18 @@ $photos = getPhotos($db,$item_id);
             <?php } ?>
         </select><br>
 
-        Brand:<label><input type="text" name="item_brand" value="<?=$brand['brand_name'] ?>"></label><br>
+        Brand:
+        <select name="Sell_Brand" >
+        <option value="Other" selected>Other</option>
+            <?php $brands = getAllBrands($db);
+            foreach($brands as $brand) {
+                if($brand['brand_id'] == $item['brand_id']){?>
+                    <option value="<?=$brand['brand_name'] ?>" selected><?=$brand['brand_name'] ?></option>
+                <?php } else {?>
+                    <option value="<?=$brand['brand_name'] ?>"><?=$brand['brand_name'] ?></option>
+                    <?php } ?>
+            <?php } ?>
+        </select><br>
 
         Condition:
         <select name="Sell_Conditions" required>

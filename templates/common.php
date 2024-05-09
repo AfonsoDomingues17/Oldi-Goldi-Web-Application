@@ -51,7 +51,7 @@ function output_header($db){ ?>
             <?php if(isset($_SESSION['username'])) { ?>
             <div class="icon-links">
                 <a href=""><i class="fa-solid fa-cart-plus"></i></a>
-                <a href="messages.php"><i class="fa-solid fa-message"></i></a>
+                <a href="chats.php"><i class="fa-solid fa-message"></i></a>
                 <a href="wish_list.php"><i class="fa-solid fa-heart"></i></a>
             </div>
             <?php } ?>

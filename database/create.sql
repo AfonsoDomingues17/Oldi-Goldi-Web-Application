@@ -106,3 +106,13 @@
     is_price_proposal BOOLEAN NOT NULL DEFAULT false,
     price_proposal NUMERIC
     );
+
+    DROP TABLE IF EXISTS UserPrices;
+    CREATE TABLE UserPrices (
+    username INTEGER NOT NULL,
+    ItemID INTEGER NOT NULL,
+    proposed_price REAL NOT NULL,
+    PRIMARY KEY(username, ItemID),
+    FOREIGN KEY(username) REFERENCES Users(username),
+    FOREIGN KEY(ItemID) REFERENCES Items(ItemID)
+    );

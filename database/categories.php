@@ -63,11 +63,13 @@ require_once('is_on_whishlist.php');
         return $size;
     }
     function getPhotos($db,$item_id){
-        $stmt = $db->prepare('SELECT photo_url FROM Photos WHERE item_id = ?');
+        $stmt = $db->prepare('SELECT * FROM Photos WHERE item_id = ?');
         $stmt->execute(array($item_id));
         $photos = $stmt->fetchAll();
         return $photos;
     }
+
+    
 
     function getItem($db, $item_id) {
         $stmt = $db->prepare("SELECT * FROM Item WHERE ItemID = ?");
@@ -234,6 +236,24 @@ require_once('is_on_whishlist.php');
         $stmt = $db->prepare("SELECT * FROM messages WHERE message_id = ?");
         $stmt->execute([$message_id]);
         return $stmt->fetch();
+    }
+
+    function getNewPrice($db,$username,$item_id){
+        $stmt = $db->prepare("SELECT MIN(proposed_price) FROM UserPrices WHERE username = ? and ItemID = ?");
+        $stmt->execute(array($username,$item_id));
+        return $stmt->fetchColumn();
+    }
+
+    function displayPhotosByItem($photos,$item_id){
+
+        foreach($photos as $photo){ ?>  
+            <div class="img-wrapper">
+            <img id="item_photo" src="<?=$photo['photo_url']?>" width="200" height="200" alt="item photo">
+            <span id="delete_image" data-item-id="<?= $item_id ?>"><i class="fa-solid fa-xmark"></i></span>
+            
+            </div>
+        <?php } 
+
     }
    
 ?>

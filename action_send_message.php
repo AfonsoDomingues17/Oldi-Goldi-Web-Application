@@ -9,5 +9,8 @@ $chat_id = $_GET['chat_id'];
 
 addMessage($db, $chat_id, $_SESSION['username'], $message);
 
-$messages = getAllMessages($db,$chat_id);
-echo displayMessages($messages,$db);
+$name = getUser($db,$_SESSION['username']);
+
+echo '<li>' . $name['name'] . ': ' . $message . '</li>';
+
+?>

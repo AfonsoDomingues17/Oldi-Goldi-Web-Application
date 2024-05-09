@@ -64,9 +64,38 @@ function display_item($db, $item_id) {
                     
                     </section>
                 </section>
+            <?php } else { ?>
+                
+            <button id="MBTn">Send a Message</button>
+            <button id="PAPBTn">Propose another Price</button>
             <?php } ?>
-                <a href="messages.php?item_id=<?= $item['ItemID'] ?>&seller=<?= $item['seller']?>">Send Message</a>
-                <button>Propose another Price</button>
+            <section id="Message_PopUp">
+            <section id="Message_PopUpContent">
+            <span id="close" class="close">&times;</span>
+            <h2>New Message About <?= $item['name']?></h2>
+            <form action="action_add_new_chat.php" method="post">
+                <input type="hidden" name="item_id" value="<?= $item['ItemID'] ?>">
+                <input type="hidden" name="user" value="<?= $item['seller'] ?>">
+            <label>Message:<input type="Text" id="new_message" name="new_message"></label>
+            <button type="submit" >Send Message</button>
+            </form>
+            </section>
+            </section>
+
+            <section id="newPriceI_PopUp">
+            <section id="NPI_PopUpContent">
+            <span id="close2" class="close">&times;</span>
+            <h2>Propose New Price</h2>
+            <form action="action_send_new_price.php" method="post">
+            <input type="hidden" name="item_id" value="<?= $item['ItemID'] ?>">
+            <input type="hidden" name="user" value="<?= $item['seller'] ?>">
+            <label>New Price:<input type="number" id="new_price" name="new_price"></label>
+<button type="submit" >Make Proposal</button>
+</form>
+</section>
+</section>
+
+                
             <?php 
             echo '</div>';
         echo '</article>';
