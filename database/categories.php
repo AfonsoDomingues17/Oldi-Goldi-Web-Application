@@ -255,5 +255,18 @@ require_once('is_on_whishlist.php');
         <?php } 
 
     }
+
+    function getCards($db,$username){
+        $stmt = $db->prepare("SELECT * FROM Cards WHERE username = ?");
+        $stmt->execute(array($username));
+        return $stmt->fetchAll();
+    }
+
+    function addNewCard($db,$cardNumber,$cardName,$cardExpDate,$cardCVV){
+        $stmt = $db->prepare("INSERT INTO Cards (card_number,card_name,username,expiration_date,cvv) VALUES (?,?,?,?,?)");
+        $stmt->execute(array($cardNumber,$cardName,$_SESSION['username'],$cardExpDate,$cardCVV));
+    }
+
+    
    
 ?>

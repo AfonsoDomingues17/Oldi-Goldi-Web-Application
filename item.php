@@ -68,6 +68,7 @@ function display_item($db, $item_id) {
                 
             <button id="MBTn">Send a Message</button>
             <button id="PAPBTn">Propose another Price</button>
+            <a href="Checkout.php?item_id=<?= $item['ItemID'] ?>">BUY NOW</a>
             <?php } ?>
             <section id="Message_PopUp">
             <section id="Message_PopUpContent">

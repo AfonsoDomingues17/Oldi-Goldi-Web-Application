@@ -116,3 +116,13 @@
     FOREIGN KEY(username) REFERENCES Users(username),
     FOREIGN KEY(ItemID) REFERENCES Items(ItemID)
     );
+
+    DROP TABLE IF EXISTS Cards;
+    CREATE TABLE Cards (
+    card_id INTEGER PRIMARY KEY,
+    card_number TEXT NOT NULL,
+    card_name TEXT NOT NULL,
+    username TEXT NOT NULL REFERENCES Users(username) ON DELETE CASCADE,
+    expiration_date TEXT NOT NULL,
+    cvv TEXT NOT NULL
+    );

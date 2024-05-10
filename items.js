@@ -136,38 +136,7 @@ function updateItems() {
         });
         console.log('finished');
 }
-/*
-document.addEventListener('DOMContentLoaded', (event) => {
-    const selectedCategories = JSON.parse(localStorage.getItem('selectedCategories')) || [];
-    const selectedSizes = JSON.parse(localStorage.getItem('selectedSizes')) || [];
-    const selectedBrands = JSON.parse(localStorage.getItem('selectedBrands')) || [];
-    const selectedConditions = JSON.parse(localStorage.getItem('selectedConditions')) || [];
-    categoryCheckboxes.forEach(checkbox => {
-        if (selectedCategories.includes(checkbox.dataset.categoryId)) {
-            checkbox.checked = true;
-        }
-    });
-    sizeCheckboxes.forEach(checkbox => {
-        if (selectedSizes.includes(checkbox.dataset.sizeId)) {
-            checkbox.checked = true;
-        }
-    });
-    brandCheckboxes.forEach(checkbox => {
-        if (selectedBrands.includes(checkbox.dataset.brandId)) {
-            checkbox.checked = true;
-        }
-    });
-    conditionCheckboxes.forEach(checkbox => {
-        if (selectedConditions.includes(checkbox.dataset.conditionId)) {
-            checkbox.checked = true;
-        }
-    });
-    minPriceInput.value = localStorage.getItem('minPrice') || '';
-    maxPriceInput.value = localStorage.getItem('maxPrice') || '';
 
-    updateItems();
-});
-*/
 
 
 const remove_search = document.getElementById('remove-search-term');
