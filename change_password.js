@@ -6,17 +6,26 @@ const close1 = document.getElementById('close');
 const submitBtn = document.getElementById('ConfirmChangesBtn');
 
 
-
+if(button){
 button.addEventListener('click', function (){
     PopUP.style.display = "block";
     
 
 });
 
-close1.addEventListener('click',function(){
-PopUP.style.display = "none";
+window.onclick = function(event) {
+    if (event.target == PopUP) {
+      PopUP.style.display = "none";
+    }
+  }
 
-});
+  if(close1){
+    close1.addEventListener('click',function(){
+    PopUP.style.display = "none";
+    
+    });
+    }
+}
 
 
 window.onclick = function(event) {
@@ -27,6 +36,7 @@ window.onclick = function(event) {
   
 const error = document.getElementById('message_error');
 
+if(submitBtn){
 submitBtn.addEventListener('click',function(event){
     event.preventDefault();
     const form = document.getElementById('passwordForm');
@@ -49,3 +59,4 @@ submitBtn.addEventListener('click',function(event){
     })
 });
 
+}

@@ -52,7 +52,7 @@ if($search_term){
 }
 
 if ($conditions) {
-    $sql = "SELECT * FROM Item WHERE " . implode(' AND ', $conditions);
+    $sql = "SELECT * FROM Item WHERE " . implode(' AND ', $conditions) . "AND is_sold = 0";
     $stmt = $db->prepare($sql);
     $stmt->execute($params);
     $items = $stmt->fetchAll();

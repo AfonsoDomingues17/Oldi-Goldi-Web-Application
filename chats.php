@@ -21,6 +21,9 @@ $chats = getAllChats($db,$_SESSION['username']);
 
     <aside id="chats">
         <h2>Chats</h2>
+        <?php if(count($chats) == 0){ ?>
+            <p>You have no chats</p>
+        <?php } ?>
         <ul id="chats">
         <?php foreach($chats as $chat){
             $item3 = getItem($db,$chat['item_id']);

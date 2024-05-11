@@ -1,11 +1,13 @@
 <?php
 require_once('database/connection.php');
+require_once('database/users.php');
 require_once('templates/common.php');
 require_once('database/categories.php');
 require_once('templates/display_categories.php');
 
 $db = getDatabaseConnection();
 $categories = getAllCategories($db);
+
 
 if (isset($_GET['item_id'])) {
     $item_id = $_GET['item_id'];
@@ -24,6 +26,7 @@ function display_item($db, $item_id) {
     $brand = getBrand($db, $item['brand_id']);
     $size = getSize($db, $item['size_id']);
     $condition = getCondition($db, $item['condition_id']);
+    $permissions = getUserPermissions($db, $_SESSION['username']);
 
     echo '<section class="product">';
         echo '<article class="product-image">';
@@ -50,7 +53,25 @@ function display_item($db, $item_id) {
             echo '<div class="product-actions">';
                 echo '<button class="btn btn-primary">Add to Cart</button>';
                 echo '<button class="btn btn-secondary"><i class="fas fa-heart"></i> Favorite</button>';
-                if($item['seller'] == $_SESSION['username']){?>
+                if($permissions){ ?>
+                    <a href="sell.php?item_id=<?= $item['ItemID'] ?>">Edit Item</a>
+                <p id="delete_item">Delete Item</p>
+                <section id="Pop_Up_delete">
+                    <section class="Pop_Up-content">
+                        <p>Are you sure you want to delete this item?</p>
+                        <form action="action_delete_item.php" method="get">
+                            <input type="hidden" name="item_id" value="<?= $item_id ?>">
+                            <button id="confirmBtn" type="submit">Confirm</button>
+                            <button id="cancelBtn">Cancel</button>
+                        </form>
+                    
+                    </section>
+                </section>
+                <button id="MBTn">Send a Message</button>
+            <button id="PAPBTn">Propose another Price</button>
+            <a href="Checkout.php?item_id=<?= $item['ItemID'] ?>">BUY NOW</a>
+              <?php }
+                else if($item['seller'] == $_SESSION['username']){?>
                 <a href="sell.php?item_id=<?= $item['ItemID'] ?>">Edit Item</a>
                 <p id="delete_item">Delete Item</p>
                 <section id="Pop_Up_delete">
@@ -64,7 +85,7 @@ function display_item($db, $item_id) {
                     
                     </section>
                 </section>
-            <?php } else { ?>
+            <?php } else  { ?>
                 
             <button id="MBTn">Send a Message</button>
             <button id="PAPBTn">Propose another Price</button>

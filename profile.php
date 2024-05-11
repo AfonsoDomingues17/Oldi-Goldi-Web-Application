@@ -1,6 +1,7 @@
 <?php 
 require_once('database/connection.php');
 require_once('database/categories.php');
+require_once('database/users.php');
 require_once('templates/common.php');
 require_once('templates/display_categories.php');
 
@@ -13,6 +14,7 @@ $pageOwner = $_GET['username'];
 if(isset($pageOwner))$user = getUser($db,$pageOwner);
 else $user = getUser($db,$_SESSION['username']);
 
+$permissions = getUserPermissions($db,$_SESSION['username']);
 ?>
 
 <main id = "user_profile">
@@ -30,7 +32,20 @@ else $user = getUser($db,$_SESSION['username']);
         <button id="ConfirmChangesBtn">Confirm Changes</button>
     </form>
     </section>
-
+    </section>
+    <section id="deleteUserPopUp">
+    <section id="DeletePopUpcontent">
+        <span id="closeDeleteUser" class="close">&times;</span>
+        <h2>Delete User</h2>
+        <p>Are you sure you want to delete this user?</p>
+        <form action="action_profile.php" method="post">
+            <input type="hidden" name="user" value="<?= $user['username']?>">
+            <input type="hidden" name="action" value="delete">
+            <button id="confirmDeleteUser">Yes, Delete User</button>
+            <button id="cancelDeleteUser">No, Cancel</button>
+        </form>
+        
+    </section>
     </section>
     <section id="Info">
         <section class="user_profile_picture">
@@ -38,18 +53,28 @@ else $user = getUser($db,$_SESSION['username']);
         </section>
         <section class="user_profile_details">
             <p id="user_name"><?= $user['name']; ?></p>
+            <?php if($user['isAdmin']){ ?>
+                <p id="user_username"><?= $user['username']; ?>(Admin)</p>
+            <?php } else {?>
             <p id="user_username"><?= $user['username']; ?></p>
+            <?php } ?>
             <?php if(isset($user['Cidade']) || isset($user['Country'])){ ?><p><i class="fa-solid fa-location-dot"></i> <?= $user['Cidade']?>, <?= $user['Country']?></p> <?php } ?>
             <p><?= $user['description']?></p>
-            <?php if (isset($pageOwner)){?>
-                <a href="">Message <?= $user['name']; ?></a>
-            <?php } else {?>
+            <?php if (isset($pageOwner) && !$user['isAdmin'] && $permissions){?>
+                <form action="action_profile.php" method="post">
+                    <input type="hidden" name="user" value="<?= $user['username'] ?>">
+                    <input type="hidden" name="action" value="elevate">
+                    <button id="ElevateUser">ElevateUserToAdmin</button>
+                </form>
+                <button id="DeleteUSer">Delete User</button>
+            <?php } else if(!isset($pageOwner)){?>
                 <a href="edit_profile.php?username=<?=$_SESSION['username']?>" id="EditProfileButton">Edit your profile</a>
                 <button id="changePasswordBtn">Change Password</button>
-            <?php }?>
+            <?php }
+            ?>
         </section>
     </section>
-    <?php if(!isset($pageOwner)){?>
+    <?php if(!isset($pageOwner) || $permissions){?>
     <section id="Info_StartSelling">
         <section id="Personal_Info">
                 <h3>Contacts</h3>

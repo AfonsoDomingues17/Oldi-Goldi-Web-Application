@@ -20,7 +20,7 @@ $size = getSize($db, $item['size_id']);
 $condition = getCondition($db, $item['condition_id']);
 $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
 ?>
-
+<main>
     <section id="checkout_page">
     <h2>Checkout</h2>
     <section id="Item_Info">
@@ -61,15 +61,17 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
         </form>
         <?php } ?>
         </section>
-        <section id="Payment Method">
+        
+        
+    
+
+
+<form action="action_checkout.php" method="post">
+<section id="Payment Method">
         <h3>Payment Method</h3>
         <input type="radio" id="credit" name="payment" value="credit" required>
         <label for="credit">Credit card</label><br>
         </section>
-        <button id="payBtn">Pay </button>
-    
-</section>
-
 <section id="creditCardInfo">
     <section id="myCards">
         <h2>My Cards</h2>
@@ -77,8 +79,7 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
         if($cards){?>
         <section id="cards">
         <?php foreach($cards as $card){ ?>
-    <input type="checkbox" id="<?= $card['card_id'] ?>" name="card" value="<?= $card['card_id'] ?>">
-    <label for="card<?= $card['id'] ?>"><br>
+    <label ><input type="radio" id="<?= $card['card_id'] ?>" name="card" value="<?= $card['card_id'] ?>" required>
         <?php if($card['card_number'][0] == '2' || $card['card_number'][0] == '5'){ ?>
             <span>Mastercard</span><br>
         <?php } else if($card['card_number'][0] == '4'){ ?>
@@ -89,16 +90,21 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
         <span>**** **** **** <?= substr($card['card_number'], -4); ?></span><br>
         <span><?= $card['expiration_date'] ?></span><br>
         <span><?= $card['card_name'] ?></span><br>
-    </label>
+        </label>
     <?php } ?>
         </section>
         <?php } else { ?>
-            <p>You have no cards saved</p>
+            <p id="noCards">You have no cards saved</p>
         <?php } ?>
     </section>
     <button id="addCardsBtn"><i class="fa-solid fa-plus"></i></button>
 
 </section>
+
+<input type="hidden" name="item_sold_id" value="<?= $item_id ?>">
+<input type="hidden" name="seller" value="<?= $item['seller'] ?>">
+<button id="PayBtn">Pay</button>
+</form>
 
 <section id="Card_PopUp">
     <section id="Card_PopUpContent">
@@ -118,6 +124,7 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
             <input type="text" id="cardCVV" name="cardCVV" maxlength="4" required><br>
             <button id="PopUp_Card">Add Card</button>
         </form>
+        <p id="Errormesage"></p>
     </section>
         </section>
 
@@ -139,3 +146,6 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
 </form>
 </section>
 </section>
+</section>
+
+</main>

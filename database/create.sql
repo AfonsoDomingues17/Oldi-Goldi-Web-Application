@@ -4,9 +4,9 @@
         username TEXT PRIMARY KEY,
         name TEXT NOT NULL,
         email TEXT NOT NULL,
-        phone_number TEXT NOT NULL,
+        phone_number TEXT,
         password TEXT NOT NULL,
-        photo_url TEXT DEFAULT "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/uni-connect-4nugh7/assets/rpm3muv6rtc6/user_default.jpg",
+        photo_url TEXT DEFAULT 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/uni-connect-4nugh7/assets/rpm3muv6rtc6/user_default.jpg',
         Country TEXT,
         Adress TEXT,
         Zip_code TEXT,
@@ -55,7 +55,8 @@
         category_id NUMERIC NOT NULL REFERENCES Categories(category_id) ON DELETE CASCADE,
         transaction_id NUMERIC REFERENCES Transactions(transaction_id) ON DELETE CASCADE,
         shopping_cart_id NUMERIC REFERENCES ShoppingCarts(shopping_cart_id) ON DELETE CASCADE,
-        brand_id NUMERIC REFERENCES Brands(brand_id) ON DELETE CASCADE
+        brand_id NUMERIC REFERENCES Brands(brand_id) ON DELETE CASCADE,
+        is_sold BOOLEAN NOT NULL DEFAULT false
     );
 
     DROP TABLE IF EXISTS Transactions;
@@ -63,8 +64,10 @@
         transaction_id INTEGER PRIMARY KEY,
         buyer INTEGER NOT NULL REFERENCES Users(username) ON DELETE CASCADE,
         seller INTEGER NOT NULL REFERENCES Users(username) ON DELETE CASCADE,
+        item_id INTEGER NOT NULL REFERENCES Item(ItemID) ON DELETE CASCADE,
         total_value NUMERIC NOT NULL,
-        transaction_date TEXT NOT NULL
+        transaction_date TEXT NOT NULL,
+        card_id INTEGER NOT NULL REFERENCES Cards(card_id) ON DELETE CASCADE
     );
 
 

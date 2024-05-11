@@ -1,19 +1,25 @@
 const deleteBTn = document.getElementById('delete_item');
 console.log(deleteBTn);
+if(deleteBTn){
 deleteBTn.addEventListener('click',function(event){
     event.preventDefault();
  document.getElementById('Pop_Up_delete').style.display = "block";
 
 
 });
-
+}
 const cancelBTn = document.getElementById('cancelBtn');
+if(cancelBTn){
 cancelBTn.addEventListener('click',function(event){
     event.preventDefault();
     document.getElementById('Pop_Up_delete').style.display = "none";
 });
 
-document.getElementById('orderBy').addEventListener('click', function() {
+}
+
+const orderBy = document.getElementById('orderBy');
+if(orderBy){
+orderBy.addEventListener('click', function() {
     const dropdownMenu = document.getElementById('dropdownMenu');
     const icon = document.getElementById('orderBy').querySelector('i');
 
@@ -26,8 +32,11 @@ document.getElementById('orderBy').addEventListener('click', function() {
     }
 });
 
+}
 
-document.getElementById('Show_Filter').addEventListener('click', function() {
+const filter = document.getElementById('filter');
+if(filter){
+filter.addEventListener('click', function() {
     const Aside = document.getElementById('Filters');
     const ItemsSection = document.querySelector('section.items');
     const filtertext = document.getElementById('Show_Filter');
@@ -41,8 +50,10 @@ document.getElementById('Show_Filter').addEventListener('click', function() {
         filtertext.innerHTML = 'Show Filters <i class="fa-solid fa-sliders"></i>';
     }
 });
+}
 
 const summaries = document.querySelectorAll('summary');
+if(summaries){
 summaries.forEach(function(summary) {
     summary.addEventListener('click', function() {
         const icon = summary.querySelector('i');
@@ -53,7 +64,7 @@ summaries.forEach(function(summary) {
         }
     });
 });
-
+}
 const sizeCheckboxes = document.querySelectorAll('section#sizeSection input[type="checkbox"]');
 const brandCheckboxes = document.querySelectorAll('section#brandSection input[type="checkbox"]');
 const conditionCheckboxes = document.querySelectorAll('section#ConditionSection input[type="checkbox"]');
@@ -185,11 +196,12 @@ brandCheckboxes.forEach(function(checkbox) {
         }
     });
 });
-
+if(conditionCheckboxes){
 conditionCheckboxes.forEach(function(checkbox) {
     checkbox.addEventListener('change', updateItems);
 });
-
+}
+if(categoryCheckboxes){
 categoryCheckboxes.forEach(function(checkbox) {
     checkbox.addEventListener('change', function() {
         updateItems();
@@ -203,10 +215,10 @@ categoryCheckboxes.forEach(function(checkbox) {
         }
     });
 });
+}
+if(minPriceInput)searchCheckbox.addEventListener('change',updateItems);
 
-searchCheckbox.addEventListener('change',updateItems);
+if(minPriceInput)minPriceInput.addEventListener('input', updateItems);
 
-minPriceInput.addEventListener('input', updateItems);
-
-maxPriceInput.addEventListener('input', updateItems);
+if(maxPriceInput)maxPriceInput.addEventListener('input', updateItems);
 

@@ -15,9 +15,14 @@ display_categories($categories);
 <main>
 <section id="Wlist">
 <h1>Wish List</h1>
+
 <section id="Garticles">
 <?php 
 $items = getItemsByWhislist($db, $_SESSION['username']);
+if(empty($items)){ ?>
+    <h2>There are no items in your wishlist</h2>";
+    <a href="items.php">Look for some in here</a>
+<?php } else {
 foreach($items as $Witem){ 
     $item = getItem($db,$Witem[0]);
     ?>
@@ -46,7 +51,8 @@ foreach($items as $Witem){
     </section>
 </article>
 
-<?php }?>
+<?php }
+    } ?>
            
             
     </section>

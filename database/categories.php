@@ -30,7 +30,7 @@ require_once('is_on_whishlist.php');
         return $stmt->fetchColumn();
     }
     function getAllItems($db){
-        $stmt = $db->prepare('SELECT * FROM Item');
+        $stmt = $db->prepare('SELECT * FROM Item where is_sold = 0');
         $stmt->execute();
         $items = $stmt->fetchAll();
         return $items;
@@ -72,8 +72,14 @@ require_once('is_on_whishlist.php');
     
 
     function getItem($db, $item_id) {
-        $stmt = $db->prepare("SELECT * FROM Item WHERE ItemID = ?");
+        $stmt = $db->prepare("SELECT * FROM Item WHERE ItemID = ? and is_sold = 0");
         $stmt->execute([$item_id]);
+        return $stmt->fetch();
+    }
+
+    function getSoldItem($db, $item_id) {
+        $stmt = $db->prepare("SELECT * FROM Item WHERE ItemID = ? AND is_sold = 1");
+        $stmt->execute(array($item_id));
         return $stmt->fetch();
     }
     function getCategorie($db, $categorie_id) {
@@ -89,39 +95,39 @@ require_once('is_on_whishlist.php');
     }
     function Popular_categories($db){
 
-        $stmt = $db->prepare("SELECT category_id, count(*) as Item_count FROM Item GROUP BY category_id ORDER BY Item_count DESC LIMIT 2");
+        $stmt = $db->prepare("SELECT category_id, count(*) as Item_count FROM Item where is_sold = 0 GROUP BY category_id ORDER BY Item_count DESC LIMIT 2");
         $stmt->execute();
         return $stmt->fetchAll();
     }
     function get_Items_ByCategory($db, $category_id){
-        $stmt = $db->prepare("SELECT * FROM Item where category_id = ?");
+        $stmt = $db->prepare("SELECT * FROM Item where category_id = ? and is_sold = 0");
         $stmt->execute([$category_id]);
         return $stmt->fetchAll();
     }
 
 
     function get_ItemsByCategoryANDname($db,$name,$categorie_id){
-        $stmt = $db->prepare("SELECT * FROM Item where category_id = ? AND item_name LIKE ?");
+        $stmt = $db->prepare("SELECT * FROM Item where category_id = ? AND is_sold = 0 AND item_name LIKE ?");
         $stmt->execute(array($categorie_id,"%$name%"));
         return $stmt->fetchAll();
     }
 
 
     function getItemsByUser($db, $username){
-        $stmt = $db->prepare('SELECT * FROM Item WHERE username = ?');
+        $stmt = $db->prepare('SELECT * FROM Item WHERE is_sold = 0 AND username = ?');
         $stmt->execute(array($username));
         return $stmt->fetchAll();
 
     }
     function getItemsBySizes($db, $size_ids){
         $size_ids_str = implode(',', $size_ids); //this joins the element of the array with a comma
-        $stmt = $db->prepare("SELECT * FROM Item WHERE size_id IN ($size_ids_str)");
+        $stmt = $db->prepare("SELECT * FROM Item WHERE is_sold = 0 AND size_id IN ($size_ids_str)");
         $stmt->execute();
         $items = $stmt->fetchAll();
         return $items;
     }
     function getItemsByBrand($db, $brand_id){
-        $stmt = $db->prepare("SELECT * FROM Item WHERE brand_id = ?");
+        $stmt = $db->prepare("SELECT * FROM Item WHERE is_sold = 0 AND brand_id = ?");
         $stmt->execute(array($brand_id));
         $items = $stmt->fetchAll();
         return $items;
@@ -136,7 +142,7 @@ require_once('is_on_whishlist.php');
     }
 
     function getItemsBySeller($db, $seller){
-        $stmt = $db->prepare('SELECT * FROM Item WHERE seller = ?');
+        $stmt = $db->prepare('SELECT * FROM Item WHERE is_sold = 0 AND seller = ?');
         $stmt->execute(array($seller));
         $items = $stmt->fetchAll();
         return $items;
@@ -197,13 +203,13 @@ require_once('is_on_whishlist.php');
     }
 
     function get_Items_ByName($db,$name){
-        $stmt = $db->prepare("SELECT * from Item where item_name like ?");
+        $stmt = $db->prepare("SELECT * from Item where is_sold = 0 AND item_name like ?");
         $stmt->execute(array("%$name%"));
         return $stmt->fetchAll();
     }
     
     function getCurrentItem_id($db){
-        $stmt = $db->prepare("SELECT MAX(ItemID) FROM Item");
+        $stmt = $db->prepare("SELECT MAX(ItemID) FROM Item where is_sold = 0");
         $stmt->execute();
         return $stmt->fetchColumn();
     }
@@ -267,6 +273,27 @@ require_once('is_on_whishlist.php');
         $stmt->execute(array($cardNumber,$cardName,$_SESSION['username'],$cardExpDate,$cardCVV));
     }
 
-    
+    function getAllUsers($db){
+        $stmt = $db->prepare("SELECT * FROM Users");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    function getAllTransactions($db){
+        $stmt = $db->prepare("SELECT * FROM Transactions");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
    
+    function NumberItemsSold($db,$username){
+        $stmt = $db->prepare("SELECT count(*) FROM Transactions WHERE seller = ?");
+        $stmt->execute(array($username));
+        return $stmt->fetchColumn();
+    }
+
+    function NumberItemForSale($db,$username){
+        $stmt = $db->prepare("SELECT count(*) FROM Item WHERE seller = ? AND is_sold = 0");
+        $stmt->execute(array($username));
+        return $stmt->fetchColumn();
+    }
 ?>

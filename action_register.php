@@ -2,7 +2,7 @@
 session_start();
 require_once('database/connection.php');                 // database connection
 require_once('database/users.php');
-if(newUser($_POST['username'],$_POST['name'],$_POST['email'],$_POST['phonenumber'],$_POST['password'],$_POST['cpassword']) === true){
+if(newUser($_POST['username'],$_POST['name'],$_POST['email'],$_POST['password'],$_POST['cpassword']) === true){
     header('Location: login.php');
     exit;
 }

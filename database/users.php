@@ -10,11 +10,11 @@ function userExists($username, $password) : bool{
     else return false;
 }
 
-function newUser($username, $name, $email, $phone_number, $password, $C_password) : bool{
+function newUser($username, $name, $email, $password, $C_password) : bool{
     $password = sha1($password);
     $db = getDatabaseConnection();
-    $stmt = $db->prepare("INSERT OR IGNORE INTO Users VALUES ('$username','$name','$email','$phone_number','$password',null,null,null,null,null,null,false,false)");
-    $stmt->execute();
+    $stmt = $db->prepare("INSERT OR IGNORE INTO Users (username,name,email,password) VALUES (?,?,?,?)");
+    $stmt->execute(array($username,$name,$email,$password));
     return true;
 }
 
@@ -52,6 +52,18 @@ function verify_IfPasswordMatch($db,$username,$password){
     if($result == $password) return true;
     else return false;
 
+}
+
+function ElevateUserToAdmin($db,$username){
+    $stmt = $db->prepare("UPDATE Users SET isAdmin = 1 WHERE username = ?");
+    $stmt->execute(array($username));
+}
+
+function getUserPermissions($db,$username){
+    $stmt = $db->prepare("SELECT isAdmin from Users where username = ?");
+    $stmt->execute(array($username));
+    $result = $stmt->fetchColumn();
+    return $result;
 }
 
 

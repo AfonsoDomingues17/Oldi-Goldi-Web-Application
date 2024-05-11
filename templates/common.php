@@ -1,6 +1,7 @@
 <?php
 require_once('database/connection.php');
 require_once('database/categories.php');
+require_once('database/users.php');
 session_start();
 function output_header($db){ ?>
     <!DOCTYPE html>
@@ -25,6 +26,7 @@ function output_header($db){ ?>
     <script src="search.js" defer></script>
     <script src="messages.js" defer></script>
     <script src="checkout.js" defer></script>
+    <script src="admin.js" defer></script>
     <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
 
@@ -52,13 +54,16 @@ function output_header($db){ ?>
         <div class="navbar-right">
             <?php if(isset($_SESSION['username'])) { ?>
             <div class="icon-links">
-                <a href=""><i class="fa-solid fa-cart-plus"></i></a>
                 <a href="chats.php"><i class="fa-solid fa-message"></i></a>
                 <a href="wish_list.php"><i class="fa-solid fa-heart"></i></a>
             </div>
             <?php } ?>
-            <?php if(isset($_SESSION['username'])) {?>
+            <?php if(isset($_SESSION['username'])) {
+            $permission = getUserPermissions($db,$_SESSION['username']);?>
             <section id="loged_in">
+            <?php if($permission){ ?>
+            <a href="AdminPage.php" id="admin">Admin Page</a>
+            <?php } ?>
             <a href="profile.php" id="profile"><i class="fa-solid fa-user"></i></a>
             <a href="sell.php" id="Sell_now">Sell Now</a>
             <a href="action_logout.php" id="logout">Logout</a>
