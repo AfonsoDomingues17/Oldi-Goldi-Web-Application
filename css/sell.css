@@ -4,6 +4,7 @@
     background-color: white;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 /* Header styles */
@@ -17,4 +18,18 @@
     margin-top: 20px;
     display: block;
     width: 100%;
+}
+
+#item_img{
+    display: none;
+}
+
+.choose_item_images{
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #C0C0C0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
 }
