@@ -34,9 +34,11 @@ orderBy.addEventListener('click', function() {
 
 }
 
-const filter = document.getElementById('filter');
+const filter = document.getElementById('Show_Filter');
+console.log(filter);
 if(filter){
 filter.addEventListener('click', function() {
+    console.log('filter');
     const Aside = document.getElementById('Filters');
     const ItemsSection = document.querySelector('section.items');
     const filtertext = document.getElementById('Show_Filter');

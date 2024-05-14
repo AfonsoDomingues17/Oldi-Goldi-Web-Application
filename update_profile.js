@@ -54,10 +54,11 @@ if(deleteImages){
 
 deleteImages.forEach(function(deleteImage){
     deleteImage.addEventListener('click', function(){
+        console.log('clicked');
         const imageId = document.getElementById('item_photo').getAttribute('data-photo-id');
-        console.log(imageId);
+       
         const itemId = deleteImage.getAttribute('data-item-id');
-        console.log(itemId);
+     
         fetch('action_delete_image.php?photo_id=' + imageId + '&item_id=' + encodeURIComponent(itemId))
         .then(response => response.text())
         .then(html => {
