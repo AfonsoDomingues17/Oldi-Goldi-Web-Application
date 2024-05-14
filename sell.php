@@ -10,11 +10,19 @@ $brands = getAllBrands($db);
 output_header($db);
 display_categories($categories);
 
-$item_id = $_GET['item_id'];
-$item = getItem($db,$item_id);
-$size = getSize($db,$item['size_id']);
-$brand = getBrand($db,$item['brand_id']);
-$photos = getPhotos($db,$item_id);
+$item_id = isset($_GET['item_id']) ? $_GET['item_id'] : null;
+if($item_id != null){
+    $item = getItem($db,$item_id);
+    $size = getSize($db,$item['size_id']);
+    $brand = getBrand($db,$item['brand_id']);
+    $photos = getPhotos($db,$item_id);
+}
+else{
+    $item = null;
+    $size = null;
+    $brand = null;
+    $photos = [];
+    }
 ?>
 
 <main id="SellItem">
@@ -36,8 +44,8 @@ $photos = getPhotos($db,$item_id);
         <input type="hidden" id="remove_img_URL" name="ImageRM" value="">
         <input type="hidden" id="id_user_item" name="item_id" value="<?=$item_id?>">
         <section id = "about_item">
-            Item Name:<label><input type="text" name="item_name" value="<?=$item['item_name'] ?>" required></label><br>
-            Description:<label><textarea name="item_description"><?=$item['description'] ?></textarea></label><br>
+            Item Name:<label><input type="text" name="item_name" value="<?= isset($item['item_name']) ? $item['item_name'] : '' ?>" required></label><br>
+            Description:<label><textarea name="item_description"><?= isset($item['description']) ? $item['description'] : '' ?></textarea></label><br>
         </section>
         <section id = "item_size">
             Size:
@@ -98,9 +106,9 @@ $photos = getPhotos($db,$item_id);
         </section>
         <?php if(isset($item_id)) {
         ?>
-        <button type="submit">Confirm Changes</button>
+        <button type="submit" id = "sellItemButton">Confirm Changes</button>
         <?php } else { ?>
-        <button type="submit">Sell</button>
+        <button type="submit" id = "sellItemButton">Sell</button>
         <?php } ?>
     </form>
 </section>

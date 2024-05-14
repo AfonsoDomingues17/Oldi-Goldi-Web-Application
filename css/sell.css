@@ -1,10 +1,6 @@
 #SellItem {
-    width: 80%;
-    margin: 20px auto;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    width: 60%;
+    margin: auto;
 }
 
 /* Header styles */
@@ -32,4 +28,63 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+}
+
+#item_photos img{
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+section#about_item {
+    margin-top: 10px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+section#about_item label{
+    display: block;
+}
+
+section#about_item input[type='text']{
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+section#about_item textarea{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    resize: none;
+    font-size: 16px;
+    height: 6em;
+}
+
+section#item_size, section#item_brand, section#item_condition, section#item_category, section#item_price    {
+    background-color: white;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#sellItemButton{
+    margin:auto;
+    display:block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+}
+
+@media (max-width: 860px) {
+    section#about_item {
+        margin-top: 0;
+    }
 }

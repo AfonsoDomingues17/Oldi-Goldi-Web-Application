@@ -29,7 +29,6 @@ form select {
 }
 
 form input {
-    max-width: 550px; /* Maximum width */
     height: 2em;
     border: 0px;
     font-size: 16px;

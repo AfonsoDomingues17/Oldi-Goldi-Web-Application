@@ -58,6 +58,8 @@ section#update_profile textarea, section#update_profile input[type="password"] {
 
 section#update_profile textarea {
     resize: none;
+    font-size: 16px;
+    height: 6em;
 }
 
 form#edit_profile button {
