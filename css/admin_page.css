@@ -1,0 +1,59 @@
+#Admin_Page {
+    width: 70%;
+    margin: auto;
+}
+
+#Admin_Page h1 {
+    text-align: center;
+}
+
+section#Insertions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 20px;
+    column-gap: 20px;
+}
+
+section#AddCategory, section#AddBrand, section#AddCondition, section#AddSize {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+section#Insertions h2 {
+    text-align: center;
+}
+
+section#Insertions ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+section#Insertions li {
+    width: 50%;
+    box-sizing: border-box;
+    margin-bottom: 2px;
+}
+
+section#Insertions input[type='text'] {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+button#AS{
+    margin:auto;
+    display:block;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+}
+
+@media (max-width: 860px) {
+    section#Insertions {
+        grid-template-columns: 1fr;
+    }
+}

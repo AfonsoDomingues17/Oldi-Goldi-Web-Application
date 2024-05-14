@@ -14,11 +14,11 @@ $users = getAllUsers($db);
 $transactions = getAllTransactions($db);
 ?>
 
-<main>
+<main id="Admin_Page">
 
 <h1>Admin Page</h1>
 
-    <Section id="Insertions">
+    <section id="Insertions">
         <section id="AddCategory">
             <h2>Add Category</h2>
             <form>
@@ -44,7 +44,7 @@ $transactions = getAllTransactions($db);
             </form>
         </section>
 
-        <section id="AddCondtion">
+        <section id="AddCondition">
             <h2>Add Condition</h2>
             <form>
                 <ul id="ConditionsAdmin">
@@ -69,7 +69,7 @@ $transactions = getAllTransactions($db);
                 <button id="AS">Add Size</button>
             </form>
         </section>
-    </Section>
+    </section>
     <section id="Users">
         <h2>Users</h2>
         <ul>
