@@ -108,19 +108,57 @@ if(confirmBtn){
         
         event.preventDefault();
          
-        fetch("action_add_new_card.php?cardNumber="+document.getElementById('cardNumber').value+"&expDate="+document.getElementById('cardExpiry').value+"&cvv="+document.getElementById('cardCVV').value +"&cardName="+document.getElementById('cardName').value)
+        fetch("action_add_delete_new_card.php?cardNumber="+document.getElementById('cardNumber').value+"&expDate="+document.getElementById('cardExpiry').value+"&cvv="+document.getElementById('cardCVV').value +"&cardName="+document.getElementById('cardName').value)
         .then(response => response.text())
         .then(date => {
             console
-            document.getElementById('myCards').innerHTML += date;
+            document.getElementById('cards').innerHTML += date;
             document.getElementById('Card_PopUp').style.display = "none";
-            document.getElementById('noCards').innerHTML = "";
             document.getElementById("cardName").value = "";
             document.getElementById("cardNumber").value = "";
             document.getElementById("cardExpiry").value = "";
             document.getElementById("cardCVV").value = "";
+            const deleteCard = document.querySelectorAll('span.delete_card');
+if(deleteCard){
+    deleteCard.forEach(function(deleteCard){
+        deleteCard.addEventListener('click', function(){
+            const cardId = deleteCard.getAttribute('data-card-id');
+            fetch('action_add_delete_new_card.php?card_id=' + encodeURIComponent(cardId))
+            .then(response => response.text())
+            .then(html => {
+                if(html == "Carddeleted"){
+                  
+                    let cardElement = document.querySelector('#input_' + cardId);
+                    console.log(document.getElementById('cards').childNodes);
+                    document.getElementById('cards').removeChild(cardElement);
+                }
+            });
+        });
+    });
+}
         }
 
         )
     });
 }
+/*
+const deleteCard = document.querySelectorAll('span.delete_card');
+if(deleteCard){
+    deleteCard.forEach(function(deleteCard){
+        deleteCard.addEventListener('click', function(){
+            const cardId = deleteCard.getAttribute('data-card-id');
+            fetch('action_add_delete_new_card.php?card_id=' + encodeURIComponent(cardId))
+            .then(response => response.text())
+            .then(html => {
+                if(html == "Carddeleted"){
+                  
+                    let cardElement = document.querySelector('#input_' + cardId);
+                    console.log(document.getElementById('cards').childNodes);
+                    document.getElementById('cards').removeChild(cardElement.parentElement);
+                }
+            });
+        });
+    });
+}
+
+*/

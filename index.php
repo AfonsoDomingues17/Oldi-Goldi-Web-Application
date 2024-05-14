@@ -90,7 +90,8 @@ display_categories($categories);
             <section id="Garticles">
             <?php $p_items = get_Popular_items($db);
             foreach($p_items as $item){
-            $item = getItem($db,$item['item_id'])?>
+            $item = getItem($db,$item['item_id']);
+            if($item) {?>
             <article>
             <?php $photos = getPhotos($db, $item['ItemID']); 
             ?>
@@ -117,6 +118,7 @@ display_categories($categories);
                 <?php } ?>
                 </section>
             </article>
+            <?php } ?>
             <?php } ?>
             </section>
         </section>

@@ -25,7 +25,7 @@ if(empty($items)){ ?>
 <?php } else {
 foreach($items as $Witem){ 
     $item = getItem($db,$Witem[0]);
-    ?>
+    if($item){?>
 <article>
 <?php $photos = getPhotos($db, $item['ItemID']);
 ?>
@@ -50,7 +50,7 @@ foreach($items as $Witem){
                 <?php } ?>
     </section>
 </article>
-
+<?php }?>
 <?php }
     } ?>
            

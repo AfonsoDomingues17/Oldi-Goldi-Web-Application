@@ -26,19 +26,44 @@ if(FI2){
         const reader = new FileReader();
         reader.onload = function(event) { //called after the file is completely read
             const img_wrapper = document.createElement('div');
+            const Span = document.createElement('span');
+            Span.className = 'delete_image';
+            Span.id = 'delete_image_preview';
             const i = document.createElement('i');
             i.className = 'fa-solid fa-xmark';
+            i.id = 'delete_preview2';
+            i.setAttribute('name', 'delete_preview');
             img_wrapper.id = 'img_wrapper';
             const img = document.createElement('img');
             img.src = event.target.result;
             img.width = 200;
             img.height = 200;
             document.getElementById('img_container').appendChild(img_wrapper);
-            document.getElementById('img_wrapper').appendChild(img);
-            document.getElementById('img_wrapper').appendChild(i);
+            img_wrapper.appendChild(img);
+            img_wrapper.appendChild(Span);
+            Span.appendChild(i);
             document.getElementById('item_hidden_input').value += event.target.result + '&';
             console.log(document.getElementById('item_hidden_input').value);
             console.log(document.getElementById('id_user_item'));
+
+            const deletePreview = document.querySelectorAll('.delete_image');
+console.log(deletePreview);
+if(deletePreview){
+    deletePreview.forEach(function(deletePreview){
+        deletePreview.addEventListener('click', function(event){
+            console.log('clicked');
+            const img = event.target.parentElement.previousElementSibling.src;
+            console.log(img);
+            event.target.parentElement.parentElement.remove();    
+            let itemValue = document.getElementById('item_hidden_input').value;
+            itemValue = itemValue.replace(img + '&', '');
+            document.getElementById('item_hidden_input').value = itemValue;
+    
+            // Clear the file input value
+            document.getElementById('item_img').value = '';
+        });
+    });
+}
         };
     
         if (photo) {
@@ -48,6 +73,10 @@ if(FI2){
     });
 }
 
+
+
+
+
 const deleteImages = document.querySelectorAll('span#delete_image');
 console.log(deleteImages);
 if(deleteImages){
@@ -56,14 +85,18 @@ deleteImages.forEach(function(deleteImage){
     deleteImage.addEventListener('click', function(){
         console.log('clicked');
         const imageId = document.getElementById('item_photo').getAttribute('data-photo-id');
-       
+        console.log(imageId);
         const itemId = deleteImage.getAttribute('data-item-id');
      
         fetch('action_delete_image.php?photo_id=' + imageId + '&item_id=' + encodeURIComponent(itemId))
         .then(response => response.text())
         .then(html => {
-            document.getElementById('img_container').innerHTML = html;
+            if(html == "ok"){
+            document.getElementById('img_container').removeChild(document.querySelector('div#photo_' + imageId));
+            }
+           
         });
+
     });
 });
 }

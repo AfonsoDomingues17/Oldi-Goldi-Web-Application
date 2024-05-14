@@ -24,12 +24,11 @@ form select {
     font-size: 16px;
     color: #333;
     background-color: #f8f8f8;
-    border-right: solid 1px black;
+    border-right: solid 1px black;  
     margin-left: 1em;
 }
 
 form input {
-    max-width: 550px; /* Maximum width */
     height: 2em;
     border: 0px;
     font-size: 16px;

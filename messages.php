@@ -14,7 +14,9 @@ display_categories($categories);
 $chat_id = $_GET['chat_id'];
 $chat = getChat($db,$chat_id);
 $item = getItem($db,$chat['item_id']);
-
+if(!$item){
+    $item = getSoldItem($db,$chat['item_id']);
+}
 
 $photos = getPhotos($db,$item['ItemID']);
 $brand = getBrand($db, $item['brand_id']);

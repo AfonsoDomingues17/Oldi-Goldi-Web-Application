@@ -8,7 +8,6 @@ $item_id = $_GET['item_id'];
 $stmt = $db->prepare("DELETE FROM Photos WHERE photo_id = ?");
 $stmt->execute(array($photo_id));
 
-$photos = getPhotos($db,$item_id);
 
-echo displayPhotosByItem($photos,$item_id);
+echo "ok";
 ?>

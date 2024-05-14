@@ -100,10 +100,15 @@ $permissions = getUserPermissions($db,$_SESSION['username']);
     <?php $user_items = getItemsBySeller($db, $user['username']);
     if(count($user_items) < 1){ ?>
     <section id="ProfileStartSelling">
+         <?php   if(!isset($pageOwner)) {?>
         <h3>List items to start selling</h3>
         <a href="sell.php" id="SellNowButton">Sell Now</a>
+        <?php } else {?>
+            <h3>This user has no items for sale</h3>
+        <?php }?>
     </section>
     </section>
+    
    <?php } 
     foreach($user_items as $item) {?>
             <section id="Garticles">

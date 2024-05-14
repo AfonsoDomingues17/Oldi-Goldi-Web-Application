@@ -79,7 +79,7 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
         if($cards){?>
         <section id="cards">
         <?php foreach($cards as $card){ ?>
-    <label ><input type="radio" id="<?= $card['card_id'] ?>" name="card" value="<?= $card['card_id'] ?>" required>
+    <label ><input type="radio" id="input_<?= $card['card_id'] ?>" name="card" value="<?= $card['card_id'] ?>" required>
         <?php if($card['card_number'][0] == '2' || $card['card_number'][0] == '5'){ ?>
             <span>Mastercard</span><br>
         <?php } else if($card['card_number'][0] == '4'){ ?>
@@ -90,6 +90,7 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
         <span>**** **** **** <?= substr($card['card_number'], -4); ?></span><br>
         <span><?= $card['expiration_date'] ?></span><br>
         <span><?= $card['card_name'] ?></span><br>
+        <span data-card-id="<?= $card['card_id'] ?>" class="delete_card"><i class="fa-solid fa-trash-can"></i></span>
         </label>
     <?php } ?>
         </section>

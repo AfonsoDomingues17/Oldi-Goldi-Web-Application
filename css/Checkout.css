@@ -38,3 +38,7 @@ section#creditCardInfo {
     padding: 20px;
     border: 1px solid #888;
 }
+
+.delete_card i {
+    cursor: pointer;
+}

@@ -48,9 +48,11 @@ if($brand != "Other"){
 $current_id = getCurrentItem_id($db) + 1;
 
 foreach($photos_array as $photo){
+    if($photo != ""){
     $photo_id = getCurrentPhoto_id($db) + 1;
     $stmt = $db->prepare("INSERT INTO Photos (photo_id,photo_url,item_id) VALUES (?,?,?)");
     $stmt->execute(array($photo_id,$photo,$current_id));
+    }
 }
 $condition_id = getConditionByName($db,$condition);
 $category_id = getCategorieByName($db,$category);

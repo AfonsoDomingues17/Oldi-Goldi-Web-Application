@@ -296,4 +296,6 @@ require_once('is_on_whishlist.php');
         $stmt->execute(array($username));
         return $stmt->fetchColumn();
     }
+
+   
 ?>
