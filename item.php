@@ -30,11 +30,20 @@ function display_item($db, $item_id) {
 
     echo '<section class="product">';
         echo '<article class="product-image">';
+            
+            // Display thumbnails
             if (!empty($photos)) {
-                echo '<img src="'. htmlspecialchars($photos[0]['photo_url']). '" alt="'. htmlspecialchars($item['item_name']). '">';
-            } else {
-                echo '<img src="placeholder.jpg" alt="No Image Available">';
+                echo '<article class="product-thumbnails">';
+                foreach ($photos as $photo) {
+                    echo '<img src="' . htmlspecialchars($photo['photo_url']) . '" alt="' . htmlspecialchars($item['item_name']) . '" style="width: 100px; height: auto; margin: 10px; cursor: pointer;" onclick="changeImage(\'' . htmlspecialchars($photo['photo_url']) . '\')">';
+                }            
+                echo '</article>';
             }
+            $firstPhotoUrl = $photos[0]['photo_url'] ?? 'placeholder.jpg';
+            echo '<img id="mainImage" src="' . htmlspecialchars($firstPhotoUrl) . '" alt="Main Image" style="width: 100%; height: auto; border-radius: 20px;">';
+                        
+
+
         echo '</article>';
         echo '<article class="product-details">';
             echo '<h1 class="product-name">'. htmlspecialchars($item['item_name']). '</h1>';

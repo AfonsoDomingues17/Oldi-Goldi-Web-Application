@@ -28,6 +28,8 @@ function output_header($db){ ?>
     <script src="messages.js" defer></script>
     <script src="checkout.js" defer></script>
     <script src="admin.js" defer></script>
+    <script src="item.js"></script>
+
     <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
 
