@@ -60,9 +60,10 @@
                 echo '<p class="product-description">'. htmlspecialchars($item['description']). '</p>';
                 
                 echo '<section class="product-actions">';
-                    echo '<button class="btn btn-secondary"><i class="fas fa-heart"></i> Favorite</button>';
+                    if($item['is_sold'] == 0){?>
+                    <button id="itemWhishlist" data-item-id="<?= $item_id ?>" class="btn btn-secondary"><i id="heartItem" class="<?= isOnwhishlist($db,$item['ItemID'],$_SESSION['username'])? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>"></i> Favorite</button> <?php
                     if($permissions){ ?>
-                    <a href="sell.php?item_id=<?= $item['ItemID'] ?>" id="edit_item_btn">Edit Item</a>
+                        <a href="sell.php?item_id=<?= $item['ItemID'] ?>" id="edit_item_btn">Edit Item</a>
                     <p id="delete_item">Delete Item</p>
                     <section id="Pop_Up_delete">
                         <section class="Pop_Up-content">
@@ -130,5 +131,5 @@
                 echo '</section>';
             echo '</article>';
         echo '</section>';
-    }
+    }}
     ?>
