@@ -59,7 +59,17 @@ $permissions = getUserPermissions($db,$_SESSION['username']);
             <p id="user_username"><?= $user['username']; ?></p>
             <?php } ?>
             <?php if(isset($user['Cidade']) || isset($user['Country'])){ ?><p><i class="fa-solid fa-location-dot"></i> <?= $user['Cidade']?>, <?= $user['Country']?></p> <?php } ?>
-            <p><?= $user['description']?></p>
+            
+            <section id="Personal_Info">
+                <h3>Contacts</h3>
+                <span class="email"><i class="fa fa-envelope" aria-hidden="true"></i> <?=$user['email']?></span><p></p>
+                <span class="phonenumber"><i class="fa fa-phone" aria-hidden="true"></i> <?= $user['phone_number']?></span><p></p>
+                <span class="address"><i class="fa fa-home" aria-hidden="true"></i> <?= $user['Adress']?></span>
+                <span class="zip_code"><?= $user['Zip_code']?></span>
+        </section>
+            
+            <p></p>
+            <a id= "user_description"><?= $user['description']?></a>
             <?php if (isset($pageOwner) && !$user['isAdmin'] && $permissions){?>
                 <form action="action_profile.php" method="post">
                     <input type="hidden" name="user" value="<?= $user['username'] ?>">
@@ -76,13 +86,7 @@ $permissions = getUserPermissions($db,$_SESSION['username']);
     </section>
     <?php if(!isset($pageOwner) || $permissions){?>
     <section id="Info_StartSelling">
-        <section id="Personal_Info">
-                <h3>Contacts</h3>
-                <span class="email"><i class="fa fa-envelope" aria-hidden="true"></i> <?=$user['email']?></span>
-                <span class="phonenumber"><i class="fa fa-phone" aria-hidden="true"></i> <?= $user['phone_number']?></span>
-                <span class="address"><i class="fa fa-home" aria-hidden="true"></i> <?= $user['Adress']?></span>
-                <span class="zip_code"><?= $user['Zip_code']?></span>
-        </section>
+        
     <?php }?>
     <!--
     <section id="orders">
