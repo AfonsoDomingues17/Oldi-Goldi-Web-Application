@@ -111,7 +111,7 @@ if(confirmBtn){
         fetch("action_add_delete_new_card.php?cardNumber="+document.getElementById('cardNumber').value+"&expDate="+document.getElementById('cardExpiry').value+"&cvv="+document.getElementById('cardCVV').value +"&cardName="+document.getElementById('cardName').value)
         .then(response => response.text())
         .then(date => {
-            console
+            console.log(document.getElementById('cards'));
             document.getElementById('cards').innerHTML += date;
             document.getElementById('Card_PopUp').style.display = "none";
             document.getElementById("cardName").value = "";
@@ -119,18 +119,21 @@ if(confirmBtn){
             document.getElementById("cardExpiry").value = "";
             document.getElementById("cardCVV").value = "";
             const deleteCard = document.querySelectorAll('span.delete_card');
+            console.log(deleteCard);            
 if(deleteCard){
     deleteCard.forEach(function(deleteCard){
+        console.log(deleteCard);
         deleteCard.addEventListener('click', function(){
             const cardId = deleteCard.getAttribute('data-card-id');
+            console.log(cardId);
             fetch('action_add_delete_new_card.php?card_id=' + encodeURIComponent(cardId))
             .then(response => response.text())
             .then(html => {
                 if(html == "Carddeleted"){
                   
                     let cardElement = document.querySelector('#input_' + cardId);
-                    console.log(document.getElementById('cards').childNodes);
-                    document.getElementById('cards').removeChild(cardElement);
+                    console.log(cardElement.parentElement);
+                    document.getElementById('cards').removeChild(cardElement.parentElement);
                 }
             });
         });
@@ -141,7 +144,7 @@ if(deleteCard){
         )
     });
 }
-/*
+
 const deleteCard = document.querySelectorAll('span.delete_card');
 if(deleteCard){
     deleteCard.forEach(function(deleteCard){
@@ -161,4 +164,3 @@ if(deleteCard){
     });
 }
 
-*/

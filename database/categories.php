@@ -297,5 +297,21 @@ require_once('is_on_whishlist.php');
         return $stmt->fetchColumn();
     }
 
-   
+   function addCard($db,$cardNumber, $cardName, $cardExpDate, $cardCVV){ ?>
+
+    <label ><input type="radio" id="input_<?= $db->lastInsertId(); ?>" name="card" value="<?= $db->lastInsertId(); ?>" required>
+        <?php if($cardNumber[0] == '2' || $cardNumber[0] == '5'){ ?>
+            <span>Mastercard</span><br>
+        <?php } else if($cardNumber[0] == '4'){ ?>
+            <span>Visa</span><br>
+        <?php } else if($cardNumber[0] == '3'){ ?>
+            <span>American Express</span>
+        <?php } ?>
+        <span>**** **** **** <?= substr($cardNumber, -4); ?></span><br>
+        <span><?= $cardExpDate ?></span><br>
+        <span><?= $cardName ?></span><br>
+        <span data-card-id="<?= $db->lastInsertId(); ?>" class="delete_card"><i class="fa-solid fa-trash-can"></i></span>
+    </label>
+    <?php 
+   }
 ?>

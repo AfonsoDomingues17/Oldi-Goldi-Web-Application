@@ -18,20 +18,8 @@ if(isset($card_id)){
 else{
 addNewCard($db,$cardNumber, $cardName, $cardExpDate, $cardCVV);
 
-echo "<label><input type=\"radio\" id=\"{$db->lastInsertId()}\" name=\"card\" value=\"{$db->lastInsertId()}\" required>";
-
-if($cardNumber[0] == '2' || $cardNumber[0] == '5'){
-    echo "<span>Mastercard</span><br>";
-} else if($cardNumber[0] == '4'){
-    echo "<span>Visa</span><br>";
-} else if($cardNumber[0] == '3'){
-    echo "<span>American Express</span><br>";
+echo addCard($db,$cardNumber, $cardName, $cardExpDate, $cardCVV);
 }
 
-echo "<span>**** **** **** " . substr($cardNumber, -4) . "</span><br>
-<span>{$cardExpDate}</span><br>
-<span>{$cardName}</span><br>
-<span data-card-id=\"{$db->lastInsertId()}\" class=\"delete_card\"><i class=\"fa-solid fa-trash-can\"></i></span>
-</label>";
-}
+
 ?>

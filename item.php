@@ -50,9 +50,8 @@ function display_item($db, $item_id) {
             }
             echo '<p class="product-description">'. htmlspecialchars($item['description']). '</p>';
             
-            echo '<div class="product-actions">';
-                echo '<button class="btn btn-primary">Add to Cart</button>';
-                echo '<button class="btn btn-secondary"><i class="fas fa-heart"></i> Favorite</button>';
+            echo '<div class="product-actions">'; ?>
+                <button id="itemWhishlist" data-item-id="<?= $item_id ?>" class="btn btn-secondary"><i id="heartItem" class="<?= isOnwhishlist($db,$item['ItemID'],$_SESSION['username'])? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>"></i> Favorite</button> <?php
                 if($permissions){ ?>
                     <a href="sell.php?item_id=<?= $item['ItemID'] ?>">Edit Item</a>
                 <p id="delete_item">Delete Item</p>

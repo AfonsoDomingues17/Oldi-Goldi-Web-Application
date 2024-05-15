@@ -44,8 +44,12 @@ $item_new_price = getNewPrice($db,$chat['buyer'],$item['ItemID']);
 <span id="item_price"><?= $item['price'] ?>€</span>
 <?php } ?>
 <?php if($item['seller'] != $_SESSION['username']){ 
-?><button id="PNPBtn">Propose New Price</button>
+    if($item['is_sold'] == 0){ ?>
+<button id="PNPBtn">Propose New Price</button>
 <a href="Checkout.php?item_id=<?= $chat['item_id'] ?>">BUY NOW</a>
+<?php } else { ?>
+<span id="item_sold"><b>- SOLD!</b></span>
+<?php } ?>
 <?php } ?>
 </section>
 

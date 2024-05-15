@@ -17,7 +17,9 @@
         addNewChat($db,$_SESSION['username'],$_POST['user'],$_POST['item_id']);
         $chat_id = $db->lastInsertId();
         }
+        else{
         $chat_id = $chat['chat_id'];
+        }
         addNewPriceMessage($db,$db->lastInsertId(),$_SESSION['username'],$new_price);
         
         header('Location: messages.php?chat_id='.$chat_id.'');

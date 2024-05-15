@@ -140,20 +140,7 @@ $permissions = getUserPermissions($db,$_SESSION['username']);
             </article>
         <?php }?>
             </section>
-    <!--
-<section id="Reviews">
-    <h1>Reviews</h1>
-    <p>5.0 (1700)</p>
-    <article>
-        <a href=""><img src="" alt="profile picture of users"></a>
-        <a href=""><span class="author">Francisco Teixeira</span></a>
-        <span class="date">1d</span>
-        <p>reviews stars</p>
-        <p>Recomendo esta tudo perfeito, chegou tudo direitinho. Simplesmente perfeito!</p>
-    </article>
-</section>
--->
-    
+  
 </main>
 
 <?php output_footer();
