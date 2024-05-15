@@ -18,7 +18,6 @@ $chats = getAllChats($db,$_SESSION['username']);
 ?>
 
 <section id="chats_page">
-
     <aside id="chats">
         <h2>Chats</h2>
         <?php if(count($chats) == 0){ ?>
@@ -27,6 +26,9 @@ $chats = getAllChats($db,$_SESSION['username']);
         <ul id="chats">
         <?php foreach($chats as $chat){
             $item3 = getItem($db,$chat['item_id']);
+            if(!$item3){
+                $item3 = getSoldItem($db,$chat['item_id']);
+            }
             $message = getLastMessage($db,$chat['chat_id']);
             if($chat['seller'] != $_SESSION['username']){
                 $user = getUser($db,$chat['seller']);
@@ -34,15 +36,24 @@ $chats = getAllChats($db,$_SESSION['username']);
             else{
                 $user = getUser($db,$chat['buyer']);
             }?>
-            <li data-chat-id="<?= $chat['chat_id'] ?>">
-                <img src="<?= $user['photo_url'] ?>" width="50" height="50" alt="profile_picture">
-                <span id="name"><?= $user['name'] ?></span>
-                <span id="item_name">Item:<?= $item3['item_name'] ?></span>
-                <span id="lastest_message"><?= $message['message'] ?></span>
-                <span id="time_last_message"><?= $message['timestamp'] ?></span>
-                <a href="messages.php?chat_id=<?= $chat['chat_id'] ?>"><i class="fa-solid fa-arrow-right"></i></a>
+            <li data-chat-id="<?= $chat['chat_id'] ?>" class="chat_item">
+                <img src="<?= $user['photo_url'] ?>" alt="profile_picture" class="profile_picture">
+                <section class="chat_info">
+                    <section class="chat_names_info">
+                        <span id="name"><?= $user['name'] ?></span>
+                        <span id="item_name">Item: <?= $item3['item_name'] ?></span>
+                    </section>
+                    <section class="chat_latest_message">
+                        <span id="latest_message"><?= $message['message'] ?></span>
+                        <span id="time_last_message"><?= $message['timestamp'] ?></span>
+                    </section>
+                </section>
+                <a href="messages.php?chat_id=<?= $chat['chat_id'] ?>" class="chat_arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+                </a>
             </li>
-          <?php } ?>
+        <?php } ?>
         </ul>
     </aside>
+</section>
 

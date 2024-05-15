@@ -112,7 +112,9 @@ if(confirmBtn){
         .then(response => response.text())
         .then(date => {
             console.log(document.getElementById('cards'));
+            console.log(document.getElementById('noCards'));
             document.getElementById('cards').innerHTML += date;
+            document.getElementById('noCards').remove();
             document.getElementById('Card_PopUp').style.display = "none";
             document.getElementById("cardName").value = "";
             document.getElementById("cardNumber").value = "";

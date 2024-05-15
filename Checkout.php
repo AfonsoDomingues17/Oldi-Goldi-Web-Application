@@ -95,7 +95,9 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
     <?php } ?>
         </section>
         <?php } else { ?>
+            <section id="cards">
             <p id="noCards">You have no cards saved</p>
+            </section>
         <?php } ?>
     </section>
     <button id="addCardsBtn"><i class="fa-solid fa-plus"></i></button>

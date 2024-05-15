@@ -18,6 +18,7 @@ function output_header($db){ ?>
     <link rel="stylesheet" href="css/messages.css">
     <link rel="stylesheet" href="css/Checkout.css">
     <link rel="stylesheet" href="css/admin_page.css">
+    <link rel="stylesheet" href="css/chats.css">
 
     <script src="items.js" defer></script>
     <script src="script.js" defer></script>
@@ -28,6 +29,8 @@ function output_header($db){ ?>
     <script src="messages.js" defer></script>
     <script src="checkout.js" defer></script>
     <script src="admin.js" defer></script>
+    <script src="item.js"></script>
+
     <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
 
