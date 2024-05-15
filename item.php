@@ -1,4 +1,4 @@
-    <?php
+<?php
     require_once('database/connection.php');
     require_once('database/users.php');
     require_once('templates/common.php');
@@ -20,7 +20,6 @@
         exit();
     }
 
-
     function display_item($db, $item_id) {
         $item = getItem($db, $item_id);
         $photos = getPhotos($db, $item_id);
@@ -31,7 +30,6 @@
 
         echo '<section class="product">';
             echo '<article class="product-image">';
-
                 
                 // Display thumbnails
                 if (!empty($photos)) {
@@ -61,42 +59,41 @@
                 }
                 echo '<p class="product-description">'. htmlspecialchars($item['description']). '</p>';
                 
-                echo '<div class="product-actions">'; 
-                if($item['is_sold'] == 0){?>
-                <button id="itemWhishlist" data-item-id="<?= $item_id ?>" class="btn btn-secondary"><i id="heartItem" class="<?= isOnwhishlist($db,$item['ItemID'],$_SESSION['username'])? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>"></i> Favorite</button> <?php
-                if($permissions){ ?>
-                    <a href="sell.php?item_id=<?= $item['ItemID'] ?>">Edit Item</a>
-                <p id="delete_item">Delete Item</p>
-                <section id="Pop_Up_delete">
-                    <section class="Pop_Up-content">
-                        <p>Are you sure you want to delete this item?</p>
-                        <form action="action_delete_item.php" method="get">
-                            <input type="hidden" name="item_id" value="<?= $item_id ?>">
-                            <button id="confirmBtn" type="submit">Confirm</button>
-                            <button id="cancelBtn">Cancel</button>
-                        </form>
-                    
+                echo '<section class="product-actions">';
+                    echo '<button class="btn btn-secondary"><i class="fas fa-heart"></i> Favorite</button>';
+                    if($permissions){ ?>
+                    <a href="sell.php?item_id=<?= $item['ItemID'] ?>" id="edit_item_btn">Edit Item</a>
+                    <p id="delete_item">Delete Item</p>
+                    <section id="Pop_Up_delete">
+                        <section class="Pop_Up-content">
+                            <p>Are you sure you want to delete this item?</p>
+                            <form action="action_delete_item.php" method="get">
+                                <input type="hidden" name="item_id" value="<?= $item_id ?>">
+                                <button id="confirmBtn" type="submit">Confirm</button>
+                                <button id="cancelBtn">Cancel</button>
+                            </form>
+                        
+                        </section>
                     </section>
-                </section>
-                <button id="MBTn">Send a Message</button>
-            <button id="PAPBTn">Propose another Price</button>
-            <a href="Checkout.php?item_id=<?= $item['ItemID'] ?>">BUY NOW</a>
-              <?php }
-                else if($item['seller'] == $_SESSION['username']){?>
-                <a href="sell.php?item_id=<?= $item['ItemID'] ?>">Edit Item</a>
-                <p id="delete_item">Delete Item</p>
-                <section id="Pop_Up_delete">
-                    <section class="Pop_Up-content">
-                        <p>Are you sure you want to delete this item?</p>
-                        <form action="action_delete_item.php" method="get">
-                            <input type="hidden" name="item_id" value="<?= $item_id ?>">
-                            <button id="confirmBtn" type="submit">Confirm</button>
-                            <button id="cancelBtn">Cancel</button>
-                        </form>
-                    
+                    <button id="MBTn">Send a Message</button>
+                <button id="PAPBTn">Propose another Price</button>
+                <a href="Checkout.php?item_id=<?= $item['ItemID'] ?>">BUY NOW</a>
+                <?php }
+                    else if($item['seller'] == $_SESSION['username']){?>
+                    <a href="sell.php?item_id=<?= $item['ItemID'] ?>" id="edit_item_btn">Edit Item</a>
+                    <p id="delete_item">Delete Item</p>
+                    <section id="Pop_Up_delete">
+                        <section class="Pop_Up-content">
+                            <p>Are you sure you want to delete this item?</p>
+                            <form action="action_delete_item.php" method="get">
+                                <input type="hidden" name="item_id" value="<?= $item_id ?>">
+                                <button id="confirmBtn" type="submit">Confirm</button>
+                                <button id="cancelBtn">Cancel</button>
+                            </form>
+                        
+                        </section>
                     </section>
-                </section>
-            <?php } else  { ?>
+                <?php } else  { ?>
                     
                 <button id="MBTn">Send a Message</button>
                 <button id="PAPBTn">Propose another Price</button>
@@ -128,23 +125,10 @@
     </section>
     </section>
 
-            <section id="newPriceI_PopUp">
-            <section id="NPI_PopUpContent">
-            <span id="close2" class="close">&times;</span>
-            <h2>Propose New Price</h2>
-            <form action="action_send_new_price.php" method="post">
-            <input type="hidden" name="item_id" value="<?= $item['ItemID'] ?>">
-            <input type="hidden" name="user" value="<?= $item['seller'] ?>">
-            <label>New Price:<input type="number" id="new_price" name="new_price"></label>
-<button type="submit" >Make Proposal</button>
-</form>
-</section>
-</section>
-
-            <?php } ?>
-            <?php 
-            echo '</div>';
-        echo '</article>';
-    echo '</section>';
-}
-?>
+                    
+                <?php 
+                echo '</section>';
+            echo '</article>';
+        echo '</section>';
+    }
+    ?>
