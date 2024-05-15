@@ -22,6 +22,9 @@ if (isset($_GET['item_id'])) {
 
 function display_item($db, $item_id) {
     $item = getItem($db, $item_id);
+    if(!$item) {
+        $item = getSoldItem($db, $item_id);
+    }
     $photos = getPhotos($db, $item_id);
     $brand = getBrand($db, $item['brand_id']);
     $size = getSize($db, $item['size_id']);
@@ -47,7 +50,11 @@ function display_item($db, $item_id) {
         echo '</article>';
         echo '<article class="product-details">';
             echo '<h1 class="product-name">'. htmlspecialchars($item['item_name']). '</h1>';
+            if($item['is_sold'] == 1) {
+                echo '<p class="product-sold"><b>SOLD</b></p>';
+            } else {
             echo '<p class="product-price">'. htmlspecialchars($item['price']). '€</p>';
+            }
             if(is_array($condition) ){
                 echo '<p class="product-condition">Condition: '. htmlspecialchars($condition['condition_value']). '</p>';
             } 
@@ -59,7 +66,8 @@ function display_item($db, $item_id) {
             }
             echo '<p class="product-description">'. htmlspecialchars($item['description']). '</p>';
             
-            echo '<div class="product-actions">'; ?>
+            echo '<div class="product-actions">'; 
+                if($item['is_sold'] == 0){?>
                 <button id="itemWhishlist" data-item-id="<?= $item_id ?>" class="btn btn-secondary"><i id="heartItem" class="<?= isOnwhishlist($db,$item['ItemID'],$_SESSION['username'])? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>"></i> Favorite</button> <?php
                 if($permissions){ ?>
                     <a href="sell.php?item_id=<?= $item['ItemID'] ?>">Edit Item</a>
@@ -125,7 +133,7 @@ function display_item($db, $item_id) {
 </section>
 </section>
 
-                
+            <?php } ?>
             <?php 
             echo '</div>';
         echo '</article>';
