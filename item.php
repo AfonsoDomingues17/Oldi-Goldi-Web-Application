@@ -60,10 +60,9 @@
                 echo '<p class="product-description">'. htmlspecialchars($item['description']). '</p>';
                 
                 echo '<section class="product-actions">';
-                    echo '<button class="btn btn-primary">Add to Cart</button>';
                     echo '<button class="btn btn-secondary"><i class="fas fa-heart"></i> Favorite</button>';
                     if($permissions){ ?>
-                        <a href="sell.php?item_id=<?= $item['ItemID'] ?>">Edit Item</a>
+                    <a href="sell.php?item_id=<?= $item['ItemID'] ?>" id="edit_item_btn">Edit Item</a>
                     <p id="delete_item">Delete Item</p>
                     <section id="Pop_Up_delete">
                         <section class="Pop_Up-content">
@@ -81,7 +80,7 @@
                 <a href="Checkout.php?item_id=<?= $item['ItemID'] ?>">BUY NOW</a>
                 <?php }
                     else if($item['seller'] == $_SESSION['username']){?>
-                    <a href="sell.php?item_id=<?= $item['ItemID'] ?>">Edit Item</a>
+                    <a href="sell.php?item_id=<?= $item['ItemID'] ?>" id="edit_item_btn">Edit Item</a>
                     <p id="delete_item">Delete Item</p>
                     <section id="Pop_Up_delete">
                         <section class="Pop_Up-content">

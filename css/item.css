@@ -104,10 +104,7 @@ body {
     max-width: 200px; 
 }
 
-.btn-primary {
-    background-color: #4CAF50;
-    margin-bottom: 10px; 
-}
+
 
 .btn-secondary {
     background-color: #008CBA;
@@ -176,6 +173,42 @@ section#Pop_Up_delete {
     width: 80%; 
 }
 
+.btn-secondary,
+#MBTn,
+#PAPBTn,
+a[href*="Checkout"] {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%; 
+    max-width: 200px; 
+}
+
+a#edit_item_btn,
+p#delete_item,
+a[href*="Checkout"] {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%; 
+    max-width: 200px; 
+}
 
 @media screen and (max-width: 860px) {
     .product {
