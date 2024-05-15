@@ -115,7 +115,7 @@ $permissions = getUserPermissions($db,$_SESSION['username']);
     
    <?php } 
     foreach($user_items as $item) {?>
-            <section id="Garticles">
+            <section id="GarticlesProfile">
             <article>
             <?php $photos = getPhotos($db, $item['ItemID']); 
             ?>

@@ -150,6 +150,29 @@ a#user_description {
   word-wrap: break-word;
 }
 
-section#Garticles article {
+#GarticlesProfile {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+#GarticlesProfile article {
+  background-color: white;
+  border-radius: 5px;
+  padding: 1em;
+  margin: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 15%;
+}
+
+#GarticlesProfile article img {
+  width: 100%;
+}
+
+section#GarticlesProfile article {
   width: 200px; 
 }
