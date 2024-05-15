@@ -18,6 +18,7 @@ function output_header($db){ ?>
     <link rel="stylesheet" href="css/messages.css">
     <link rel="stylesheet" href="css/Checkout.css">
     <link rel="stylesheet" href="css/admin_page.css">
+    <link rel="stylesheet" href="css/chats.css">
 
     <script src="items.js" defer></script>
     <script src="script.js" defer></script>
