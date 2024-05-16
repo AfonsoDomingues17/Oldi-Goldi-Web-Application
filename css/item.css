@@ -6,43 +6,47 @@ body {
 }
 
 .product {
-    width: 60%;
+    width: 100%;
     margin: 20px auto;
     display: flex;
     overflow: hidden;
 }
 
 .product-image {
-    width: 100%;
+    width: 55%;
     display: flex;
-    align-items: start;
+    justify-content: right;
     padding: 20px;
+    margin-bottom: 400px; /* add this property */
+
     
 }
 
 .product-image img {
-    width: 50%;
-    display: block;
-    max-width: 600px;
+    width: 70%;
     height: auto;
-    border-radius: 20px ;
+    max-width: 600px;
+    border-radius: 20px;
+    object-fit: contain;
+    
+    
+
 }
 .product-thumbnails {
     display: flex;
     flex-direction: column;
-
 }
 
 .product-thumbnails img {
     width: 100%;
-    height: auto;
+    
 
     margin-bottom: 10px;
     cursor: pointer;
 }
 
 .product-details {
-    width: 50%;
+    width: 25%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -100,10 +104,7 @@ body {
     max-width: 200px; 
 }
 
-.btn-primary {
-    background-color: #4CAF50;
-    margin-bottom: 10px; 
-}
+
 
 .btn-secondary {
     background-color: #008CBA;
@@ -171,3 +172,79 @@ section#Pop_Up_delete {
     border: 1px solid #888;
     width: 80%; 
 }
+
+.btn-secondary,
+#MBTn,
+#PAPBTn,
+a[href*="Checkout"] {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%; 
+    max-width: 200px; 
+}
+
+a#edit_item_btn,
+p#delete_item,
+a[href*="Checkout"] {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%; 
+    max-width: 200px; 
+}
+
+@media screen and (max-width: 860px) {
+    .product {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .product-image {
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-direction: column;
+      align-items: center;
+
+    }
+  
+    .product-details {
+      width: 70%;
+      margin-left: 0;
+
+    }
+  
+    .product-thumbnails {
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+    }
+  
+    .product-thumbnails img {
+      margin: 0 10px; 
+      border-radius: 20px;
+
+    }
+
+    .product-image img{
+        flex-direction: column;
+    }
+  }
+  

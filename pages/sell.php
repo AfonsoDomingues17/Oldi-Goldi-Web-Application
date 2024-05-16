@@ -31,8 +31,8 @@ else{
     <form action="../actions/action_sell_item.php" method="post" enctype="multipart/form-data">
         <section id="img_container">
             <?php foreach($photos as $photo){ ?>  
-                <div class="img-wrapper" id="photo_<?=$photo['photo_id']?>">
-                <img id="item_photo" data-photo-id="<?= $photo['photo_id'] ?>" src="<?=$photo['photo_url']?>" width="200" height="200" alt="item photo">
+                <div class="img-wrapper" id="photo_<?= htmlspecialchars($photo['photo_id'])?>">
+                <img id="item_photo" data-photo-id="<?= htmlspecialchars($photo['photo_id']) ?>" src="<?= htmlspecialchars($photo['photo_url'])?>" width="200" height="200" alt="item photo">
                 <span id="delete_image" data-item-id="<?= $item_id ?>"><i class="fa-solid fa-xmark"></i></span>
                 </div>
             <?php } ?>
@@ -43,8 +43,8 @@ else{
         <input type="hidden" id="remove_img_URL" name="ImageRM" value=""> -->
         <input type="hidden" id="id_user_item" name="item_id" value="<?=$item_id?>">
         <section id = "about_item">
-            Item Name:<label><input type="text" name="item_name" value="<?= isset($item['item_name']) ? $item['item_name'] : '' ?>" required></label><br>
-            Description:<label><textarea name="item_description"><?= isset($item['description']) ? $item['description'] : '' ?></textarea></label><br>
+            Item Name:<label><input type="text" name="item_name" value="<?= isset($item['item_name']) ? htmlspecialchars($item['item_name']) : '' ?>" required></label><br>
+            Description:<label><textarea name="item_description"><?= isset($item['description']) ? htmlspecialchars($item['description']) : '' ?></textarea></label><br>
         </section>
         <section id = "item_size">
             Size:
@@ -53,9 +53,9 @@ else{
                 <?php $sizes = getAllSizes($db);
                 foreach($sizes as $size) {
                     if($size['size_id'] == $item['size_id']){?>
-                        <option value="<?=$size['size_value'] ?>" selected><?=$size['size_value'] ?></option>
+                        <option value="<?=htmlspecialchars($size['size_value']) ?>" selected><?= htmlspecialchars($size['size_value']) ?></option>
                     <?php } else {?>
-                        <option value="<?=$size['size_value'] ?>"><?=$size['size_value'] ?></option>
+                        <option value="<?= htmlspecialchars($size['size_value']) ?>"><?=htmlspecialchars($size['size_value']) ?></option>
                         <?php } ?>
                 <?php } ?>
             </select><br>
@@ -63,13 +63,12 @@ else{
         <section id = "item_brand">
             Brand:
             <select name="Sell_Brand" >
-            <option value="Other" selected>Other</option>
                 <?php $brands = getAllBrands($db);
                 foreach($brands as $brand) {
                     if($brand['brand_id'] == $item['brand_id']){?>
-                        <option value="<?=$brand['brand_name'] ?>" selected><?=$brand['brand_name'] ?></option>
+                        <option value="<?=htmlspecialchars($brand['brand_name']) ?>" selected><?=htmlspecialchars($brand['brand_name']) ?></option>
                     <?php } else {?>
-                        <option value="<?=$brand['brand_name'] ?>"><?=$brand['brand_name'] ?></option>
+                        <option value="<?=htmlspecialchars($brand['brand_name']) ?>"><?=htmlspecialchars($brand['brand_name']) ?></option>
                         <?php } ?>
                 <?php } ?>
             </select><br>
@@ -80,9 +79,9 @@ else{
                 <?php $conditions = getAllConditions($db);
                 foreach($conditions as $condition) {
                     if($condition['condition_id'] == $item['condition_id']){?>
-                        <option value="<?=$condition['condition_value'] ?>" selected><?=$condition['condition_value'] ?></option>
+                        <option value="<?=htmlspecialchars($condition['condition_value']) ?>" selected><?=htmlspecialchars($condition['condition_value'] )?></option>
                     <?php } else {?>
-                        <option value="<?=$condition['condition_value'] ?>"><?=$condition['condition_value'] ?></option>
+                        <option value="<?=htmlspecialchars($condition['condition_value']) ?>"><?=htmlspecialchars($condition['condition_value'] )?></option>
                         <?php } ?>
                 <?php } ?>
             </select><br>
@@ -93,15 +92,15 @@ else{
                 <?php $categories = getAllCategories($db);
                 foreach($categories as $category) {
                 if($category['category_id'] == $item['category_id']){?>
-                        <option value="<?=$category['category_name'] ?>" selected><?=$category['category_name'] ?></option>
+                        <option value="<?=htmlspecialchars($category['category_name']) ?>" selected><?=htmlspecialchars($category['category_name']) ?></option>
                     <?php } else {?>
-                        <option value="<?=$category['category_name'] ?>"><?=$category['category_name'] ?></option>
+                        <option value="<?=htmlspecialchars($category['category_name'] )?>"><?=htmlspecialchars($category['category_name']) ?></option>
                         <?php } ?>
                 <?php } ?>
             </select><br>
         </section>
         <section id = "item_price">
-            Price:<label><input type="number" step="0.01" value="<?= $item['price'] ?>" name="item_price" placeholder="€ 0,00"redquired></label><br>
+            Price:<label><input type="number" step="0.01" value="<?= htmlspecialchars($item['price']) ?>" name="item_price" placeholder="€ 0,00"redquired></label><br>
         </section>
         <input type="hidden" name="csrf" value="<?= $_SESSION['csrf'] ?>">
         <?php if(isset($item_id)) {

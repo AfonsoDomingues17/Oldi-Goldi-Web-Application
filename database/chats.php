@@ -38,6 +38,7 @@ function getAllMessages($db,$chat_id){
 function displayMessages($messages,$db,$chat){ 
     
     $item = getChatItem($db,$chat['chat_id']);
+    $item_price = getItemPrice($db,$item['item_id']);
     $item_new_price = getNewPrice($db,$chat['buyer'],$item['ItemID']);
         foreach($messages as $message){
         $sender = getUser($db,$message['sender_id']);
@@ -45,7 +46,7 @@ function displayMessages($messages,$db,$chat){
         if(isset($item_new_price)){ ?>
         <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item_new_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
         <?php } else { ?>
-        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item['price']) ?>€ <?= htmlspecialchars($message['message'])?></li>
+        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
         <?php } ?>
         <button id="Accept_Btn" data-message-id="<?= htmlspecialchars($message['message_id'])?>">Accept</button>
         <button id="Reject_Btn" data-message-id="<?= htmlspecialchars($message['message_id'])?>">Reject</button>
@@ -54,7 +55,7 @@ function displayMessages($messages,$db,$chat){
     if(isset($item_new_price)){ ?>
         <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item_new_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
         <?php } else { ?>
-        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item['price']) ?>€ <?= htmlspecialchars($message['message'])?></li>
+        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
         <?php } ?>
 <?php } else {?>
 <li><?= htmlspecialchars($sender['name'])?>: <?= htmlspecialchars($message['message'])?></li>

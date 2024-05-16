@@ -18,6 +18,8 @@ section#Info{
 
 .user_profile_details{
   margin-left: 10px;
+  max-width: 65%; /* Limit the width of user profile details */
+
 }
 
 .user_profile_details > #user_name{
@@ -36,26 +38,19 @@ section#Info{
 section#Info_StartSelling{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: auto;
-  width: 70%;
+  margin-left: 11.5%;
+  width: 90%;
+  padding: 20px;
+  
 }
 
-section#Personal_Info{
-  display: grid;
-  grid-template-rows: 1fr;
-  width: 70%;
-  margin: auto;
-  margin-top: 20px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+
 
 section#ProfileStartSelling{
   display: grid;
   place-items: center;
   text-align: center;
+  justify-content: center;
   margin: auto;
   width: 70%;
   background-color: white;
@@ -148,4 +143,36 @@ section#ProfileStartSelling{
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+}
+
+a#user_description {
+  max-width: 65%;
+  word-wrap: break-word;
+}
+
+#GarticlesProfile {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+#GarticlesProfile article {
+  background-color: white;
+  border-radius: 5px;
+  padding: 1em;
+  margin: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 15%;
+}
+
+#GarticlesProfile article img {
+  width: 100%;
+}
+
+section#GarticlesProfile article {
+  width: 200px; 
 }

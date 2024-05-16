@@ -61,6 +61,15 @@ $permissions = getUserPermissions($db,$_SESSION['username']);
             <p id="user_username"><?= htmlspecialchars($user['username']) ?></p>
             <?php } ?>
             <?php if(isset($user['Cidade']) || isset($user['Country'])){ ?><p><i class="fa-solid fa-location-dot"></i> <?= htmlspecialchars($user['Cidade'])?>, <?= htmlspecialchars($user['Country'])?></p> <?php } ?>
+            
+            <section id="Personal_Info">
+                <h3>Contacts</h3>
+                <span class="email"><i class="fa fa-envelope" aria-hidden="true"></i> <?= htmlspecialchars($user['email'])?></span><p></p>
+                <?php if(isset($user['phone_number'])){ ?> <span class="phonenumber"><i class="fa fa-phone" aria-hidden="true"></i> <?= htmlspecialchars($user['phone_number'])?></span><p></p> <?php } ?>
+                <?php if(isset($user['Adress'])) {?><span class="address"><i class="fa fa-home" aria-hidden="true"></i> <?= htmlspecialchars($user['Adress'])?></span> <?php } ?>
+                <span class="zip_code"><?= htmlspecialchars($user['Zip_code'])?></span>
+        </section>
+            
             <p><?= htmlspecialchars($user['description'])?></p>
             <?php if ($pageOwner != null && !$user['isAdmin'] && $permissions){?>
                 <form action="../actions/action_profile.php" method="post">
@@ -79,13 +88,8 @@ $permissions = getUserPermissions($db,$_SESSION['username']);
     </section>
     <?php if($pageOwner == null  || $permissions){?>
     <section id="Info_StartSelling">
-        <section id="Personal_Info">
-                <h3>Contacts</h3>
-                <span class="email"><i class="fa fa-envelope" aria-hidden="true"></i> <?= htmlspecialchars($user['email'])?></span>
-                <span class="phonenumber"><i class="fa fa-phone" aria-hidden="true"></i> <?= htmlspecialchars($user['phone_number'])?></span>
-                <span class="address"><i class="fa fa-home" aria-hidden="true"></i> <?= htmlspecialchars($user['Adress'])?></span>
-                <span class="zip_code"><?= htmlspecialchars($user['Zip_code'])?></span>
-        </section>
+        
+        
     <?php }?>
 
     <?php $user_items = getItemsBySeller($db, $user['username']);
@@ -102,7 +106,7 @@ $permissions = getUserPermissions($db,$_SESSION['username']);
     
    <?php } 
     foreach($user_items as $item) {?>
-            <section id="Garticles">
+            <section id="GarticlesProfile">
             <article>
             <?php $photos = getPhotos($db, $item['ItemID']); 
             ?>

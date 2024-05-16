@@ -9,8 +9,9 @@
     require_once('../database/chats.php');  
     
     $db = getDatabaseConnection();
-    $new_price = $_POST['new_price'];
-    if(isset($_POST['chat_id'])){
+    $new_price = preg_replace("/[^0-9.]/",'',$_POST['new_price']);
+    $chat_id = intval($_POST['chat_id']);
+    if($chat_id != 0){
       addNewPriceMessage($db,$_POST['chat_id'],$_SESSION['username'],$new_price);    
       header('Location: ../pages/messages.php?chat_id='.$_POST['chat_id'].'');
     }

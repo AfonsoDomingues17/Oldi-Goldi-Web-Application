@@ -189,6 +189,12 @@ require_once('is_on_whishlist.php');
         <?php }
     }
 
+    function getItemPrice($db, $item_id){
+        $stmt = $db->prepare('SELECT price FROM Item WHERE ItemID = ?');
+        $stmt->execute(array($item_id));
+        return $stmt->fetchColumn();
+    }
+
     function get_Popular_items($db){
 
         $stmt = $db->prepare("SELECT item_id, count(*) as Item_count from Whishlists Group BY item_id ORDER BY Item_count DESC LIMIT 10");

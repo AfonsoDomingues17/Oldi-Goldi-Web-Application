@@ -17,31 +17,28 @@ if ($item_id != null) {
     exit();
 }
 
-function display_item($db, $item_id) {
-    $item = getItem($db, $item_id);
-    if(!$item) {
-        $item = getSoldItem($db, $item_id);
-    }
-    $photos = getPhotos($db, $item_id);
-    $brand = getBrand($db, $item['brand_id']);
-    $size = getSize($db, $item['size_id']);
-    $condition = getCondition($db, $item['condition_id']);
-    $permissions = getUserPermissions($db, $_SESSION['username']);
+    function display_item($db, $item_id) {
+        $item = getItem($db, $item_id);
+        $photos = getPhotos($db, $item_id);
+        $brand = getBrand($db, $item['brand_id']);
+        $size = getSize($db, $item['size_id']);
+        $condition = getCondition($db, $item['condition_id']);
+        $permissions = getUserPermissions($db, $_SESSION['username']);
 
-    echo '<section class="product">';
-        echo '<article class="product-image">';
-            
-            // Display thumbnails
-            if (!empty($photos)) {
-                echo '<article class="product-thumbnails">';
-                foreach ($photos as $photo) {
-                    echo '<img src="' . htmlspecialchars($photo['photo_url']) . '" alt="' . htmlspecialchars($item['item_name']) . '" style="width: 100px; height: auto; margin: 10px; cursor: pointer;" onclick="changeImage(\'' . htmlspecialchars($photo['photo_url']) . '\')">';
-                }            
-                echo '</article>';
-            }
-            $firstPhotoUrl = $photos[0]['photo_url'] ?? 'placeholder.jpg';
-            echo '<img id="mainImage" src="' . htmlspecialchars($firstPhotoUrl) . '" alt="Main Image" style="width: 100%; height: auto; border-radius: 20px;">';
-                        
+        echo '<section class="product">';
+            echo '<article class="product-image">';
+                
+                // Display thumbnails
+                if (!empty($photos)) {
+                    echo '<article class="product-thumbnails">';
+                    foreach ($photos as $photo) {
+                        echo '<img src="' . htmlspecialchars($photo['photo_url']) . '" alt="' . htmlspecialchars($item['item_name']) . '" style="width: 100px; height: auto; margin: 10px; cursor: pointer;  " onclick="changeImage(\'' . htmlspecialchars($photo['photo_url']) . '\')">';
+                    }            
+                    echo '</article>';
+                }
+                $firstPhotoUrl = $photos[0]['photo_url'] ?? 'placeholder.jpg';
+                echo '<img id="mainImage" src="' . htmlspecialchars($firstPhotoUrl) . '" alt="Main Image"  ">';
+                            
 
 
         echo '</article>';
@@ -63,7 +60,7 @@ function display_item($db, $item_id) {
             }
             echo '<p class="product-description">'. htmlspecialchars($item['description']). '</p>';
             
-            echo '<div class="product-actions">'; 
+            echo '<section class="product-actions">'; 
                 if($item['is_sold'] == 0){?>
                 <button id="itemWhishlist" data-item-id="<?= htmlspecialchars($item_id) ?>" class="btn btn-secondary"><i id="heartItem" class="<?= isOnwhishlist($db,$item['ItemID'],$_SESSION['username'])? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>"></i> Favorite</button> <?php
                 if($permissions){ ?>
@@ -135,10 +132,10 @@ function display_item($db, $item_id) {
 </section>
 </section>
 
-            <?php } ?>
-            <?php 
-            echo '</div>';
-        echo '</article>';
-    echo '</section>';
-}
-?>
+                    
+                <?php 
+                echo '</section>';
+            echo '</article>';
+        echo '</section>';
+    }}
+    ?>

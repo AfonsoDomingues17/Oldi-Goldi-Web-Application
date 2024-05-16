@@ -73,42 +73,25 @@ console.log(deleteImages);
 if(deleteImages){
 
 deleteImages.forEach(function(deleteImage){
-    deleteImage.addEventListener('click', function(){
+    deleteImage.addEventListener('click', function(event){
+        console.log(event.target);
         console.log('clicked');
-        const imageId = document.getElementById('item_photo').getAttribute('data-photo-id');
+        const imageId = event.target.parentElement.previousElementSibling.getAttribute('data-photo-id');
         console.log(imageId);
         const itemId = deleteImage.getAttribute('data-item-id');
-     
+        console.log(itemId);
         fetch('../api/api_delete_image.php?photo_id=' + encodeURIComponent(imageId) + '&item_id=' + encodeURIComponent(itemId))
         .then(response => response.text())
         .then(html => {
             if(html == "ok"){
+                console.log(document.querySelector('div#photo_' + imageId));
             document.getElementById('img_container').removeChild(document.querySelector('div#photo_' + imageId));
             }
            
         });
 
+       event.stopPropagation();
+
     });
 });
 }
-
-/*
-const deleteImage = document.querySelectorAll('div#img_wrapper i');
-console.log(deleteImage);
-if(deleteImage){
-    deleteImage.forEach(function(deleteImage){
-        deleteImage.addEventListener('click', function(event){
-            console.log('clicked');
-            const img = event.target.previousElementSibling.src;
-            event.target.parentElement.remove();    
-            let itemValue = document.getElementById('item_hidden_input').value;
-            itemValue = itemValue.replace(img + '&', '');
-            document.getElementById('item_hidden_input').value = itemValue;
-        });
-
-
-});
-
-}
-
-*/
