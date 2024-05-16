@@ -1,35 +1,56 @@
 <?php
-require_once('database/connection.php');
-require_once('database/categories.php');
-require_once('database/users.php');
+require_once(__DIR__ . '/../database/connection.php');
+require_once(__DIR__ . '/../database/categories.php');
+require_once(__DIR__ . '/../database/users.php');
+require_once(__DIR__ . '/../database/is_on_whishlist.php');
+require_once(__DIR__ . '/../database/chats.php');
+
+
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'domain' => '', 
+    'secure' => false, 
+    'httponly' => true,
+    'samesite' => 'Strict', 
+]);
+
 session_start();
+
+function generate_random_token(){
+    return bin2hex(openssl_random_pseudo_bytes(32));
+}
+
+if(!isset($_SESSION['csrf'])){
+    $_SESSION['csrf'] = generate_random_token();
+}
 function output_header($db){ ?>
     <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/items.css">
-    <link rel="stylesheet" href="css/edit_profile.css">
-    <link rel="stylesheet" href="css/item.css">
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/sell.css">
-    <link rel="stylesheet" href="css/messages.css">
-    <link rel="stylesheet" href="css/Checkout.css">
-    <link rel="stylesheet" href="css/admin_page.css">
-    <link rel="stylesheet" href="css/chats.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/items.css">
+    <link rel="stylesheet" href="../css/edit_profile.css">
+    <link rel="stylesheet" href="../css/item.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/sell.css">
+    <link rel="stylesheet" href="../css/messages.css">
+    <link rel="stylesheet" href="../css/Checkout.css">
+    <link rel="stylesheet" href="../css/admin_page.css">
+    <link rel="stylesheet" href="../css/chats.css">
 
-    <script src="items.js" defer></script>
-    <script src="script.js" defer></script>
-    <script src="update_profile.js" defer></script>
-    <script src="change_password.js" defer></script>
-    <script src="register.js" defer></script>
-    <script src="search.js" defer></script>
-    <script src="messages.js" defer></script>
-    <script src="checkout.js" defer></script>
-    <script src="admin.js" defer></script>
-    <script src="item.js"></script>
+    <script src="../javascript/items.js" defer></script>
+    <script src="../javascript/script.js" defer></script>
+    <script src="../javascript/update_profile.js" defer></script>
+    <script src="../javascript/change_password.js" defer></script>
+    <script src="../javascript/register.js" defer></script>
+    <script src="../javascript/search.js" defer></script>
+    <script src="../javascript/messages.js" defer></script>
+    <script src="../javascript/checkout.js" defer></script>
+    <script src="../javascript/admin.js" defer></script>
+    <script src="../javascript/item.js"></script>
 
     <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
@@ -39,14 +60,14 @@ function output_header($db){ ?>
 <body>
     <header>
         <section id="main_nav_bar">
-        <h1><a href = "index.php">Our Super Cool Store</a></h1> 
+        <h1><a href = "../index.php">Our Super Cool Store</a></h1> 
         <section id = "navsection">
-        <form action="search.php" method="post">
+        <form action="../actions/action_search.php" method="get">
             <select id="Select_Categories" name="Categories">
             <option value="All" selected>All Categories</option>
             <?php $categories = getAllCategories($db);
             foreach($categories as $category) {?>
-            <option value="<?=$category['category_name'] ?>"><?=$category['category_name'] ?></option>
+            <option value="<?= htmlspecialchars($category['category_name']) ?>"><?= htmlspecialchars($category['category_name']) ?></option>
             <?php } ?>
             </select>
             <!-- Search bar -->
@@ -54,29 +75,30 @@ function output_header($db){ ?>
             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
         </section>
-        <section id="searchResult"></section>
+        <section id="searchResult">
+        </section>
         <div class="navbar-right">
             <?php if(isset($_SESSION['username'])) { ?>
             <div class="icon-links">
-                <a href="chats.php"><i class="fa-solid fa-message"></i></a>
-                <a href="wish_list.php"><i class="fa-solid fa-heart"></i></a>
+                <a href="../pages/chats.php"><i class="fa-solid fa-message"></i></a>
+                <a href="../pages/wish_list.php"><i class="fa-solid fa-heart"></i></a>
             </div>
             <?php } ?>
             <?php if(isset($_SESSION['username'])) {
             $permission = getUserPermissions($db,$_SESSION['username']);?>
             <section id="loged_in">
             <?php if($permission){ ?>
-            <a href="AdminPage.php" id="admin">Admin Page</a>
+            <a href="../pages/AdminPage.php" id="admin">Admin Page</a>
             <?php } ?>
-            <a href="profile.php" id="profile"><i class="fa-solid fa-user"></i></a>
-            <a href="sell.php" id="Sell_now">Sell Now</a>
-            <a href="action_logout.php" id="logout">Logout</a>
+            <a href="../pages/profile.php" id="profile"><i class="fa-solid fa-user"></i></a>
+            <a href="../pages/sell.php" id="Sell_now">Sell Now</a>
+            <a href="../actions/action_logout.php" id="logout">Logout</a>
             </section>
             <?php } 
             else { ?>
                 <div id="signup">
-                <a href = "login.php">Login</a>
-                <a href = "register.php">Register</a>
+                <a href = "../pages/login.php">Login</a>
+                <a href = "../pages/register.php">Register</a>
                 </div>
             <?php } ?>
 

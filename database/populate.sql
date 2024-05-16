@@ -1,7 +1,7 @@
 INSERT INTO Users (username, name, email, phone_number, password, photo_url, Country, Adress, Zip_code, Cidade, description, isAdmin, isSeller) 
 VALUES 
-('john_doe', 'John Doe', 'john@example.com', '+1234567890', 'password123', 'https://example.com/photo.jpg', 'USA', '123 Main St', '12345', 'New York', 'I love hiking and photography', false, true),
-('jane_smith', 'Jane Smith', 'jane@example.com', '+1987654321', 'qwerty456', 'https://example.com/profile.jpg', 'Canada', '456 Maple Ave', '56789', 'Toronto', 'Passionate about cooking and travel', false, false),
+('john_doe', 'John Doe', 'john@example.com', '+1234567890', 'password123', NULL, 'USA', '123 Main St', '12345', 'New York', 'I love hiking and photography', false, true),
+('jane_smith', 'Jane Smith', 'jane@example.com', '+1987654321', 'qwerty456', NULL, 'Canada', '456 Maple Ave', '56789', 'Toronto', 'Passionate about cooking and travel', false, false),
 ('sam_jones', 'Sam Jones', 'sam@example.com', '+1122334455', 'samspassword', 'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg', 'UK', '789 Oak St', '67890', 'London', 'Tech enthusiast and gamer', false, true),
 ('lisa_white', 'Lisa White', 'lisa@example.com', '+4433221100', 'lisapass', 'https://example.com/lisa.jpg', 'Australia', '101 Palm St', '45678', 'Sydney', 'Fitness freak and nature lover', false, true),
 ('mike_brown', 'Mike Brown', 'mike@example.com', '+1555098765', 'mikepass123', NULL, 'Germany', '321 Elm St', '23456', 'Berlin', 'Musician and coffee addict', false, true),
@@ -10,7 +10,7 @@ VALUES
 ('emily_clark', 'Emily Clark', 'emily@example.com', '+1122334455', 'clarkpass', NULL, 'Japan', '234 Cedar St', '34567', 'Tokyo', 'Anime fan and foodie', false, true),
 ('adam_wilson', 'Adam Wilson', 'adam@example.com', '+1555098765', 'wilson123', NULL, 'Spain', '567 Walnut St', '90123', 'Madrid', 'History buff and language learner', false, true),
 ('olivia_tan', 'Olivia Tan', 'olivia@example.com', '+6667778889', 'tanpass', 'https://external-preview.redd.it/half-profile-portrait-of-a-young-22-year-old-woman-with-few-v0-0oEj7tQYK6jLKd6dZBL6Nvm6fUyAJbhoLgWBMMnn4TU.jpg?auto=webp&s=77a66a0c543ae960b220fed4660efb4a1de8f98d', 'China', '890 Oak St', '23456', 'Beijing', 'Fashion designer and cat lover', false, true),
-('Admin', 'Admin', 'admin@gmail.com',NULL,'d033e22ae348aeb5660fc2140aec35850c4da997',NULL,NULL,NULL,NULL,NULL,NULL,true,false);
+('Admin', 'Admin', 'admin@gmail.com',NULL,'$2y$10$ZSqn3boB4wu53QPj/Ffw0uX6IZ0ef6kWpSTug5rPrIZqV5bgHu19u',NULL,NULL,NULL,NULL,NULL,NULL,true,false);
 
 
 -- Categories
@@ -113,17 +113,17 @@ VALUES
 (9, 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphone15prohero-202309_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1693086369818', 89012),
 (10, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVI9dWrjv1Cs6iGLXBaetE94Ytug3KR56IxR3NzBWffg&s', 90123),
 (11, 'https://zoandco.ie/cdn/shop/files/Zo_Co23rdMay0098.jpg?v=1685374882', 10123),
-(12, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 23457),
-(13, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 23458),
-(14, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 23459),
-(15, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 23460),
-(16, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 23461),
-(17, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 90124),
-(18, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 10124),
-(19, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 11235),
-(20, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 12345),
-(21, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 11234),
-(22, 'https://m.media-amazon.com/images/I/71SfVZ6rVeL._AC_SL1500_.jpg', 13456);
+(12, '../rolex.jpg', 23457),
+(13, '../rolex.jpg', 23458),
+(14, '../rolex.jpg', 23459),
+(15, '../rolex.jpg', 23460),
+(16, '../rolex.jpg', 23461),
+(17, '../rolex.jpg', 90124),
+(18, '../rolex.jpg', 10124),
+(19, '../rolex.jpg', 11235),
+(20, '../rolex.jpg', 12345),
+(21, '../rolex.jpg', 11234),
+(22, '../rolex.jpg', 13456);
 
 
 

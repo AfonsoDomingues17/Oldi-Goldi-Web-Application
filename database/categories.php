@@ -164,21 +164,21 @@ require_once('is_on_whishlist.php');
         foreach($items as $item) {?>
             <article>
                 <?php $photos = getPhotos($db, $item['ItemID']);?>
-                <a href="item.php?item_id=<?= $item['ItemID'] ?>"><img src="<?= $photos[0]['photo_url']?>" alt="Item 1"></a>
+                <a href="item.php?item_id=<?= urlencode($item['ItemID']) ?>"><img src="<?= htmlspecialchars($photos[0]['photo_url'])?>" alt="Item 1"></a>
                 <section class="article-info">
-                    <h2><?= $item['item_name']?></h2>
-                    <p><?= $item['price']?>€</p>
+                    <h2><?= htmlspecialchars($item['item_name'])?></h2>
+                    <p><?= htmlspecialchars($item['price'])?>€</p>
                     <?php $brand = getBrand($db, $item['brand_id']);
                     if (is_array($brand) && !empty($brand['brand_name'])) { ?>
-                        <p><?= $brand['brand_name']?></p>
+                        <p><?= htmlspecialchars($brand['brand_name'])?></p>
                     <?php } ?>
                     <?php $size = getSize($db, $item['size_id']); 
                     if (is_array($size) && !empty($size['size_value'])) { ?>
-                        <p><?= $size['size_value']?></p>
+                        <p><?= htmlspecialchars($size['size_value'])?></p>
                     <?php } ?>
                     <?php $condition = getCondition($db, $item['condition_id']); 
                     if (is_array($condition) && !empty($condition['condition_value'])) { ?>
-                         <p id="heart"><?= $condition['condition_value']?> 
+                         <p id="heart"><?= htmlspecialchars($condition['condition_value'])?> 
                          <?php if(isset($_SESSION['username'])){?> <i class="<?= isOnwhishlist($db,$item['ItemID'],$_SESSION['username'])? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>" data-item-id="<?= $item['ItemID'] ?>">
                 </i>
                 <?php } ?>
@@ -198,7 +198,7 @@ require_once('is_on_whishlist.php');
 
     function display_results($results){
         foreach($results as $result){?>
-        <li><a href="item.php?item_id=<?=$result['ItemID'] ?>"><?=$result['item_name'] ?></a></li>
+        <li><a href="../pages/item.php?item_id=<?= urlencode($result['ItemID']) ?>"><?= htmlspecialchars($result['item_name']) ?></a></li>
         <?php }
     }
 
@@ -254,7 +254,7 @@ require_once('is_on_whishlist.php');
 
         foreach($photos as $photo){ ?>  
             <div class="img-wrapper">
-            <img id="item_photo" src="<?=$photo['photo_url']?>" width="200" height="200" alt="item photo">
+            <img id="item_photo" src="<?= htmlspecialchars($photo['photo_url'])?>" width="200" height="200" alt="item photo">
             <span id="delete_image" data-item-id="<?= $item_id ?>"><i class="fa-solid fa-xmark"></i></span>
             
             </div>
@@ -299,7 +299,7 @@ require_once('is_on_whishlist.php');
 
    function addCard($db,$cardNumber, $cardName, $cardExpDate, $cardCVV){ ?>
 
-    <label ><input type="radio" id="input_<?= $db->lastInsertId(); ?>" name="card" value="<?= $db->lastInsertId(); ?>" required>
+    <label ><input type="radio" id="input_<?= $db->lastInsertId(); ?>" name="card" value="<?= htmlspecialchars($db->lastInsertId()) ?>" required>
         <?php if($cardNumber[0] == '2' || $cardNumber[0] == '5'){ ?>
             <span>Mastercard</span><br>
         <?php } else if($cardNumber[0] == '4'){ ?>
@@ -307,10 +307,10 @@ require_once('is_on_whishlist.php');
         <?php } else if($cardNumber[0] == '3'){ ?>
             <span>American Express</span>
         <?php } ?>
-        <span>**** **** **** <?= substr($cardNumber, -4); ?></span><br>
-        <span><?= $cardExpDate ?></span><br>
-        <span><?= $cardName ?></span><br>
-        <span data-card-id="<?= $db->lastInsertId(); ?>" class="delete_card"><i class="fa-solid fa-trash-can"></i></span>
+        <span>**** **** **** <?= htmlspecialchars(substr($cardNumber, -4)) ?></span><br>
+        <span><?= htmlspecialchars($cardExpDate) ?></span><br>
+        <span><?= htmlspecialchars($cardName) ?></span><br>
+        <span data-card-id="<?= htmlspecialchars($db->lastInsertId()) ?>" class="delete_card"><i class="fa-solid fa-trash-can"></i></span>
     </label>
     <?php 
    }

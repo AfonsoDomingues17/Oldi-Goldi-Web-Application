@@ -1,5 +1,5 @@
 <?php     
-require_once('database/categories.php');
+require_once('categories.php');
 function getAllChats($db,$username){
     $stmt = $db->prepare("SELECT * FROM chats where buyer = ? or seller = ?");
     $stmt->execute(array($username,$username));
@@ -43,21 +43,21 @@ function displayMessages($messages,$db,$chat){
         $sender = getUser($db,$message['sender_id']);
         if($message['is_price_proposal'] && $_SESSION['username'] == $chat['seller'] && strpos($message['message'], 'REJECT') === false && strpos($message['message'], 'ACCEPT') === false){                   
         if(isset($item_new_price)){ ?>
-        <li><?= $sender['name']?>: OldPrice:<?= $item_new_price ?>€ <?= $message['message']?></li>
+        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item_new_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
         <?php } else { ?>
-        <li><?= $sender['name']?>: OldPrice:<?= $item['price'] ?>€ <?= $message['message']?></li>
+        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item['price']) ?>€ <?= htmlspecialchars($message['message'])?></li>
         <?php } ?>
-        <button id="Accept_Btn" data-message-id="<?= $message['message_id']?>">Accept</button>
-        <button id="Reject_Btn" data-message-id="<?= $message['message_id']?>">Reject</button>
+        <button id="Accept_Btn" data-message-id="<?= htmlspecialchars($message['message_id'])?>">Accept</button>
+        <button id="Reject_Btn" data-message-id="<?= htmlspecialchars($message['message_id'])?>">Reject</button>
 
 <?php } else if($message['is_price_proposal']){
     if(isset($item_new_price)){ ?>
-        <li><?= $sender['name']?>: OldPrice:<?= $item_new_price ?>€ <?= $message['message']?></li>
+        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item_new_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
         <?php } else { ?>
-        <li><?= $sender['name']?>: OldPrice:<?= $item['price'] ?>€ <?= $message['message']?></li>
+        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item['price']) ?>€ <?= htmlspecialchars($message['message'])?></li>
         <?php } ?>
 <?php } else {?>
-<li><?= $sender['name']?>: <?= $message['message']?></li>
+<li><?= htmlspecialchars($sender['name'])?>: <?= htmlspecialchars($message['message'])?></li>
 <?php } ?>
 <?php } ?>
         

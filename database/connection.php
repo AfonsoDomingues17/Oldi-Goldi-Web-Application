@@ -1,6 +1,6 @@
 <?php 
 function getDatabaseConnection(){
-    $db = new PDO('sqlite:database/project.db');
+    $db = new PDO('sqlite:' . __DIR__ . '/../database/project.db');
     return $db;
 }
 
