@@ -107,7 +107,6 @@ $permissions = getUserPermissions($db,$_SESSION['username']);
    <?php } 
     foreach($user_items as $item) {?>
             <section id="GarticlesProfile">
-            <section id="GarticlesProfile">
             <article>
             <?php $photos = getPhotos($db, $item['ItemID']); 
             ?>
@@ -136,6 +135,36 @@ $permissions = getUserPermissions($db,$_SESSION['username']);
             </article>
         <?php }?>
             </section>
+    <section id="User_Transactions">
+        <?php $transactions = getTransactionsByUser($db,$user['username']);
+        if($pageOwner == null || ($pageOwner == null && !$user['isAdmin'] && $permissions)){ ?>
+        <h2>Transactions</h2>
+        <ul>
+            <?php foreach($transactions as $transaction){ 
+                $item = getSoldItem($db,$transaction['item_id']);
+                $new_price = getNewPrice($db,$user['username'],$transaction['item_id']);
+                ?>
+            <li>
+                <?php if($transaction['buyer'] == $user['username']){ ?>
+                <p>Purchased from: <?= htmlspecialchars($transaction['seller']) ?></p>
+                <?php } else {?>
+                <p>Sold to: <?= htmlspecialchars($transaction['buyer']) ?></p>
+                <?php } ?>
+                <p>Item: <a href="item.php?item_id=<?= urlencode($item['ItemID'])?>"><?= htmlspecialchars($item['item_name']) ?></a></p>
+                <?php if($new_price) {?>
+                <p>Price: <?= $new_price?>€</p>
+                <?php } else { ?>
+                    <p>Price: <?= htmlspecialchars($item['price']) ?>€</p>
+                <?php } ?>
+                <p>Date: <?= htmlspecialchars($transaction['transaction_date']) ?></p>
+                <?php if($transaction['buyer'] == $user['username']){ ?>
+                <a href="ShippingForm?item_id=<?= urlencode($item['ItemID']) ?>">Get Shipping Form</a>
+                <?php } ?>
+            </li>
+            <?php } ?>
+        </ul>
+        <?php } ?>
+    </section>
   
 </main>
 

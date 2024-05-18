@@ -1,13 +1,20 @@
 <?php 
-require_once('../database/connection.php');
-require_once('../database/categories.php');
+
 session_start();
 if ($_SESSION['csrf'] !== $_POST['csrf']) {
     header('Location: ../index.php');
     exit();
-  }
+}
+require_once('../database/connection.php');
+require_once('../database/categories.php');
+
+
 $db = getDatabaseConnection();
 $item_id = intval($_POST['item_id']);
+if($item_id == 0){
+    header('Location: ../index.php');
+    exit();
+}
 $stmt = $db->prepare("DELETE FROM Item WHERE ItemID = ?");
 $stmt->execute(array($item_id));
 

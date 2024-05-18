@@ -18,7 +18,9 @@ if ($item_id != null) {
 }
 
     function display_item($db, $item_id) {
+        echo $item_id;
         $item = getItem($db, $item_id);
+        echo $item['ItemID'];
         $photos = getPhotos($db, $item_id);
         $brand = getBrand($db, $item['brand_id']);
         $size = getSize($db, $item['size_id']);
@@ -64,16 +66,18 @@ if ($item_id != null) {
                 if($item['is_sold'] == 0){?>
                 <button id="itemWhishlist" data-item-id="<?= htmlspecialchars($item_id) ?>" class="btn btn-secondary"><i id="heartItem" class="<?= isOnwhishlist($db,$item['ItemID'],$_SESSION['username'])? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>"></i> Favorite</button> <?php
                 if($permissions){ ?>
-                    <a href="sell.php?item_id=<?= urlencode($item['ItemID']) ?>">Edit Item</a>
+                <a href="sell.php?item_id=<?= urlencode($item['ItemID']) ?>">Edit Item</a>
                 <p id="delete_item">Delete Item</p>
+             
                 <section id="Pop_Up_delete">
                     <section class="Pop_Up-content">
                         <p>Are you sure you want to delete this item?</p>
                         <form action="../actions/action_delete_item.php" method="post">
-                            <input type="hidden" name="item_id" value="<?= htmlspecialchars($item_id) ?>">
-                            <button id="confirmBtn" type="submit">Confirm</button>
+                            <input type="hidden" name="item_id" value="<?= htmlspecialchars($item['ItemID']) ?>">
+                            <?php echo $item['ItemID'] ?>
                             <input type="hidden" name="csrf" value="<?= $_SESSION['csrf'] ?>">
                             <button id="cancelBtn">Cancel</button>
+                            <button id="confirmBtn" type="submit" >Confirm</button>
                         </form>
                     
                     </section>
@@ -90,9 +94,10 @@ if ($item_id != null) {
                 <section id="Pop_Up_delete">
                     <section class="Pop_Up-content">
                         <p>Are you sure you want to delete this item?</p>
-                        <form action="../actions/action_delete_item.php" method="get">
-                            <input type="hidden" name="item_id" value="<?= htmlspecialchars($item_id) ?>">
-                            <button id="confirmBtn" type="submit">Confirm</button>
+                        <form action="../actions/action_delete_item.php" method="post">
+                            <input type="hidden" name="item_id" value="<?= htmlspecialchars($item['ItemID']) ?>">
+                            <input type="hidden" name="csrf" value="<?= $_SESSION['csrf'] ?>">
+                            <button id="confirmBtn" type="submit" >Confirm</button>
                             <button id="cancelBtn">Cancel</button>
                         </form>
                     

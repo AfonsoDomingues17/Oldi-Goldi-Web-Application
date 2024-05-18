@@ -106,6 +106,4 @@ $transactions = getAllTransactions($db);
     </section>
 
 
-
-
-</main>
+

@@ -320,4 +320,16 @@ require_once('is_on_whishlist.php');
     </label>
     <?php 
    }
+
+   function getTransaction($db,$item_id){
+       $stmt = $db->prepare("SELECT * FROM Transactions WHERE item_id = ?");
+       $stmt->execute(array($item_id));
+       return $stmt->fetch();
+   }
+
+   function getTransactionsByUser($db,$username){
+       $stmt = $db->prepare("SELECT * FROM Transactions WHERE seller = ? OR buyer = ?");
+       $stmt->execute(array($username,$username));
+       return $stmt->fetchAll();
+   }
 ?>

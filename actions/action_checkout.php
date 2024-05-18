@@ -21,5 +21,5 @@ $stmt->execute(array($buyer,$seller,$item_id,$item['price'],$card_id));
 $stmt = $db->prepare("UPDATE Item SET is_sold = 1 WHERE ItemID = ?");
 $stmt->execute(array($item_id));
 
-header('Location: ../pages/ShippingForm.php');
+header('Location: ../pages/ShippingForm.php?item_id='. urlencode($item_id));
 ?>

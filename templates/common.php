@@ -40,6 +40,7 @@ function output_header($db){ ?>
     <link rel="stylesheet" href="../css/Checkout.css">
     <link rel="stylesheet" href="../css/admin_page.css">
     <link rel="stylesheet" href="../css/chats.css">
+    <link rel="stylesheet" href="../css/ShippingForm.css">
 
     <script src="../javascript/items.js" defer></script>
     <script src="../javascript/script.js" defer></script>

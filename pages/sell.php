@@ -22,13 +22,15 @@ else{
     $brand = null;
     $photos = [];
     }
-?>
+   
 
+?>
 <main id="SellItem">
 
 <h1>Sell an Item</h1>
 <section id="item_photos">
     <form action="../actions/action_sell_item.php" method="post" enctype="multipart/form-data">
+        <input  id="secur" type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
         <section id="img_container">
             <?php foreach($photos as $photo){ ?>  
                 <div class="img-wrapper" id="photo_<?= htmlspecialchars($photo['photo_id'])?>">
@@ -102,7 +104,7 @@ else{
         <section id = "item_price">
             Price:<label><input type="number" step="0.01" value="<?= htmlspecialchars($item['price']) ?>" name="item_price" placeholder="€ 0,00"redquired></label><br>
         </section>
-        <input type="hidden" name="csrf" value="<?= $_SESSION['csrf'] ?>">
+       
         <?php if(isset($item_id)) {
         ?>
         <button type="submit" id = "sellItemButton">Confirm Changes</button>
