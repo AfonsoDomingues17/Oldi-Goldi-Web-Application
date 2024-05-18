@@ -23,22 +23,34 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
         <h2>Checkout</h2>
         <section id="Item_Info">
             <h2>Item</h2>
+            <section id="item_details">
             <a href="item.php?item_id=<?= urlencode($item['ItemID']) ?>"><img src="<?= htmlspecialchars($photos[0]['photo_url']) ?>" width="100" height="100" alt="item_photo"></a>
-                <span id="item_name"><?= htmlspecialchars($item['item_name']) ?></span>
-                <?php if(isset($size)) { ?> 
-                <span id="item_size"><?= htmlspecialchars($size['size_value']) ?></span> 
-                <?php } ?>
-                <?php if(isset($condition)) { ?>
-                <span id="item_condition"><?= htmlspecialchars($condition['condition_value']) ?></span> 
-                <?php } ?>
-                <?php if(isset($brand)) { ?>
-                <span id="item_brand"><?= htmlspecialchars($brand) ?></span> 
-                <?php } ?>
-                <?php if(isset($item_new_price)){ ?>
-                <span id="item_price"><?= htmlspecialchars($item_new_price) ?>€</span>
-                <?php } else {?>
-                <span id="item_price"><?= htmlspecialchars($item['price']) ?>€</span>
-                <?php } ?>
+            
+            <section id = "checkout_item_details">
+                <section id = "checkout_item_top">
+                    <span id="item_name"><?= htmlspecialchars($item['item_name']) ?></span>
+
+                    <?php if(isset($item_new_price)){ ?>
+                    <span id="item_price"><?= htmlspecialchars($item_new_price) ?>€</span>
+                    <?php } else { ?>
+                    <span id="item_price"><?= htmlspecialchars($item['price']) ?>€</span>
+                    <?php } ?>
+                </section>
+                
+                <section id = "checkout_item_bottom">
+                    <?php if(isset($condition)) { ?>
+                    <span id="item_condition"><?= htmlspecialchars($condition['condition_value']) ?></span> 
+                    <?php } ?>
+
+                    <?php if(isset($size)) { ?> 
+                    <span id="item_size"><?= htmlspecialchars($size['size_value']) ?></span> 
+                    <?php } ?>
+                    
+                    <?php if(isset($brand)) { ?>
+                    <span id="item_brand"><?= htmlspecialchars($brand) ?></span> 
+                    <?php } ?>
+                </section>
+            </section>
         </section>
         
 
@@ -74,7 +86,7 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
 
 
 <form action="../actions/action_checkout.php" method="post">
-<section id="Payment Method">
+<section id="Payment_Method">
         <h3>Payment Method</h3>
         <input type="radio" id="credit" name="payment" value="credit" required>
         <label for="credit">Credit card</label><br>

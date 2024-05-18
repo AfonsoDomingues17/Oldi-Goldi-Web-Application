@@ -86,7 +86,8 @@ section#item_info {
     font-weight: bold;
 }
 
-#message_item_top span:not(:last-child)::after, #message_item_bottom span:not(:last-child)::after{
+#message_item_top span:not(:empty) ~ span:not(:empty)::before,
+#message_item_bottom span:not(:empty) ~ span:not(:empty)::before {
     content: " - ";
 }
 
