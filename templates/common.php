@@ -72,11 +72,12 @@ function output_header($db){ ?>
             <?php } ?>
             </select>
             <!-- Search bar -->
-            <input id = "search" type = "text" placeholder = "Find your dream item!" name="inputbar" oninput="searchFunction()">
+            <section class = "searchbar">
+                <input id = "search" type = "text" placeholder = "Find your dream item!" name="inputbar" oninput="searchFunction()">
+                <section id="searchResult"></section>
+            </section>
             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
-        </section>
-        <section id="searchResult">
         </section>
         <div class="navbar-right">
             <?php if(isset($_SESSION['username'])) { ?>
@@ -105,6 +106,7 @@ function output_header($db){ ?>
 
         </div>
       </section>
+    </header>
 
 <?php } ?>
 
