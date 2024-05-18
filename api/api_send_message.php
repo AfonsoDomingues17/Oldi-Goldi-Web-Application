@@ -9,8 +9,6 @@ $chat_id = intval($_GET['chat_id']);
 
 addMessage($db, $chat_id, $_SESSION['username'], $message);
 
-$name = getUser($db,$_SESSION['username']);
-
-echo '<li>' . htmlspecialchars($name['name']) . ': ' . htmlspecialchars($message) . '</li>';
+echo '<li class="sender">' . htmlspecialchars($message) . '</li>';
 
 ?>

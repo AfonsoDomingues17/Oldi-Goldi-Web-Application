@@ -36,29 +36,31 @@ function getAllMessages($db,$chat_id){
 }
 
 function displayMessages($messages,$db,$chat){ 
-    
+    $sender = getUser($db,$message['sender_id']);
     $item = getChatItem($db,$chat['chat_id']);
     $item_price = getItemPrice($db,$item['item_id']);
-    $item_new_price = getNewPrice($db,$chat['buyer'],$item['ItemID']);
+    $item_new_price = getNewPrice($db,$chat['buyer'],$item['item_id']);
+    $position = ($_SESSION['username'] === $sender) ? 'sender' : 'receiver';
+
         foreach($messages as $message){
         $sender = getUser($db,$message['sender_id']);
         if($message['is_price_proposal'] && $_SESSION['username'] == $chat['seller'] && strpos($message['message'], 'REJECT') === false && strpos($message['message'], 'ACCEPT') === false){                   
         if(isset($item_new_price)){ ?>
-        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item_new_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
+        <li class="<?= $position ?>">OldPrice:<?= htmlspecialchars($item_new_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
         <?php } else { ?>
-        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
+        <li class="<?= $position ?>">OldPrice:<?= htmlspecialchars($item_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
         <?php } ?>
         <button id="Accept_Btn" data-message-id="<?= htmlspecialchars($message['message_id'])?>">Accept</button>
         <button id="Reject_Btn" data-message-id="<?= htmlspecialchars($message['message_id'])?>">Reject</button>
 
 <?php } else if($message['is_price_proposal']){
     if(isset($item_new_price)){ ?>
-        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item_new_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
+        <li class="<?= $position ?>">OldPrice:<?= htmlspecialchars($item_new_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
         <?php } else { ?>
-        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
+        <li class="<?= $position ?>">OldPrice:<?= htmlspecialchars($item_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
         <?php } ?>
 <?php } else {?>
-<li><?= htmlspecialchars($sender['name'])?>: <?= htmlspecialchars($message['message'])?></li>
+<li class="<?= $position ?>"><?= htmlspecialchars($message['message'])?></li>
 <?php } ?>
 <?php } ?>
         
@@ -74,9 +76,9 @@ function addNewPriceMessage($db,$chat_id,$sender_id,$new_price){
 }
 
 function getLimitedMessages($db, $chat_id) {
-    $stmt = $db->prepare("SELECT * FROM messages WHERE chat_id = ? ORDER BY timestamp LIMIT 15");
+    $stmt = $db->prepare("SELECT * FROM messages WHERE chat_id = ? ORDER BY timestamp DESC LIMIT 15");
     $stmt->execute([$chat_id]);
-    return $stmt->fetchAll();
+    return array_reverse($stmt->fetchAll());
 }
 
 function getLatestChatID($db){

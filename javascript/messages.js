@@ -13,7 +13,7 @@ if(sendMessage){
             console.log(data);
             document.getElementById('Message_list').innerHTML += data;
             document.getElementById('message_box').value = '';
-            
+            scrollToBottom();
         });
 
 
@@ -103,3 +103,12 @@ closeX.addEventListener('click',function(){
     
 }
 }
+
+function scrollToBottom() {
+    const messageList = document.getElementById('Message_list');
+    messageList.scrollTop = messageList.scrollHeight;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    scrollToBottom();
+});

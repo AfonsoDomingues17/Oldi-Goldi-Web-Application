@@ -81,7 +81,7 @@ $item_new_price = getNewPrice($db,$chat['buyer'],$item['ItemID']);
 
             foreach($messages as $message){
             $sender = getUser($db,$message['sender_id']);
-            $position = ($_SESSION['username'] == $sender['username']) ? 'sender' : 'receiver';
+            $position = ($_SESSION['username'] === $sender['username']) ? 'sender' : 'receiver';
             
             if ($message['is_price_proposal'] && $_SESSION['username'] == $chat['seller'] && strpos($message['message'], 'REJECT') === false && strpos($message['message'], 'ACCEPT') === false) {
                     if (isset($item_new_price)) { ?>

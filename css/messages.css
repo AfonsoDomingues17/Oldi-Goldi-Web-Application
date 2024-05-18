@@ -33,7 +33,7 @@
 
 #message_area {
     margin: auto;
-    width: 70%;
+    width: 60%;
 }
 
 .chat_area{
@@ -104,6 +104,12 @@ section#item_info {
     flex-direction: column;
     padding: 20px;
     padding-top: 0;
+    max-height: 600px;
+    overflow-y: auto;
+}
+/*Hide Scrollbar*/
+#Message_list::-webkit-scrollbar {
+    display: none;
 }
 
 #Message_list li {
@@ -158,20 +164,31 @@ form {
 
 #message_box {
     flex-grow: 1;
-    padding: 10px;
+    padding: 5px;
+    margin: 0 5px 10px 5px;
     border-radius: 10px;
     border: 1px solid #ccc;
 }
 
 #sendMessage {
+    display: flex;
+    align-items: center;
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 15px;
+    margin: 0px 5px 10px 0px;
+    padding: 22px;
     border-radius: 10px;
     cursor: pointer;
+    min-height: 40px;
 }
 
 #sendMessage i {
     font-size: 16px;
+}
+
+@media (max-width: 860px) {
+    #Message_list {
+        max-height: 500px;
+    }
 }
