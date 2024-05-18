@@ -29,76 +29,99 @@ $item_new_price = getNewPrice($db,$chat['buyer'],$item['ItemID']);
 
 
 <section id="message_area">
-<a href="chats.php">Back To Chats</a>
-<h2>Messages</h2>
-<section id="item_info">
-<a href="item.php?item_id=<?= urlencode($item['ItemID']) ?>"><img src="<?= htmlspecialchars($photos[0]['photo_url']) ?>" width="100" height="100" alt="item_photo"></a>
-<span id="item_name"><?= htmlspecialchars($item['item_name']) ?></span> 
-<?php if(isset($size['size_value'])){ ?>
-<span id="item_size"><?= htmlspecialchars($size['size_value']) ?></span> 
-<?php } ?>
-<?php if(isset($condition['condition_value'])){ ?>
-<span id="item_condition"><?= htmlspecialchars($condition['condition_value']) ?></span> 
-<?php } ?>
-<?php if(isset($brand['brand_name'])){ ?>
-<span id="item_brand"><?= htmlspecialchars($brand['brand_value']) ?></span> 
-<?php } ?>
-<?php if(isset($item_new_price)){ ?>
-<span id="item_price"><?= htmlspecialchars($item_new_price) ?>€</span>
-<?php } else { ?>
-<span id="item_price"><?= htmlspecialchars($item['price']) ?>€</span>
-<?php } ?>
+    <section id = "messages_header">
+        <a href="chats.php" class="back_arrow"><i class="fas fa-arrow-left"></i></a>
+        <h2>Messages</h2>
+    </section>
+    <section class = "chat_area">
+        <section id="item_info">
+            <a href="item.php?item_id=<?= urlencode($item['ItemID']) ?>"><img src="<?= htmlspecialchars($photos[0]['photo_url']) ?>" width="100" height="100" alt="item_photo"></a>
+            
+            <section id = "message_item_details">
+                <section id = "message_item_top">
+                    <span id="item_name"><?= htmlspecialchars($item['item_name']) ?></span>
 
-<?php if($item['seller'] != $_SESSION['username']){ 
-    if($item['is_sold'] == 0){ ?>
-<button id="PNPBtn">Propose New Price</button>
-<a href="Checkout.php?item_id=<?= urlencode($chat['item_id']) ?>">BUY NOW</a>
-<?php } else { ?>
-<span id="item_sold"><b>- SOLD!</b></span>
-<?php } ?>
-<?php } ?>
-</section>
+                    <?php if(isset($item_new_price)){ ?>
+                    <span id="item_price"><?= htmlspecialchars($item_new_price) ?>€</span>
+                    <?php } else { ?>
+                    <span id="item_price"><?= htmlspecialchars($item['price']) ?>€</span>
+                    <?php } ?>
+                </section>
+                
+                <section id = "message_item_bottom">
+                    <?php if(isset($condition['condition_value'])){ ?>
+                    <span id="item_condition"><?= htmlspecialchars($condition['condition_value']) ?></span> 
+                    <?php } ?>
 
+                    <?php if(isset($size['size_value'])){ ?>
+                    <span id="item_size"><?= htmlspecialchars($size['size_value']) ?></span> 
+                    <?php } ?>
+                    
+                    <?php if(isset($brand['brand_name'])){ ?>
+                    <span id="item_brand"><?= htmlspecialchars($brand['brand_name']) ?></span> 
+                    <?php } ?>
+                </section>
+            </section>
 
+            <section id = "message_price_buttons">
+                <?php if($item['seller'] != $_SESSION['username']){ 
+                    if($item['is_sold'] == 0){ ?>
+                <button id="PNPBtn">Propose New Price</button>
+                <a id = "message_buy_item" href="Checkout.php?item_id=<?= urlencode($chat['item_id']) ?>">BUY NOW</a>
+                <?php } else { ?>
+                <span id="item_sold"><b>- SOLD!</b></span>
+                <?php } ?>
+                <?php } ?>
+            </section>
+        </section>
 
-<ul id="Message_list">
-<?php $messages = getLimitedMessages($db,$chat['chat_id']);
+        <section id = "messages_about_item">
+            <ul id="Message_list">
+            <?php $messages = getLimitedMessages($db,$chat['chat_id']);
 
-foreach($messages as $message){
-$sender = getUser($db,$message['sender_id']);
-if($message['is_price_proposal'] && $_SESSION['username'] == $chat['seller'] && strpos($message['message'], 'REJECT') === false && strpos($message['message'], 'ACCEPT') === false){
-        if(isset($item_new_price)){ ?>
-        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item_new_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
-        <?php } else { ?>
-        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item['price']) ?>€ <?= htmlspecialchars($message['message'])?></li>
-        <?php } ?>
-        <form action="../api/api_reject_accept_proposal.php" method="get">
-        <input type="hidden" name="action" value="accept">
-        <input type="hidden" name="message_id" value="<?= htmlspecialchars($message['message_id'])?>">
-        <button id="Accept_Btn" >Accept</button>
-        </form>
-        <button id="Reject_Btn" data-message-id="<?= htmlspecialchars($message['message_id'])?>">Reject</button>
+            foreach($messages as $message){
+            $sender = getUser($db,$message['sender_id']);
+            $position = ($_SESSION['username'] == $sender['username']) ? 'sender' : 'receiver';
+            
+            if ($message['is_price_proposal'] && $_SESSION['username'] == $chat['seller'] && strpos($message['message'], 'REJECT') === false && strpos($message['message'], 'ACCEPT') === false) {
+                    if (isset($item_new_price)) { ?>
+                        <li class="<?= $position ?>">
+                            Old Price: <?= htmlspecialchars($item_new_price) ?>€ <br> <?= htmlspecialchars($message['message']) ?>
+                        </li>
+                    <?php } else { ?>
+                        <li class="<?= $position ?>">
+                            Old Price: <?= htmlspecialchars($item['price']) ?>€ <br> <?= htmlspecialchars($message['message']) ?>
+                        </li>
+                    <?php } ?>
+                    <form action="../api/api_reject_accept_proposal.php" method="get">
+                        <input type="hidden" name="action" value="accept">
+                        <input type="hidden" name="message_id" value="<?= htmlspecialchars($message['message_id']) ?>">
+                        <button id="Accept_Btn">Accept</button>
+                    </form>
+                    <button id="Reject_Btn" data-message-id="<?= htmlspecialchars($message['message_id']) ?>">Reject</button>
+                <?php } else if ($message['is_price_proposal']) {
+                    if (isset($item_new_price)) { ?>
+                        <li class="<?= $position ?>">
+                            Old Price: <?= htmlspecialchars($item_new_price) ?>€ <br> <?= htmlspecialchars($message['message']) ?>
+                        </li>
+                    <?php } else { ?>
+                        <li class="<?= $position ?>">
+                            Old Price: <?= htmlspecialchars($item['price']) ?>€ <br> <?= htmlspecialchars($message['message']) ?>
+                        </li>
+                    <?php } ?>
+                <?php } else { ?>
+                    <li class="<?= $position ?>"><?= htmlspecialchars($message['message']) ?></li>
+                <?php } ?>
+            <?php } ?>
+            </ul>
 
-<?php } else if($message['is_price_proposal']){
-    if(isset($item_new_price)){ ?>
-        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item_new_price) ?>€ <?= htmlspecialchars($message['message'])?></li>
-        <?php } else { ?>
-        <li><?= htmlspecialchars($sender['name'])?>: OldPrice:<?= htmlspecialchars($item['price']) ?>€ <?= htmlspecialchars($message['message'])?></li>
-        <?php } ?>
-<?php } else {?>
-<li><?= htmlspecialchars($sender['name'])?>: <?= htmlspecialchars($message['message'])?></li>
-<?php } ?>
-<?php } ?>
-</ul>
-
-<form action="">
-    <input type="text" name="message" id="message_box">
-    <input type="hidden" name="chat_id" id="hidden_chat_id" value="<?= $chat_id?>">
-    <button type="submit" id="sendMessage"><i class="fa-solid fa-arrow-right"></i></button>
-</form>
-
-
-
+            <form action="">
+                <input type="text" name="message" id="message_box">
+                <input type="hidden" name="chat_id" id="hidden_chat_id" value="<?= $chat_id?>">
+                <button type="submit" id="sendMessage"><i class="fa-solid fa-arrow-right"></i></button>
+            </form>
+        </section>
+    </section>
 
 </section>
 

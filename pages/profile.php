@@ -8,7 +8,7 @@ $categories = getAllCategories($db);
 $brands = getAllBrands($db);
 output_header($db);
 display_categories($categories);
-$pageOwner = urldecode($_GET['username']);
+$pageOwner = isset($_GET['username']) ? urldecode($_GET['username']) : null;
 
 if($pageOwner != null)$user = getUser($db,$pageOwner);
 else $user = getUser($db,$_SESSION['username']);
@@ -67,10 +67,9 @@ $permissions = getUserPermissions($db,$_SESSION['username']);
                 <span class="email"><i class="fa fa-envelope" aria-hidden="true"></i> <?= htmlspecialchars($user['email'])?></span><p></p>
                 <?php if(isset($user['phone_number'])){ ?> <span class="phonenumber"><i class="fa fa-phone" aria-hidden="true"></i> <?= htmlspecialchars($user['phone_number'])?></span><p></p> <?php } ?>
                 <?php if(isset($user['Adress'])) {?><span class="address"><i class="fa fa-home" aria-hidden="true"></i> <?= htmlspecialchars($user['Adress'])?></span> <?php } ?>
-                <span class="zip_code"><?= htmlspecialchars($user['Zip_code'])?></span>
+                <?php if(isset($user['Zip_code'])){ ?> <span class="zip_code"><?= htmlspecialchars($user['Zip_code'])?></span> <?php } ?>
         </section>
-            
-            <p><?= htmlspecialchars($user['description'])?></p>
+            <?php if(isset($user['description'])){ ?> <p><?= htmlspecialchars($user['description'])?></p> <?php } ?>
             <?php if ($pageOwner != null && !$user['isAdmin'] && $permissions){?>
                 <form action="../actions/action_profile.php" method="post">
                     <input type="hidden" name="user" value="<?= htmlspecialchars($user['username']) ?>">
