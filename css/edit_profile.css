@@ -25,6 +25,16 @@ section#update_profile > section#user_details{
     margin-bottom: 30px;
 }
 
+section#update_profile label:not(:is(.choose_profile_picture, #updateProfileLabel)) {
+    display: block;
+    margin-top: 6px;
+}
+
+section#update_profile input[type="text"] {
+    display: block;
+    margin-top: 4px;
+}
+
 section#update_profile > section#shipping{
     background-color: white;
     padding: 20px;
@@ -77,6 +87,7 @@ form#edit_profile button {
     margin-right: auto;
     padding-bottom: 1.7em;
 }
+
 section#edit {
     background-color: white;
 }
