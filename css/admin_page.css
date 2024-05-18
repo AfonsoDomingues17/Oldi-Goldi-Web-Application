@@ -10,8 +10,7 @@
 section#Insertions {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 20px;
-    column-gap: 20px;
+    gap: 20px;
 }
 
 section#AddCategory, section#AddBrand, section#AddCondition, section#AddSize {
@@ -37,11 +36,27 @@ section#Insertions li {
     margin-bottom: 2px;
 }
 
+form.insertion_form{
+    display: flex;
+    flex-direction: column;
+}
+
+section.insertion_labels{
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+section.insertion_labels label{
+    font-weight: bold;
+}
+
 section#Insertions input[type='text'] {
     display: block;
     width: 100%;
     padding: 0;
-    margin: 0;
+    margin: 10px 0 0 0;
 }
 
 button#AS{
@@ -52,8 +67,38 @@ button#AS{
     border-radius: 5px;
 }
 
+#Users h2, #Transactions h2 {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.users_grid, .transactions_grid {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+}
+
+#individual_user, #individual_transaction {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#individual_user a {
+    text-decoration: none;
+    color: black;
+}
+
 @media (max-width: 860px) {
     section#Insertions {
         grid-template-columns: 1fr;
+    }
+    .users_grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
