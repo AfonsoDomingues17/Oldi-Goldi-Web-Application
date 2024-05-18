@@ -135,7 +135,7 @@ section#item_info {
     align-self: flex-start;
 }
 
-form {
+#send_message_box {
     display: flex;
     margin-top: 10px;
 }

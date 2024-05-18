@@ -115,7 +115,7 @@ $item_new_price = getNewPrice($db,$chat['buyer'],$item['ItemID']);
             <?php } ?>
             </ul>
 
-            <form action="">
+            <form id = "send_message_box" action="">
                 <input type="text" name="message" id="message_box">
                 <input type="hidden" name="chat_id" id="hidden_chat_id" value="<?= $chat_id?>">
                 <button type="submit" id="sendMessage"><i class="fa-solid fa-arrow-right"></i></button>

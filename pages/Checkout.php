@@ -22,17 +22,23 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
     <section id="checkout_page">
         <h2>Checkout</h2>
         <section id="Item_Info">
-        <h2>Item</h2>
-        <a href="item.php?item_id=<?= urlencode($item['ItemID']) ?>"><img src="<?= htmlspecialchars($photos[0]['photo_url']) ?>" width="100" height="100" alt="item_photo"></a>
-            <span id="item_name"><?= htmlspecialchars($item['item_name']) ?></span> 
-            <span id="item_size"><?= htmlspecialchars($size['size_value']) ?></span> 
-            <span id="item_condition"><?= htmlspecialchars($condition['condition_value']) ?></span> 
-            <span id="item_brand"><?= htmlspecialchars($brand) ?></span> 
-            <?php if(isset($item_new_price)){ ?>
-            <span id="item_price"><?= htmlspecialchars($item_new_price) ?>€</span>
-            <?php } else {?>
-            <span id="item_price"><?= htmlspecialchars($item['price']) ?>€</span>
-            <?php } ?>
+            <h2>Item</h2>
+            <a href="item.php?item_id=<?= urlencode($item['ItemID']) ?>"><img src="<?= htmlspecialchars($photos[0]['photo_url']) ?>" width="100" height="100" alt="item_photo"></a>
+                <span id="item_name"><?= htmlspecialchars($item['item_name']) ?></span>
+                <?php if(isset($size)) { ?> 
+                <span id="item_size"><?= htmlspecialchars($size['size_value']) ?></span> 
+                <?php } ?>
+                <?php if(isset($condition)) { ?>
+                <span id="item_condition"><?= htmlspecialchars($condition['condition_value']) ?></span> 
+                <?php } ?>
+                <?php if(isset($brand)) { ?>
+                <span id="item_brand"><?= htmlspecialchars($brand) ?></span> 
+                <?php } ?>
+                <?php if(isset($item_new_price)){ ?>
+                <span id="item_price"><?= htmlspecialchars($item_new_price) ?>€</span>
+                <?php } else {?>
+                <span id="item_price"><?= htmlspecialchars($item['price']) ?>€</span>
+                <?php } ?>
         </section>
         
 
@@ -47,13 +53,13 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
             <form action="../actions/action_update_adress.php" method="post">
                 <h2>Complete your Shipping Address</h2>
                 <label for="address">Address:</label><br>
-                <input type="text" id="address" name="address" value="<?= htmlspecialchars($user['Adress'])?>"  required><br>
+                <input type="text" id="address" name="address" value="<?= isset($user['Adress']) ? htmlspecialchars($user['Adress']) : '' ?>"  required><br>
                 <label for="city">City:</label><br>
-                <input type="text" id="city" name="city" value="<?= htmlspecialchars($user['Cidade'])?>" required><br>
+                <input type="text" id="city" name="city" value="<?= isset($user['Cidade']) ? htmlspecialchars($user['Cidade']) : '' ?>" required><br>
                 <label for="Country">Country:</label><br>
-                <input type="text" id="Country" name="Country" value="<?= htmlspecialchars($user['Country'])?>" required><br>
+                <input type="text" id="Country" name="Country" value="<?= isset($user['Country']) ? htmlspecialchars($user['Country']) : '' ?>" required><br>
                 <label for="zip">Zip Code:</label><br>
-                <input type="text" id="zip" name="zip" value="<?= htmlspecialchars($user['Zip_code'])?>" required><br>
+                <input type="text" id="zip" name="zip" value="<?= isset($user['Zip_code']) ? htmlspecialchars($user['Zip_code']) : '' ?>" required><br>
                 <input type="hidden" name="item_id" value="<?= htmlspecialchars($item_id) ?>">
                 <input type="hidden" name="csrf" value="<?= $_SESSION['csrf'] ?>">
             <button >Confirm Shipping Info</button>
