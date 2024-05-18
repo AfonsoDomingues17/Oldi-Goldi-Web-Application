@@ -19,7 +19,7 @@ display_categories($categories);
 <?php 
 $items = getItemsByWhislist($db, $_SESSION['username']);
 if(empty($items)){ ?>
-    <h2>There are no items in your wishlist</h2>";
+    <h2>There are no items in your wishlist</h2>
     <a href="items.php">Look for some in here</a>
 <?php } else {
 foreach($items as $Witem){ 

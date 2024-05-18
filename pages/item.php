@@ -107,7 +107,7 @@ if ($item_id != null) {
             <section id="Message_PopUp">
             <section id="Message_PopUpContent">
             <span id="close" class="close">&times;</span>
-            <h2>New Message About <?= $item['name']?></h2>
+            <h2>New Message About <?= $item['item_name']?></h2>
             <form action="../actions/action_add_new_chat.php" method="post">
                 <input type="hidden" name="item_id" value="<?= htmlspecialchars($item['ItemID']) ?>">
                 <input type="hidden" name="user" value="<?= htmlspecialchars($item['seller']) ?>">
