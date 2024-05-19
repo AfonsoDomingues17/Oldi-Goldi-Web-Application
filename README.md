@@ -2,13 +2,13 @@
 
 ## Group ltw16g02
 
-- Afonso Domingues (up202207313) 40%
-- João Lamas (up20220????) 30%
-- Pedro Fernandes (up20220????) 30%
+- Afonso Domingues (up202207313) 60%
+- João Lamas (up202208948) 20%
+- Pedro Fernandes (up202207987) 20%
 
 ## Install Instructions
 
-    git clone <your_repo_url>
+    git clone git@github.com:FEUP-LTW-2024/ltw-project-2024-ltw16g02.git
     git checkout final-delivery-v1
     sqlite database/project.db < database/script.sql
     php -S localhost:9000
@@ -16,7 +16,9 @@
 
 ## Screenshots
 
-(2 or 3 screenshots of your website)
+![Items Page](images/itemspage.png)
+![Profile Page](images/profile.png)
+![Main Page](images/mainpage.png)
 
 ## Implemented Features
 
@@ -53,12 +55,11 @@ We have been careful with the following security aspects:
 - [ ] **Cross-Site Scripting (XSS)**
 - [ ] **Cross-Site Request Forgery (CSRF)**
 
-**Password Storage Mechanism**: md5 / sha1 / sha256 /hash_password&verify_password
+**Password Storage Mechanism**: hash_password&verify_password
 
 **Aditional Requirements**:
 
 We also implemented the following additional requirements:
 
-- [ ] **Multi-Currency Support**
 - [ ] **User Preferences**
 - [ ] **Real-Time Messaging System**

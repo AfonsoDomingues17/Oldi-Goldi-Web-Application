@@ -34,7 +34,7 @@ $user = getUser($db,$usernams);
                 <section id="shipping">
                     <h2>Shipping Information</h2>
 
-                    <label id="updateProfileLabelAdress">Adress: <input type="text" id="updateProfileTextAdress" value="<?= isset($user['Address']) ? htmlspecialchars($user['Address']) : '' ?>" name ="address"></label>
+                    <label id="updateProfileLabelAdress">Adress: <input type="text" id="updateProfileTextAdress" value="<?= isset($user['Adress']) ? htmlspecialchars($user['Adress']) : '' ?>" name ="address"></label>
                     <label id="updateProfileLabelZipCode">Zip-Code: <input type="text" id="updateProfileTextZipCode" value="<?= isset($user['Zip_code']) ? htmlspecialchars($user['Zip_code']) : '' ?>" name="ZP" id="XP"></label>
                     <label id="updateProfileLabelCountry">Country: <input type="text" id="updateProfileTextCountry" value="<?= isset($user['Country']) ? htmlspecialchars($user['Country']) : '' ?>" name="Country" id="Country"></label>
                     <label id="updateProfileLabelCity">City: <input type="text" id="updateProfileTextCity" value="<?= isset($user['Cidade']) ? htmlspecialchars($user['Cidade']) : '' ?>" name="City" id="City">

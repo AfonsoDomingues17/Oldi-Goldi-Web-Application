@@ -36,11 +36,13 @@ section#Info{
 }
 
 section#Info_StartSelling{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-left: 11.5%;
-  width: 90%;
+  margin: auto;
+  width: 70%;
+  background-color: white;
   padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-top: 20px;
   
 }
 
@@ -175,4 +177,67 @@ a#user_description {
 
 section#GarticlesProfile article {
   width: 200px; 
+}
+
+
+
+/* Transactions Section */
+section#User_Transactions {
+  margin: auto;
+  width: 70%;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+section#User_Transactions h2 {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+section#User_Transactions ul {
+  list-style: none;
+  padding: 0;
+}
+
+section#User_Transactions li {
+  display: flex;
+  align-items: center; /* Align items vertically center */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+section#User_Transactions li img.transaction-item-photo {
+  width: 100px; /* Adjust the size of the item photo */
+  height: auto;
+  margin-right: 15px; /* Space between the image and the transaction info */
+  border-radius: 5px; /* Optional: add a border-radius to the image */
+}
+
+section#User_Transactions li p {
+  margin: 5px 0;
+}
+
+section#User_Transactions li a {
+  color: #007BFF;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+section#User_Transactions li a:hover {
+  text-decoration: underline;
+}
+
+section#User_Transactions li p:last-child {
+  margin-bottom: 0;
+}
+
+section#User_Transactions li span {
+  font-weight: bold;
 }
