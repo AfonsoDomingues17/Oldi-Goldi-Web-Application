@@ -133,15 +133,12 @@ function retrieveCurrentPrice(chat_id) {
         });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.location.pathname.endsWith('message.php')) {
-        scrollToBottom();
 
-        setInterval(function() {
-            const chat_id = document.getElementById('message_id').value;
+if (window.location.href.indexOf('messages.php') > -1) {
+    setInterval(function() {
+        const chat_id = document.getElementById('message_id').value;
 
-            retrieveNewMessages(chat_id);
-            retrieveCurrentPrice(chat_id);
-        }, 5000);
-    }
-});
+        retrieveNewMessages(chat_id);
+        retrieveCurrentPrice(chat_id);
+    }, 5000);
+}
