@@ -224,3 +224,110 @@ if(minPriceInput)minPriceInput.addEventListener('input', updateItems);
 
 if(maxPriceInput)maxPriceInput.addEventListener('input', updateItems);
 
+
+const OrderAcending = document.getElementById('Price_Ascend');
+
+if(OrderAcending){
+OrderAcending.addEventListener('click', function(event) {
+    console.log('click');
+    event.preventDefault();
+    fetch("../api/api_order_items.php?order=1")
+    .then(response => response.text())
+    .then(html => {
+        itemsContainer.innerHTML = html;
+        document.getElementById('Price_Ascend').style.color = 'red';
+        document.getElementById('Price_Descend').style.color = 'black';
+        document.getElementById('Name').style.color = 'black';
+        document.getElementById('dropdownMenu').style.display = 'none';
+        document.getElementById('orderBy').querySelector('i').className = 'fa-solid fa-chevron-down';
+
+
+        let resetOrderButton = document.getElementById('ResetOrder');
+            if (resetOrderButton) {
+                resetOrderButton.style.display = 'block';
+            } else {
+                resetOrderButton = document.createElement('button');
+                resetOrderButton.id = 'ResetOrder';
+                resetOrderButton.textContent = 'Reset Order';
+                document.getElementById('Show_Filter').insertAdjacentElement('afterend', resetOrderButton);
+            }
+           
+
+    });
+    console.log('finished');
+});
+
+}
+
+const OrderDescending = document.getElementById('Price_Descend');
+if(OrderDescending){
+OrderDescending.addEventListener('click', function(event) {
+    event.preventDefault();
+    fetch("../api/api_order_items.php?order=2")
+    .then(response => response.text())
+    .then(html => {
+        itemsContainer.innerHTML = html;
+        document.getElementById('Price_Descend').style.color = 'red';
+        document.getElementById('Price_Ascend').style.color = 'black';
+        document.getElementById('Name').style.color = 'black';
+        document.getElementById('dropdownMenu').style.display = 'none';
+        document.getElementById('orderBy').querySelector('i').className = 'fa-solid fa-chevron-down';
+
+
+        let resetOrderButton = document.getElementById('ResetOrder');
+        if (resetOrderButton) {
+            resetOrderButton.style.display = 'block';
+        } else {
+            resetOrderButton = document.createElement('button');
+            resetOrderButton.id = 'ResetOrder';
+            resetOrderButton.textContent = 'Reset Order';
+            document.getElementById('Show_Filter').insertAdjacentElement('afterend', resetOrderButton);
+        }
+    });
+});
+}
+
+const Name = document.getElementById('Name');
+if(Name){
+Name.addEventListener('click', function(event) {
+    event.preventDefault();
+    fetch("../api/api_order_items.php?order=3")
+    .then(response => response.text())
+    .then(html => {
+        itemsContainer.innerHTML = html;
+        document.getElementById('Name').style.color = 'red';
+        document.getElementById('Price_Descend').style.color = 'black';
+        document.getElementById('Price_Ascend').style.color = 'black';
+        document.getElementById('dropdownMenu').style.display = 'none';
+        document.getElementById('orderBy').querySelector('i').className = 'fa-solid fa-chevron-down';
+
+
+         let resetOrderButton = document.getElementById('ResetOrder');
+            if (resetOrderButton) {
+                resetOrderButton.style.display = 'block';
+            } else {
+                resetOrderButton = document.createElement('button');
+                resetOrderButton.id = 'ResetOrder';
+                resetOrderButton.textContent = 'Reset Order';
+                document.getElementById('Show_Filter').insertAdjacentElement('afterend', resetOrderButton);
+            }
+    });
+});
+}
+
+document.addEventListener('click', function(event) {
+    if(event.target && event.target.id === 'ResetOrder') {
+        event.preventDefault();
+        fetch("../api/api_order_items.php?order=0")
+        .then(response => response.text())
+        .then(html => {
+            itemsContainer.innerHTML = html;
+            document.getElementById('Name').style.color = 'black';
+            document.getElementById('Price_Descend').style.color = 'black';
+            document.getElementById('Price_Ascend').style.color = 'black';
+            document.getElementById('dropdownMenu').style.display = 'none';
+            document.getElementById('ResetOrder').style.display = 'none';
+        });
+    }
+});
+

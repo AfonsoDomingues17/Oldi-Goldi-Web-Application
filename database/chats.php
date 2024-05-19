@@ -99,4 +99,16 @@ function VerifyChatExists($db,$buyer,$seller,$item_id) {
     return $stmt->fetch();
 }
 
+function getLastMessageID($db, $chat_id, $lastDisplayedMessageId) {
+    $stmt = $db->prepare('SELECT * FROM messages WHERE chat_id = ? AND message_id >= ? ORDER BY message_id ASC');
+    $stmt->execute([$chat_id, $lastDisplayedMessageId]);
+    return $stmt->fetch();
+}
+
+function getLastID($db){
+    $stmt = $db->prepare("SELECT message_id FROM messages ORDER BY message_id DESC LIMIT 1");
+    $stmt->execute();
+    return $stmt->fetchColumn();
+}
+
 ?>

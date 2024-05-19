@@ -136,7 +136,7 @@ $permissions = getUserPermissions($db,$_SESSION['username']);
             </section>
     <section id="User_Transactions">
         <?php $transactions = getTransactionsByUser($db,$user['username']);
-        if($pageOwner == null || ($pageOwner == null && !$user['isAdmin'] && $permissions)){ ?>
+        if(($pageOwner == null || ($pageOwner == null && !$user['isAdmin'] && $permissions)) && $transactions > 0){ ?>
         <h2>Transactions</h2>
         <ul>
             <?php foreach($transactions as $transaction){ 
@@ -157,7 +157,7 @@ $permissions = getUserPermissions($db,$_SESSION['username']);
                 <?php } ?>
                 <p>Date: <?= htmlspecialchars($transaction['transaction_date']) ?></p>
                 <?php if($transaction['buyer'] == $user['username']){ ?>
-                <a href="ShippingForm?item_id=<?= urlencode($item['ItemID']) ?>">Get Shipping Form</a>
+                <a href="ShippingForm.php?item_id=<?= urlencode($item['ItemID']) ?>">Get Shipping Form</a>
                 <?php } ?>
             </li>
             <?php } ?>

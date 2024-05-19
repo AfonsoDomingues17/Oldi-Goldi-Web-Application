@@ -26,14 +26,14 @@ $item_new_price = getNewPrice($db,$chat['buyer'],$item['ItemID']);
 
 ?>
 
-
+<input type="hidden" id="message_id"  value="<?= htmlspecialchars($chat_id) ?>">
 
 <section id="message_area">
     <section id = "messages_header">
         <a href="chats.php" class="back_arrow"><i class="fas fa-arrow-left"></i></a>
         <h2>Messages</h2>
     </section>
-    <section class = "chat_area">
+    <section id="chat_area" class = "chat_area">
         <section id="item_info">
             <a href="item.php?item_id=<?= urlencode($item['ItemID']) ?>"><img src="<?= htmlspecialchars($photos[0]['photo_url']) ?>" width="100" height="100" alt="item_photo"></a>
             

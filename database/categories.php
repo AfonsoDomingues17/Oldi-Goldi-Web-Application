@@ -332,4 +332,12 @@ require_once('is_on_whishlist.php');
        $stmt->execute(array($username,$username));
        return $stmt->fetchAll();
    }
+
+   function getItemsByOrder($db,$order){
+        if($order == '1') $stmt = $db->prepare("SELECT * FROM Item WHERE is_sold = 0 ORDER BY price ASC");
+        else if($order == '2') $stmt = $db->prepare("SELECT * FROM Item WHERE is_sold = 0 ORDER BY price DESC");
+        else if($order == '3') $stmt = $db->prepare("SELECT * FROM Item WHERE is_sold = 0 ORDER BY item_name ASC");
+       $stmt->execute();
+       return $stmt->fetchAll();
+   }
 ?>

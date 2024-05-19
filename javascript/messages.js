@@ -112,3 +112,36 @@ function scrollToBottom() {
 document.addEventListener('DOMContentLoaded', function() {
     scrollToBottom();
 });
+
+function retrieveNewMessages(chat_id) {
+    
+
+    fetch('../api/api_retrieveNewMessages.php?chat_id=' + encodeURIComponent(chat_id))
+        .then(response => response.text())
+        .then(newMessages => {
+            document.getElementById('Message_list').innerHTML = newMessages;
+            scrollToBottom();
+        });
+}
+
+function retrieveCurrentPrice(chat_id) {
+
+    fetch('../api/api_retrievePrice.php?chat_id=' + encodeURIComponent(chat_id))
+        .then(response => response.text())
+        .then(newMessages => {
+            document.getElementById('item_price').innerHTML = newMessages;
+        });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname.endsWith('message.php')) {
+        scrollToBottom();
+
+        setInterval(function() {
+            const chat_id = document.getElementById('message_id').value;
+
+            retrieveNewMessages(chat_id);
+            retrieveCurrentPrice(chat_id);
+        }, 5000);
+    }
+});

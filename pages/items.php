@@ -94,13 +94,27 @@
                 <h1>Items for Sale</h1>
                 <div id="action_buttons">
                     <p id="Show_Filter">Hide filters <i class="fa-solid fa-sliders"></i></p>
-
+                    <button id="ResetOrder" style="display: <?php echo $_SESSION['order'] != '0' ? 'block' : 'none'; ?>">Reset Order</button>
                     <div id="dropdownContainer">
-                        <p id="orderBy">Order by <i class="fa-solid fa-chevron-down"></i></p>
+                        
+                        <p id="orderBy">Order by: <i class="fa-solid fa-chevron-down"></i></p>
                         <section id="dropdownMenu" class="dropdown-menu">
-                            <a href="#">Preço: Ascendente</a>
-                            <a href="#">Preço: Descendente</a>
-                            <a href="#">Mais Recente</a>
+                        <?php  if($_SESSION['order'] == '1'){ ?>
+                            <a id="Price_Ascend" href="#" style="color: red;">Preço: Ascendente</a>
+                        <?php } else {?>
+                            <a id="Price_Ascend" href="#">Preço: Ascendente</a>
+                        <?php } ?>
+                        <?php  if($_SESSION['order'] == '2'){ ?>
+                            <a id="Price_Descend" href="#" style="color: red;">Preço: Descendente</a>
+                        <?php } else {?>
+                            <a id="Price_Descend" href="#">Preço: Descendente</a>
+                        <?php } ?>
+                        <?php  if($_SESSION['order'] == '3'){ ?>
+                            <a id="Name" href="#" style="color: red;">Name</a>
+                        <?php } else {?>
+                            <a id="Name" href="#">Name</a>
+                        <?php } ?>
+
                         </section>
                     </div>
                 </div>
@@ -124,7 +138,11 @@
                 else if($searchTerm != null){
                     $items = get_Items_ByName($db,$searchTerm);
                 }
-                
+                if($_SESSION['order'] != '0'){
+                usort($items, function($a, $b) {
+                    return $a['price'] - $b['price'];
+                });
+                }
                 display_items($db, $items);?>
             </section>
         </section>
