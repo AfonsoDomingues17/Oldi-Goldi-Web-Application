@@ -166,3 +166,4 @@ if(deleteCard){
     });
 }
 
+const currency = document.getElementById('currency');

@@ -56,12 +56,12 @@ function output_header($db){ ?>
     <script src="https://kit.fontawesome.com/2b8a00114a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
 
-    <title>Store</title>
+    <title>Oldi Goldi</title>
 </head>
 <body>
     <header>
         <section id="main_nav_bar">
-        <h1><a href = "../index.php">Our Super Cool Store</a></h1> 
+        <h1><a href = "../index.php"><img src="../images/logo.png" alt="Shop Logo" height="70" ></a></h1> 
         <section id = "navsection">
         <form action="../actions/action_search.php" method="get">
             <select id="Select_Categories" name="Categories">
@@ -85,6 +85,7 @@ function output_header($db){ ?>
                 <a href="../pages/chats.php"><i class="fa-solid fa-message"></i></a>
                 <a href="../pages/wish_list.php"><i class="fa-solid fa-heart"></i></a>
             </div>
+             
             <?php } ?>
             <?php if(isset($_SESSION['username'])) {
             $permission = getUserPermissions($db,$_SESSION['username']);?>
@@ -113,7 +114,7 @@ function output_header($db){ ?>
 <?php function output_footer(){ ?>
 
     <footer>
-    <p>&copy; 2024 Your Online Store. All rights reserved.</p>
+    <p>&copy; 2024 Oldi Goldi. All rights reserved.</p>
     </footer>
     </body>
 </html>

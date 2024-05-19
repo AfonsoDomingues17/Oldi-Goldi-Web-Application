@@ -72,11 +72,6 @@
 
 
 
-    DROP TABLE IF EXISTS ShoppingCarts;
-    CREATE TABLE ShoppingCarts (
-        shopping_cart_id NUMERIC NOT NULL PRIMARY KEY,
-        userID INTEGER NOT NULL REFERENCES Users(username)
-    );
     DROP TABLE IF EXISTS Whishlists;
     CREATE TABLE Whishlists (
 
@@ -84,6 +79,7 @@
         username INTEGER NOT NULL,
         PRIMARY KEY (item_id, username)
     );
+    
     DROP TABLE IF EXISTS Photos;
     CREATE TABLE Photos (
         photo_id INTEGER PRIMARY KEY,
@@ -112,10 +108,10 @@
 
     DROP TABLE IF EXISTS UserPrices;
     CREATE TABLE UserPrices (
+    userPrice_id INTEGER PRIMARY KEY,
     username INTEGER NOT NULL,
     ItemID INTEGER NOT NULL,
     proposed_price REAL NOT NULL,
-    PRIMARY KEY(username, ItemID),
     FOREIGN KEY(username) REFERENCES Users(username),
     FOREIGN KEY(ItemID) REFERENCES Items(ItemID)
     );

@@ -6,7 +6,7 @@ if ($_SESSION['csrf'] !== $_POST['csrf']) {
   }
 require_once('../database/connection.php');                 // database connection
 require_once('../database/users.php');
-$username = preg_replace("/[^a-zA-Z0-9]/",'',$_POST['username']);
+$username = preg_replace("/[^a-zA-Z0-9_]/",'',$_POST['username']);
 $name = preg_replace("/[^a-zA-Z0-9]/",'',$_POST['name']);
 $email = preg_replace("/[^a-zA-Z0-9@.]/",'',$_POST['email']);
 

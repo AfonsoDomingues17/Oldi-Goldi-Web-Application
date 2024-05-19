@@ -1,5 +1,7 @@
 <?php 
-
+$api_key = '2d927baa0986e421fb9157f7';
+$base_currency = 'EUR'; 
+$exchange_rates = json_decode(file_get_contents("https://openexchangerates.org/api/latest.json?app_id=$api_key&base=$base_currency"), true);
 
 
 require_once('../templates/common.php');
@@ -53,6 +55,7 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
             </section>
         </section>
         
+        
 
         <section id="shipping_info">
             <?php if($user['Country'] != "" && $user['Cidade'] != "" && $user['Adress'] != "" && $user['Zip_code'] != ""){ ?>
@@ -78,12 +81,10 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
             </form>
             <?php } ?>
         </section>
+
     </section>
 
-        
-        
-    
-
+ 
 
 <form action="../actions/action_checkout.php" method="post">
 <section id="Payment_Method">
