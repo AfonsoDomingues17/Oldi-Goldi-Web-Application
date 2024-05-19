@@ -1,13 +1,14 @@
 #checkout_page, #Payment_Method {
     margin: auto;
     width: 70%;
+    text-align: center;
 }
 
 #checkout_page h2{
     text-align: center;
 }
 
-section#item_details {
+#item_details {
     background-color: #B0882F;
     padding: 20px;
     border-radius: 10px;
@@ -15,6 +16,8 @@ section#item_details {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
+    text-align: start;
+    margin-bottom: 20px;
 }
 
 #item_details img {
@@ -38,13 +41,97 @@ section#item_details {
 }
 
 #shipping_info{
-    text-align: center;
+    margin: 20px auto;
+    width: 50%;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 10px auto;
-    
+    padding: 10px 20px 10px 20px;
 }
+
+#shipping_info label, #Adress_PopUpContent label{
+    font-weight: bold;
+}
+
+#shipping_info input, #Adress_PopUpContent input{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#CABtn, #CSIBtn, #PopUp_Adress, #addCardsBtn, #PayBtn{
+    font-size: 0.8em;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#Checkout_final_payment{
+    margin: 20px auto;
+    width: 50%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px 10px 20px;
+}
+
+#Payment_Method{
+    width: 100%;
+    background-color: #d0d0d0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-top: 2px;
+    padding-bottom: 10px;
+}
+
+#Payment_Method_Options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#Individual_Card{
+    display: flex;
+    justify-content: center;
+    background-color: #d0d0d0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.card-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.card-details {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.delete_card {
+    cursor: pointer;
+    color: red;
+}
+
 
 #Adress_PopUp {
     display: none;
