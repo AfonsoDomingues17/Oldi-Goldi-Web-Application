@@ -24,36 +24,36 @@
 
 **General**:
 
-- [ ] Register a new account.
-- [ ] Log in and out.
-- [ ] Edit their profile, including their name, username, password, and email.
+- [x] Register a new account.
+- [x] Log in and out.
+- [x] Edit their profile, including their name, username, password, and email.
 
 **Sellers**  should be able to:
 
-- [ ] List new items, providing details such as category, brand, model, size, and condition, along with images.
-- [ ] Track and manage their listed items.
-- [ ] Respond to inquiries from buyers regarding their items and add further information if needed.
-- [ ] Print shipping forms for items that have been sold.
+- [x] List new items, providing details such as category, brand, model, size, and condition, along with images.
+- [x] Track and manage their listed items.
+- [x] Respond to inquiries from buyers regarding their items and add further information if needed.
+- [x] Print shipping forms for items that have been sold.
 
 **Buyers**  should be able to:
 
-- [ ] Browse items using filters like category, price, and condition.
-- [ ] Engage with sellers to ask questions or negotiate prices.
-- [ ] Add items to a wishlist or shopping cart.
-- [ ] Proceed to checkout with their shopping cart (simulate payment process).
+- [x] Browse items using filters like category, price, and condition.
+- [x] Engage with sellers to ask questions or negotiate prices.
+- [x] Add items to a wishlist or shopping cart.
+- [x] Proceed to checkout with their shopping cart (simulate payment process).
 
 **Admins**  should be able to:
 
-- [ ] Elevate a user to admin status.
-- [ ] Introduce new item categories, sizes, conditions, and other pertinent entities.
-- [ ] Oversee and ensure the smooth operation of the entire system.
+- [x] Elevate a user to admin status.
+- [x] Introduce new item categories, sizes, conditions, and other pertinent entities.
+- [x] Oversee and ensure the smooth operation of the entire system.
 
 **Security**:
 We have been careful with the following security aspects:
 
-- [ ] **SQL injection**
-- [ ] **Cross-Site Scripting (XSS)**
-- [ ] **Cross-Site Request Forgery (CSRF)**
+- [x] **SQL injection**
+- [x] **Cross-Site Scripting (XSS)**
+- [x] **Cross-Site Request Forgery (CSRF)**
 
 **Password Storage Mechanism**: hash_password&verify_password
 
@@ -61,5 +61,13 @@ We have been careful with the following security aspects:
 
 We also implemented the following additional requirements:
 
-- [ ] **User Preferences**
-- [ ] **Real-Time Messaging System**
+- [ ] **Rating and Review System**
+- [ ] **Promotional Features**
+- [ ] **Analytics Dashboard**
+- [ ] **Multi-Currency Support**
+- [ ] **Item Swapping**
+- [ ] **API Integration**
+- [ ] **Dynamic Promotions**
+- [x] **User Preferences**
+- [ ] **Shipping Costs**
+- [x] **Real-Time Messaging System**
