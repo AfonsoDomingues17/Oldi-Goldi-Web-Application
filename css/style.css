@@ -15,6 +15,7 @@ body > header section#main_nav_bar form {
     display: flex;
     flex-direction: row;
     align-items: center;
+    position: relative;
 }
 
 form select {
@@ -173,7 +174,7 @@ form a p i {
 
 .icon-links a {
     padding: 0 10px;
-    color: white; /* Or any color you use for links */
+    color: white;
     
 }
 
@@ -205,6 +206,52 @@ form a p i {
 
 #hamburger:checked + label:before {
     content: '\2715';
+}
+
+
+.searchbar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+body > header section#main_nav_bar #searchResult {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 0 0 10px 10px;
+    background-color: white;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1;
+    display: none;
+}
+
+body > header section#main_nav_bar #searchResult li {
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+body > header section#main_nav_bar #searchResult li a{
+    text-decoration: none;
+    color: #333;
+}
+
+body > header section#main_nav_bar #searchResult li:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+body > header section#main_nav_bar #searchResult li:last-child {
+    border-bottom: none;
+}
+
+/*Hide Scrollbar*/
+#searchResult::-webkit-scrollbar {
+    display: none;
 }
 
 @media (max-width: 860px) {

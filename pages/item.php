@@ -18,9 +18,7 @@ if ($item_id != null) {
 }
 
     function display_item($db, $item_id) {
-        echo $item_id;
         $item = getItem($db, $item_id);
-        echo $item['ItemID'];
         $photos = getPhotos($db, $item_id);
         $brand = getBrand($db, $item['brand_id']);
         $size = getSize($db, $item['size_id']);
@@ -66,7 +64,7 @@ if ($item_id != null) {
                 if($item['is_sold'] == 0){?>
                 <button id="itemWhishlist" data-item-id="<?= htmlspecialchars($item_id) ?>" class="btn btn-secondary"><i id="heartItem" class="<?= isOnwhishlist($db,$item['ItemID'],$_SESSION['username'])? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>"></i> Favorite</button> <?php
                 if($permissions){ ?>
-                <a href="sell.php?item_id=<?= urlencode($item['ItemID']) ?>">Edit Item</a>
+                <a id="edit_item_btn" href="sell.php?item_id=<?= urlencode($item['ItemID']) ?>">Edit Item</a>
                 <p id="delete_item">Delete Item</p>
              
                 <section id="Pop_Up_delete">
@@ -89,7 +87,7 @@ if ($item_id != null) {
                 <?php } ?>
               <?php }
                 else if($item['seller'] == $_SESSION['username']){?>
-                <a href="sell.php?item_id=<?= urlencode($item['ItemID']) ?>">Edit Item</a>
+                <a id="edit_item_btn" href="sell.php?item_id=<?= urlencode($item['ItemID']) ?>">Edit Item</a>
                 <p id="delete_item">Delete Item</p>
                 <section id="Pop_Up_delete">
                     <section class="Pop_Up-content">

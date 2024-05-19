@@ -1,3 +1,51 @@
+#checkout_page, #Payment_Method {
+    margin: auto;
+    width: 70%;
+}
+
+#checkout_page h2{
+    text-align: center;
+}
+
+section#item_details {
+    background-color: #B0882F;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+}
+
+#item_details img {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#checkout_item_details {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+#checkout_item_top span:not(:empty) ~ span:not(:empty)::before,
+#checkout_item_bottom span:not(:empty) ~ span:not(:empty)::before {
+    content: " - ";
+}
+
+#shipping_info{
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px auto;
+    
+}
+
 #Adress_PopUp {
     display: none;
     position: fixed; 

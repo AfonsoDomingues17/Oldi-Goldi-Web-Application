@@ -13,9 +13,11 @@ function searchFunction() {
             .then(response => response.text())
             .then(data => {
                 document.getElementById('searchResult').innerHTML = data;
+                document.getElementById('searchResult').style.display = 'block';
             });
         } else {
             document.getElementById('searchResult').innerHTML = '';
+            document.getElementById('searchResult').style.display = 'none';
         }
     }, 300);
 }
