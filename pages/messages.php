@@ -84,15 +84,11 @@ $item_new_price = getNewPrice($db,$chat['buyer'],$item['ItemID']);
             $position = ($_SESSION['username'] === $sender['username']) ? 'sender' : 'receiver';
             
             if ($message['is_price_proposal'] && $_SESSION['username'] == $chat['seller'] && strpos($message['message'], 'REJECT') === false && strpos($message['message'], 'ACCEPT') === false) {
-                    if (isset($item_new_price)) { ?>
-                        <li class="<?= $position ?>">
-                            Old Price: <?= htmlspecialchars($item_new_price) ?>€ <br> <?= htmlspecialchars($message['message']) ?>
-                        </li>
-                    <?php } else { ?>
+                   ?>
                         <li class="<?= $position ?>">
                             Old Price: <?= htmlspecialchars($item['price']) ?>€ <br> <?= htmlspecialchars($message['message']) ?>
                         </li>
-                    <?php } ?>
+                    
                     <form action="../api/api_reject_accept_proposal.php" method="get">
                         <input type="hidden" name="action" value="accept">
                         <input type="hidden" name="message_id" value="<?= htmlspecialchars($message['message_id']) ?>">
@@ -100,15 +96,11 @@ $item_new_price = getNewPrice($db,$chat['buyer'],$item['ItemID']);
                     </form>
                     <button id="Reject_Btn" data-message-id="<?= htmlspecialchars($message['message_id']) ?>">Reject</button>
                 <?php } else if ($message['is_price_proposal']) {
-                    if (isset($item_new_price)) { ?>
-                        <li class="<?= $position ?>">
-                            Old Price: <?= htmlspecialchars($item_new_price) ?>€ <br> <?= htmlspecialchars($message['message']) ?>
-                        </li>
-                    <?php } else { ?>
+                   ?>
                         <li class="<?= $position ?>">
                             Old Price: <?= htmlspecialchars($item['price']) ?>€ <br> <?= htmlspecialchars($message['message']) ?>
                         </li>
-                    <?php } ?>
+                   
                 <?php } else { ?>
                     <li class="<?= $position ?>"><?= htmlspecialchars($message['message']) ?></li>
                 <?php } ?>
