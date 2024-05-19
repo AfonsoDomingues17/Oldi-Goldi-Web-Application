@@ -1,4 +1,4 @@
-section#Info{
+section#Info {
   display: grid;
   grid-template-columns: 1fr 3fr;
   width: 70%;
@@ -10,32 +10,34 @@ section#Info{
   border-radius: 10px;
 }
 
-.user_profile_picture  img{
+.user_profile_picture img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.user_profile_details{
+.user_profile_details {
   margin-left: 10px;
   max-width: 65%; /* Limit the width of user profile details */
-
 }
 
-.user_profile_details > #user_name{
+.user_profile_details > #user_name {
   font-size: 1.3em;
   font-weight: bold;
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.user_profile_details > #user_username{
+.user_profile_details > #user_username {
   opacity: 50%;
   margin-top: 0;
   margin-bottom: 0;
 }
 
-section#Info_StartSelling{
+section#Info_StartSelling,
+section#ProfileStartSelling,
+section#User_Transactions {
   margin: auto;
   width: 70%;
   background-color: white;
@@ -43,48 +45,35 @@ section#Info_StartSelling{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   margin-top: 20px;
-  
 }
 
 
 
-section#ProfileStartSelling{
-  display: grid;
-  place-items: center;
+#SellNowButton,
+#EditProfileButton {
+  display: block;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#SellNowButton {
+  width: 100px;
+  font-size: 0.9em;
   text-align: center;
-  justify-content: center;
-  margin: auto;
-  width: 70%;
-  background-color: white;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
 }
 
-#SellNowButton{
-  margin: auto;
-  display:block;
-  padding: 10px;
-  margin-top: 10px;
-  background-color: #007BFF;
-  color: white;
-  border-radius: 5px;
-  text-decoration: none;
-}
-
-#EditProfileButton{
+#EditProfileButton {
   width: 115px;
-  display:block;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 3px;
-  background-color: #007BFF;
-  color: white;
-  border-radius: 5px;
-  text-decoration: none;
+  margin-bottom: 10px;
+
 }
 
-.PopUp {
+.PopUp,
+#deleteUserPopUp {
   display: none; 
   position: fixed; 
   z-index: 1; 
@@ -94,16 +83,11 @@ section#ProfileStartSelling{
   width: 100%; 
   height: 100%; 
   overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
+  background-color: rgba(0, 0, 0, 0.4); 
 }
 
-.user_profile_picture img{
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Modal Content */
-.PopUpcontent {
+.PopUpcontent,
+#DeletePopUpcontent {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -125,73 +109,44 @@ section#ProfileStartSelling{
   cursor: pointer;
 }
 
-#deleteUserPopUp {
-  display: none; 
-  position: fixed; 
-  z-index: 1; 
-  padding-top: 100px; 
-  left: 0;
-  top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
-}
-
-#DeletePopUpcontent {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
 a#user_description {
   max-width: 65%;
   word-wrap: break-word;
 }
 
+/* Grid for Articles */
 #GarticlesProfile {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 10px;
-  padding-right: 1em;
-  padding-left: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusted the minimum size */
+  gap: 20px;
+  padding: 1em;
+  margin-left: 13%;
+  margin-right: 13%;
 }
 
 #GarticlesProfile article {
   background-color: white;
   border-radius: 5px;
   padding: 1em;
-  margin: 5px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  flex-basis: 15%;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #GarticlesProfile article img {
   width: 100%;
+  height: auto;
+  border-radius: 5px;
 }
 
-section#GarticlesProfile article {
-  width: 200px; 
+#GarticlesProfile .article-info {
+  margin-top: 10px;
 }
-
-
 
 /* Transactions Section */
-section#User_Transactions {
-  margin: auto;
-  width: 70%;
-  background-color: white;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  margin-top: 20px;
-}
-
 section#User_Transactions h2 {
   text-align: center;
   font-size: 1.5em;
@@ -205,7 +160,7 @@ section#User_Transactions ul {
 
 section#User_Transactions li {
   display: flex;
-  align-items: center; /* Align items vertically center */
+  align-items: center;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   padding: 15px;
@@ -214,10 +169,10 @@ section#User_Transactions li {
 }
 
 section#User_Transactions li img.transaction-item-photo {
-  width: 100px; /* Adjust the size of the item photo */
+  width: 100px;
   height: auto;
-  margin-right: 15px; /* Space between the image and the transaction info */
-  border-radius: 5px; /* Optional: add a border-radius to the image */
+  margin-right: 15px;
+  border-radius: 5px;
 }
 
 section#User_Transactions li p {

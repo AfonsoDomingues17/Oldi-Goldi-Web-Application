@@ -2,7 +2,6 @@
 
 
 
-
 require_once('../templates/common.php');
 require_once('../templates/display_categories.php');
 
@@ -22,7 +21,8 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
 <main>
     <section id="checkout_page">
         <h2>Checkout</h2>
-        <section id="Item_Checkout_Info">
+        <section id="Item_Info">
+            <h2>Item</h2>
             <section id="item_details">
             <a href="item.php?item_id=<?= urlencode($item['ItemID']) ?>"><img src="<?= htmlspecialchars($photos[0]['photo_url']) ?>" width="100" height="100" alt="item_photo"></a>
             
@@ -38,15 +38,15 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
                 </section>
                 
                 <section id = "checkout_item_bottom">
-                    <?php if(isset($condition) && isset($condition['condition_value'])) { ?>
+                    <?php if(isset($condition)) { ?>
                     <span id="item_condition"><?= htmlspecialchars($condition['condition_value']) ?></span> 
                     <?php } ?>
 
-                    <?php if(isset($size) && isset($size['size_value'])) { ?> 
+                    <?php if(isset($size)) { ?> 
                     <span id="item_size"><?= htmlspecialchars($size['size_value']) ?></span> 
                     <?php } ?>
                     
-                    <?php if(isset($brand) && isset($brand['brand_name'])) { ?>
+                    <?php if(isset($brand)) { ?>
                     <span id="item_brand"><?= htmlspecialchars($brand['brand_name']) ?></span> 
                     <?php } ?>
                 </section>
@@ -75,7 +75,7 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
                 <input type="text" id="zip" name="zip" value="<?= isset($user['Zip_code']) ? htmlspecialchars($user['Zip_code']) : '' ?>" required><br>
                 <input type="hidden" name="item_id" value="<?= htmlspecialchars($item_id) ?>">
                 <input type="hidden" name="csrf" value="<?= $_SESSION['csrf'] ?>">
-            <button id="CSIBtn">Confirm Shipping Info</button>
+            <button >Confirm Shipping Info</button>
             </form>
             <?php } ?>
         </section>
@@ -83,54 +83,43 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
     </section>
 
  
-<section id = "Checkout_final_payment">
-    <form action="../actions/action_checkout.php" method="post">
-        <section id="Payment_Method">
-            <h3>Payment Method</h3>
-            <section id = "Payment_Method_Options">
-                <input type="radio" id="credit" name="payment" value="credit" required>
-                <label for="credit">Credit card</label><br>
-            </section>
+
+<form action="../actions/action_checkout.php" method="post">
+<section id="Payment_Method">
+        <h3>Payment Method</h3>
+        <input type="radio" id="credit" name="payment" value="credit" required>
+        <label for="credit">Credit card</label><br>
         </section>
-        <section id="creditCardInfo">
-            <section id="myCards">
-                <h2>My Cards</h2>
-                <?php $cards = getCards($db, $_SESSION['username']); 
-                if($cards){?>
-                <section id="cards">
-                    <?php foreach($cards as $card){ ?>
-                        <section id ="Individual_Card">
-                        <label>
-                            <section class="card-container">
-                                <input type="radio" id="input_<?=htmlspecialchars($card['card_id']) ?>" name="card" value="<?= htmlspecialchars($card['card_id']) ?>" required>
-                                <section class="card-details">
-                                    <?php if ($card['card_number'][0] == '2' || $card['card_number'][0] == '5') { ?>
-                                        <span>Mastercard</span><br>
-                                    <?php } else if ($card['card_number'][0] == '4') { ?>
-                                        <span>Visa</span><br>
-                                    <?php } else if ($card['card_number'][0] == '3') { ?>
-                                        <span>American Express</span><br>
-                                    <?php } ?>
-                                    <span>**** **** **** <?= htmlspecialchars(substr($card['card_number'], -4)) ?></span><br>
-                                    <span><?= htmlspecialchars($card['expiration_date']) ?></span><br>
-                                    <span><?= htmlspecialchars($card['card_name']) ?></span>
-                                </section>
-                                <span data-card-id="<?= htmlspecialchars($card['card_id']) ?>" class="delete_card">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </span>
-                            </section>
-                        </label>
-                        </section>
-                    <?php } ?>
-                </section>
-                <?php } else { ?>
-                    <section id="cards">
-                    <p id="noCards">You have no cards saved</p>
-                    </section>
-                <?php } ?>
-            </section>
+<section id="creditCardInfo">
+    <section id="myCards">
+        <h2>My Cards</h2>
+        <?php $cards = getCards($db, $_SESSION['username']); 
+        if($cards){?>
+        <section id="cards">
+        <?php foreach($cards as $card){ ?>
+    <label ><input type="radio" id="input_<?=htmlspecialchars($card['card_id']) ?>" name="card" value="<?= htmlspecialchars($card['card_id']) ?>" required>
+        <?php if($card['card_number'][0] == '2' || $card['card_number'][0] == '5'){ ?>
+            <span>Mastercard</span><br>
+        <?php } else if($card['card_number'][0] == '4'){ ?>
+            <span>Visa</span><br>
+        <?php } else if($card['card_number'][0] == '3'){ ?>
+            <span>American Express</span>
+        <?php } ?>
+        <span>**** **** **** <?= htmlspecialchars(substr($card['card_number'], -4)) ?></span><br>
+        <span><?= htmlspecialchars($card['expiration_date']) ?></span><br>
+        <span><?= htmlspecialchars($card['card_name']) ?></span><br>
+        <span data-card-id=" <?= htmlspecialchars($card['card_id']) ?>" class="delete_card"><i class="fa-solid fa-trash-can"></i></span>
+        </label>
+    <?php } ?>
         </section>
-        <button id="addCardsBtn"><i class="fa-solid fa-plus"></i></button>
+        <?php } else { ?>
+            <section id="cards">
+            <p id="noCards">You have no cards saved</p>
+            </section>
+        <?php } ?>
+    </section>
+    <button id="addCardsBtn"><i class="fa-solid fa-plus"></i></button>
+
 </section>
 
 <input type="hidden" name="item_sold_id" value="<?= $item_id ?>">
