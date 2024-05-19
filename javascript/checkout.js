@@ -114,7 +114,9 @@ if(confirmBtn){
             console.log(document.getElementById('cards'));
             console.log(document.getElementById('noCards'));
             document.getElementById('cards').innerHTML += date;
+            if(document.getElementById('noCards')){
             document.getElementById('noCards').remove();
+            }
             document.getElementById('Card_PopUp').style.display = "none";
             document.getElementById("cardName").value = "";
             document.getElementById("cardNumber").value = "";
@@ -151,13 +153,15 @@ const deleteCard = document.querySelectorAll('span.delete_card');
 if(deleteCard){
     deleteCard.forEach(function(deleteCard){
         deleteCard.addEventListener('click', function(){
-            const cardId = deleteCard.getAttribute('data-card-id');
+            const cardId = deleteCard.getAttribute('data-card-id').trim();
+            console.log(cardId);
             fetch('../api/api_add_delete_new_card.php?card_id=' + encodeURIComponent(cardId))
             .then(response => response.text())
             .then(html => {
                 if(html == "Carddeleted"){
                   
                     let cardElement = document.querySelector('#input_' + cardId);
+                    console.log(cardElement);
                     console.log(document.getElementById('cards').childNodes);
                     document.getElementById('cards').removeChild(cardElement.parentElement);
                 }
@@ -166,4 +170,3 @@ if(deleteCard){
     });
 }
 
-const currency = document.getElementById('currency');

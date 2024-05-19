@@ -94,32 +94,32 @@ VALUES
 (5, 'Refurbished');
 
 -- Item
-INSERT INTO Item (ItemID, model, item_name, description, price, seller, size_id, condition_id, category_id, brand_id) VALUES
-(1, 'Air Max', 'Nike Air Max', 'Used Nike Air Max shoes', 50, 'john_doe', 18, 1, 5, 1),
-(2, 'iPhone 12', 'Apple iPhone 12', 'Used Apple iPhone 12', 600, 'sara_green', NULL, 1, 2, 2),
-(3, 'Galaxy S21', 'Samsung Galaxy S21', 'Used Samsung Galaxy S21', 500, 'sara_green', NULL, 1, 2, 3),
-(4, 'Billy Bookcase', 'IKEA Billy Bookcase', 'Used IKEA Billy Bookcase', 30, 'john_doe', NULL, 1, 3, 4),
-(5, 'Ultraboost', 'Adidas Ultraboost', 'Used Adidas Ultraboost shoes', 60, 'mike_brown', 16, 1, 5, 5),
-(6, 'PlayStation 5', 'Sony PlayStation 5', 'Used Sony PlayStation 5', 400, 'mike_brown', NULL, 1, 2, 6),
-(7, 'EOS 5D', 'Canon EOS 5D', 'Used Canon EOS 5D camera', 800, 'sam_jones', NULL, 1, 2, 7),
-(8, 'Surface Pro', 'Microsoft Surface Pro', 'Used Microsoft Surface Pro', 700, 'john_doe', NULL, 1, 2, 8),
-(9, 'Submariner', 'Rolex Submariner', 'Used Rolex Submariner watch', 5000, 'mike_brown', NULL, 1, 4, 9),
-(10, 'Polo Shirt', 'Ralph Lauren Polo Shirt', 'Used Ralph Lauren Polo Shirt', 30, 'olivia_tan', 3, 1, 1, 10),
-(11, 'Basic T-Shirt', 'Zara Basic T-Shirt', 'Used Zara Basic T-Shirt', 10, 'lisa_white', 4, 1, 1, 11),
-(12, 'Slim Fit Jeans', 'H&M Slim Fit Jeans', 'Used H&M Slim Fit Jeans', 20, 'olivia_tan', 5, 1, 1, 12),
-(13, 'U Crew Neck T-Shirt', 'Uniqlo U Crew Neck T-Shirt', 'Used Uniqlo U Crew Neck T-Shirt', 10, 'lisa_white', 6, 1, 1, 13),
-(14, 'Logo Hoodie', 'Gap Logo Hoodie', 'Used Gap Logo Hoodie', 25, 'emily_clark', 3, 1, 1, 14),
-(15, 'Twin Tipped Polo', 'Fred Perry Twin Tipped Polo', 'Used Fred Perry Twin Tipped Polo', 40, 'john_doe', 4, 1, 1, 15),
-(16, '501 Original Fit Jeans', 'Levis 501 Original Fit Jeans', 'Used Levis 501 Original Fit Jeans', 30, 'lisa_white', 5, 1, 1, 16),
-(17, 'Logo T-Shirt', 'Tommy Hilfiger Logo T-Shirt', 'Used Tommy Hilfiger Logo T-Shirt', 20, 'emily_clark', 6, 1, 1, 17),
-(18, 'Logo Briefs', 'Calvin Klein T-Shirt', 'Used Calvin Klein T-Shirt', 10, 'adam_wilson', 2, 1, 1, 18),
-(19, 'Slim Fit Chinos', 'Mango Slim Fit Chinos', 'Used Mango Slim Fit Chinos', 20, 'olivia_tan', 5, 1, 1, 19),
-(20, 'Logo T-Shirt', 'Prada Logo T-Shirt', 'Used Prada Logo T-Shirt', 100, 'adam_wilson', 4, 1, 1, 20),
-(21, 'Floral Dress', 'Shein Floral Dress', 'Used Shein Floral Dress', 15, 'sam_jones', 3, 1, 1, 21),
-(22, 'Logo Belt', 'Louis Vuitton Logo Belt', 'Used Louis Vuitton Logo Belt', 200, 'olivia_tan', NULL, 1, 10, 22),
-(23, 'Floral Blouse', 'Stradivarius Floral Blouse', 'Used Stradivarius Floral Blouse', 15, 'john_doe', 4, 1, 1, 23),
-(24, 'Skinny Jeans', 'Bershka Skinny Jeans', 'Used Bershka Skinny Jeans', 20, 'sara_green', 5, 1, 1, 24),
-(25, 'Logo T-Shirt', 'Pull&Bear Logo T-Shirt', 'Used Pull&Bear Logo T-Shirt', 10, 'sara_green', 6, 1, 1, 25);
+INSERT INTO Item (ItemID, model, item_name, description, price, seller, size_id, condition_id, category_id, brand_id,is_sold) VALUES
+(1, 'Air Max', 'Nike Air Max', 'Used Nike Air Max shoes', 50, 'john_doe', 18, 1, 5, 1,0),
+(2, 'iPhone 12', 'Apple iPhone 12', 'Used Apple iPhone 12', 600, 'sara_green', NULL, 1, 2, 2,0),
+(3, 'Galaxy S21', 'Samsung Galaxy S21', 'Used Samsung Galaxy S21', 500, 'sara_green', NULL, 1, 2, 3,0),
+(4, 'Billy Bookcase', 'IKEA Billy Bookcase', 'Used IKEA Billy Bookcase', 30, 'john_doe', NULL, 1, 3, 4,0),
+(5, 'Ultraboost', 'Adidas Ultraboost', 'Used Adidas Ultraboost shoes', 60, 'mike_brown', 16, 1, 5, 5,0),
+(6, 'PlayStation 5', 'Sony PlayStation 5', 'Used Sony PlayStation 5', 400, 'mike_brown', NULL, 1, 2, 6,0),
+(7, 'EOS 5D', 'Canon EOS 5D', 'Used Canon EOS 5D camera', 800, 'sam_jones', NULL, 1, 2, 7,0),
+(8, 'Surface Pro', 'Microsoft Surface Pro', 'Used Microsoft Surface Pro', 700, 'john_doe', NULL, 1, 2, 8,1),
+(9, 'Submariner', 'Rolex Submariner', 'Used Rolex Submariner watch', 5000, 'mike_brown', NULL, 1, 4, 9,0),
+(10, 'Polo Shirt', 'Ralph Lauren Polo Shirt', 'Used Ralph Lauren Polo Shirt', 30, 'olivia_tan', 3, 1, 1, 10,0),
+(11, 'Basic T-Shirt', 'Zara Basic T-Shirt', 'Used Zara Basic T-Shirt', 10, 'lisa_white', 4, 1, 1, 11,0),
+(12, 'Slim Fit Jeans', 'H&M Slim Fit Jeans', 'Used H&M Slim Fit Jeans', 20, 'olivia_tan', 10, 1, 1, 12,0),
+(13, 'U Crew Neck T-Shirt', 'Uniqlo U Crew Neck T-Shirt', 'Used Uniqlo U Crew Neck T-Shirt', 10, 'lisa_white', 2, 1, 1, 13,0),
+(14, 'Logo Hoodie', 'Gap Logo Hoodie', 'Used Gap Logo Hoodie', 25, 'emily_clark', 3, 1, 1, 14,0),
+(15, 'Twin Tipped Polo', 'Fred Perry Twin Tipped Polo', 'Used Fred Perry Twin Tipped Polo', 40, 'john_doe', 2, 1, 1, 15,0),
+(16, '501 Original Fit Jeans', 'Levis 501 Original Fit Jeans', 'Used Levis 501 Original Fit Jeans', 30, 'lisa_white', 10, 1, 1, 16,0),
+(17, 'Logo T-Shirt', 'Tommy Hilfiger Logo T-Shirt', 'Used Tommy Hilfiger Logo T-Shirt', 20, 'emily_clark', 1, 1, 1, 17,0),
+(18, 'Logo Briefs', 'Calvin Klein T-Shirt', 'Used Calvin Klein T-Shirt', 10, 'adam_wilson', 2, 1, 1, 18,0),
+(19, 'Slim Fit Chinos', 'Mango Slim Fit Chinos', 'Used Mango Slim Fit Chinos', 20, 'olivia_tan', 5, 1, 1, 19,1),
+(20, 'Logo T-Shirt', 'Prada Logo T-Shirt', 'Used Prada Logo T-Shirt', 100, 'adam_wilson', 2, 1, 1, 20,0),
+(21, 'Floral Dress', 'Shein Floral Dress', 'Used Shein Floral Dress', 15, 'sam_jones', 3, 1, 1, 21,0),
+(22, 'Logo Belt', 'Louis Vuitton Logo Belt', 'Used Louis Vuitton Logo Belt', 200, 'olivia_tan', NULL, 1, 10, 22,1),
+(23, 'Floral Blouse', 'Stradivarius Floral Blouse', 'Used Stradivarius Floral Blouse', 15, 'john_doe', 4, 1, 1, 23,1),
+(24, 'Skinny Jeans', 'Bershka Skinny Jeans', 'Used Bershka Skinny Jeans', 20, 'sara_green', 16, 1, 1, 24,1),
+(25, 'Logo T-Shirt', 'Pull&Bear Logo T-Shirt', 'Used Pull&Bear Logo T-Shirt', 10, 'sara_green', 2, 1, 1, 25,0);
 
 
 

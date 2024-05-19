@@ -14,7 +14,7 @@ display_categories($categories);
     <section id="Start_buying">
     <h1>Consegues resistir a estes produtos incriveis?</h1>
     <div class="image-container">
-        <img src="transferir.png" alt="imagem principal" id= "main_img">
+        <img src="images/transferir.png" alt="imagem principal" id= "main_img">
         <a href="pages/items.php">Start Buying</a>
     </div>
     
@@ -44,6 +44,9 @@ display_categories($categories);
             <?php $items = get_Items_ByCategory($db, $cate['category_id']);
 
             for($i = 0; $i < 5; $i++){ 
+                if ($i >= count($items)) {
+                    break;
+                }
                 $item = $items[$i];?>
             
             <article>
@@ -132,15 +135,13 @@ display_categories($categories);
             <section id = "U_info">
             
             <a href="pages/profile.php?username=<?= urlencode($user['username'])?>"><img src="<?= htmlspecialchars($user['photo_url'])?>" alt="profile picture"></a>
-            <div class="name-container">
             <p><?= htmlspecialchars($user['name'])?></p>
-            <p><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <span class="R">125</span></p>
-            </div>
+           
             <a href="pages/profile.php?username=<?= urlencode($user['username'])?>">View more</a>
 
             </section>
+        <section id="articles">
         <?php foreach($user_items as $item) {?>
-            <section id="articles">
             <article>
             <?php $photos = getPhotos($db, $item['ItemID']); 
             ?>
@@ -165,7 +166,7 @@ display_categories($categories);
                 <?php } ?>
             </p>
                 <?php } ?>
-                </section>
+            </section>
             </article>
         <?php }?>
             <article id="More">           

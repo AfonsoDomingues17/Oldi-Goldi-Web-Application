@@ -19,6 +19,10 @@ if ($item_id != null) {
 
     function display_item($db, $item_id) {
         $item = getItem($db, $item_id);
+        if(!$item) {
+            $item = getSoldItem($db, $item_id);
+        }
+    
         $photos = getPhotos($db, $item_id);
         $brand = getBrand($db, $item['brand_id']);
         $size = getSize($db, $item['size_id']);
@@ -72,7 +76,6 @@ if ($item_id != null) {
                         <p>Are you sure you want to delete this item?</p>
                         <form action="../actions/action_delete_item.php" method="post">
                             <input type="hidden" name="item_id" value="<?= htmlspecialchars($item['ItemID']) ?>">
-                            <?php echo $item['ItemID'] ?>
                             <input type="hidden" name="csrf" value="<?= $_SESSION['csrf'] ?>">
                             <button id="cancelBtn">Cancel</button>
                             <button id="confirmBtn" type="submit" >Confirm</button>

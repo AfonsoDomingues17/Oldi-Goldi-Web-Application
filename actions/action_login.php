@@ -9,7 +9,8 @@
   $username = preg_replace("/[^a-zA-Z0-9]/",'',$_POST['username']);
 
   if (userExists($username, $_POST['password'])) { // test if user exists
-    $_SESSION['username'] = $username;            // store the username
+    $_SESSION['username'] = $username;
+    $_SESSION['order'] = '0';         // store the username
     header('Location: ../index.php');
   }
   else{

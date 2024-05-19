@@ -32,7 +32,7 @@ $messages = getLimitedMessages($db,$chat['chat_id']);
             $position = ($_SESSION['username'] === $sender['username']) ? 'sender' : 'receiver';
             
             if ($message['is_price_proposal'] && $_SESSION['username'] == $chat['seller'] && strpos($message['message'], 'REJECT') === false && strpos($message['message'], 'ACCEPT') === false) {
-                    echo "<li class='".$position."'>Old Price: ".htmlspecialchars($item_new_price)."€ <br>".htmlspecialchars($message['message'])."</li>";
+                echo "<li class='".$position."'>Old Price: ".htmlspecialchars($item['price'])."€ <br>".htmlspecialchars($message['message'])."</li>";
                 
                 echo "<form action='../api/api_reject_accept_proposal.php' method='get'>
                         <input type='hidden' name='action' value='accept'>

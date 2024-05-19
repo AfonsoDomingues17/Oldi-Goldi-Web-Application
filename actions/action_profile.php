@@ -8,7 +8,7 @@ require_once('../database/connection.php');                 // database connecti
 require_once('../database/users.php');                      // user table queries
 require_once('../database/chats.php');
 $db = getDatabaseConnection();
-$user = preg_replace("/[^a-zA-Z0-9]/",'',$_POST['user']);
+$user = preg_replace("/[^a-zA-Z0-9_]/",'',$_POST['user']);
 $action = $_POST['action'];
 if($action == "delete"){
     $stmt = $db->prepare("DELETE FROM Users WHERE username = ?");

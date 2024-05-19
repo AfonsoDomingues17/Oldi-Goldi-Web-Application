@@ -85,9 +85,9 @@ $item_new_price = getNewPrice($db,$chat['buyer'],$item['ItemID']);
             
             if ($message['is_price_proposal'] && $_SESSION['username'] == $chat['seller'] && strpos($message['message'], 'REJECT') === false && strpos($message['message'], 'ACCEPT') === false) {
                    ?>
-                        <li class="<?= $position ?>">
+                    <li class="<?= $position ?>">
                             Old Price: <?= htmlspecialchars($item['price']) ?>€ <br> <?= htmlspecialchars($message['message']) ?>
-                        </li>
+                    </li>
                     
                     <form action="../api/api_reject_accept_proposal.php" method="get">
                         <input type="hidden" name="action" value="accept">
@@ -97,9 +97,9 @@ $item_new_price = getNewPrice($db,$chat['buyer'],$item['ItemID']);
                     <button id="Reject_Btn" data-message-id="<?= htmlspecialchars($message['message_id']) ?>">Reject</button>
                 <?php } else if ($message['is_price_proposal']) {
                    ?>
-                        <li class="<?= $position ?>">
+                    <li class="<?= $position ?>">
                             Old Price: <?= htmlspecialchars($item['price']) ?>€ <br> <?= htmlspecialchars($message['message']) ?>
-                        </li>
+                    </li>
                    
                 <?php } else { ?>
                     <li class="<?= $position ?>"><?= htmlspecialchars($message['message']) ?></li>

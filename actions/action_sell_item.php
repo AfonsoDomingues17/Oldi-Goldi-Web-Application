@@ -7,8 +7,8 @@ if ($_SESSION['csrf'] !== $_POST['csrf']) {
     exit();
   }
 $db = getDatabaseConnection();
-$name = preg_replace("/[^a-zA-Z0-9]/",'',$_POST['item_name']);
-$description = isset($_POST['item_description']) ? preg_replace("/[^a-zA-Z0-9]/",'',$_POST['item_description']) : null;
+$name = preg_replace("/[^a-zA-Z0-9 ]/",'',$_POST['item_name']);
+$description = isset($_POST['item_description']) ? preg_replace("/[^a-zA-Z0-9 ]/",'',$_POST['item_description']) : null;
 $size = $_POST['Sell_Size'];
 $condition = $_POST['Sell_Conditions'];
 $brand = $_POST['Sell_Brand'];

@@ -1,7 +1,5 @@
 <?php 
-$api_key = '2d927baa0986e421fb9157f7';
-$base_currency = 'EUR'; 
-$exchange_rates = json_decode(file_get_contents("https://openexchangerates.org/api/latest.json?app_id=$api_key&base=$base_currency"), true);
+
 
 
 require_once('../templates/common.php');
@@ -49,7 +47,7 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
                     <?php } ?>
                     
                     <?php if(isset($brand)) { ?>
-                    <span id="item_brand"><?= htmlspecialchars($brand) ?></span> 
+                    <span id="item_brand"><?= htmlspecialchars($brand['brand_name']) ?></span> 
                     <?php } ?>
                 </section>
             </section>
@@ -99,7 +97,7 @@ $item_new_price = getNewPrice($db,$_SESSION['username'],$item['ItemID']);
         if($cards){?>
         <section id="cards">
         <?php foreach($cards as $card){ ?>
-    <label ><input type="radio" id="input_<?= htmlspecialchars($card['card_id']) ?>" name="card" value="<?= htmlspecialchars($card['card_id']) ?>" required>
+    <label ><input type="radio" id="input_<?=htmlspecialchars($card['card_id']) ?>" name="card" value="<?= htmlspecialchars($card['card_id']) ?>" required>
         <?php if($card['card_number'][0] == '2' || $card['card_number'][0] == '5'){ ?>
             <span>Mastercard</span><br>
         <?php } else if($card['card_number'][0] == '4'){ ?>

@@ -25,7 +25,7 @@ $barcodeNumber = str_pad(rand(0, 999999999999), 12, '0', STR_PAD_LEFT);
         </section>
         <section class="item-info">
             <p><strong>Item:</strong><?= htmlspecialchars($item['item_name']) ?></p>
-            <p><strong>Price:</strong> <?= htmlspecialchars($transaction['total_value']) ?></p>
+            <p><strong>Price:</strong> <?= htmlspecialchars($transaction['total_value']) ?>€</p>
         </section>
         <section class="details">
             <p>Reference: <?= htmlspecialchars($transaction['transaction_id']) ?></p>

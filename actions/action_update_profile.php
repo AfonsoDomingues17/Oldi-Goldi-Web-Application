@@ -9,14 +9,14 @@ require_once('../database/users.php');
 
 $db = getDatabaseConnection();
 
-$description = preg_replace("/[^a-zA-Z0-9]/",'',$_POST['description']);
+$description = preg_replace("/[^a-zA-Z0-9 ]/",'',$_POST['description']);
 $email = preg_replace("/[^a-zA-Z0-9@.]/",'',$_POST['email']);
-$name = preg_replace("/[^a-zA-Z0-9]/",'',$_POST['name']);
+$name = preg_replace("/[^a-zA-Z0-9 ]/",'',$_POST['name']);
 $phoneNumber = preg_replace("/[^0-9+]/",'',$_POST['pn']);
 $address = preg_replace("/[^a-zA-Z0-9 ,]/",'',$_POST['address']);
 $zipCode = preg_replace("/[^0-9-]/",'',$_POST['ZP']);
-$country = preg_replace("/[^a-zA-Z0-9]/",'',$_POST['Country']);
-$city = preg_replace("/[^a-zA-Z0-9]/",'',$_POST['City']);
+$country = preg_replace("/[^a-zA-Z0-9 ]/",'',$_POST['Country']);
+$city = preg_replace("/[^a-zA-Z0-9 ]/",'',$_POST['City']);
 $photo_url = $_POST['imgSrc'];
 
 if($country == "") $country = null;

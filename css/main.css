@@ -202,11 +202,14 @@ section.article-info * {
     object-fit: cover;
     padding-left: 1.5em;
     }
-    div.name-container {
-        display: flex;
-        flex-direction: column;
-        padding-left: 1.5em
+    
+    p{
+        padding-left: 1em;
+        padding-top: 0.5em;
+        font-size: large;
+        font-weight: bold;
     }
+    
     
 }
 #U_info a:last-child{

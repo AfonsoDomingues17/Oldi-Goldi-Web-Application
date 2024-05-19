@@ -9,8 +9,8 @@ require_once('../database/categories.php');
 require_once('../database/chats.php');
 $db = getDatabaseConnection();
 $item_id = intval($_POST['item_sold_id']);
-$buyer = preg_replace ("/[^a-zA-Z0-9]/", '', $_SESSION['username']);
-$seller = preg_replace ("/[^a-zA-Z0-9]/", '', $_POST['seller']);
+$buyer = preg_replace ("/[^a-zA-Z0-9_]/", '', $_SESSION['username']);
+$seller = preg_replace ("/[^a-zA-Z0-9_]/", '', $_POST['seller']);
 $card_id = intval($_POST['card']);
 
 $item = getItem($db, $item_id);

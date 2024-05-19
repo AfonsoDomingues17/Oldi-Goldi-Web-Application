@@ -10,7 +10,7 @@
 $db = getDatabaseConnection();
 
 $item_id = intval($_POST['item_id']);
-$user = preg_replace("/[^a-zA-Z0-9]/", '', $_POST['user']);
+$user = preg_replace("/[^a-zA-Z0-9_]/", '', $_POST['user']);
 
 $chat = VerifyChatExists($db,$_SESSION['username'],$user,$item_id);
 if($chat == false){
