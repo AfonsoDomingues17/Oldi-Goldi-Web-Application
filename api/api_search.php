@@ -7,12 +7,12 @@ $search_term = preg_replace("/[^a-zA-Z0-9]/",'',$_GET['search']);
 $select = $_GET['select'];
 if($select != 'All'){
     $cat_id = getCategorieByName($db,$select);
-    $stmt = $db->prepare("SELECT * from Item where item_name like ? AND category_id = ?");
+    $stmt = $db->prepare("SELECT * from Item where item_name like ? AND category_id = ? AND is_sold = 0");
     $stmt->execute(array("%$search_term%",$cat_id));
     $results = $stmt->fetchAll();
 }
 else{
-$stmt = $db->prepare("SELECT * from Item where item_name like ?");
+$stmt = $db->prepare("SELECT * from Item where item_name like ? AND is_sold = 0");
 $stmt->execute(array("%$search_term%"));
 
 $results = $stmt->fetchAll();

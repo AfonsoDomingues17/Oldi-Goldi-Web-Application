@@ -12,6 +12,7 @@ $db = getDatabaseConnection();
 $CP = $_POST['Cpassword'];
 $NP = $_POST['npassword'];
 $CNP = $_POST['cnpassword'];
+
 if(verify_UserPassword($db,$_SESSION['username'],$CP)){
     
     if($NP == $CNP){

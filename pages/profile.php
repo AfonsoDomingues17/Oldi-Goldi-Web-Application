@@ -113,7 +113,7 @@ $permissions = getUserPermissions($db,$_SESSION['username']);
           <?php 
           $photos = getPhotos($db, $item['ItemID']); 
           ?>
-          <a href="item.php?item_id=<?= urlencode($item['ItemID']) ?>"><img src="<?= htmlspecialchars($photos[0]['photo_url'])?>" alt="Item"></a>
+          <a href="item.php?item_id=<?= urlencode($item['ItemID']) ?>"><img src="<?= htmlspecialchars($photos[0]['photo_url'])?>" alt="Item" height="300" width="50"></a>
           <section class="article-info">
             <h2><?= htmlspecialchars($item['item_name'])?></h2>
             <p><?= htmlspecialchars($item['price'])?>€</p>

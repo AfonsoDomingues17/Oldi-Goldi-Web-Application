@@ -25,7 +25,7 @@ function verify_UserPassword($db,$username,$password) : bool{
     $stmt = $db->prepare("SELECT password from Users where username = ?");
     $stmt->execute(array($username));
     $result = $stmt->fetch();
-    if(password_verify($password, $result)) return true;
+    if(password_verify($password, $result["password"])) return true;
     else return false;
 }
 

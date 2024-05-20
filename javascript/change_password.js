@@ -4,7 +4,7 @@ const button = document.getElementById('changePasswordBtn');
 
 const close1 = document.getElementById('close');
 const submitBtn = document.getElementById('ConfirmChangesBtn');
-
+ console.log(submitBtn);
 
 if(button){
 button.addEventListener('click', function (){
