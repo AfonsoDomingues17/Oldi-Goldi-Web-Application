@@ -1,10 +1,10 @@
-# Your Project Name
+# Oldi Goldi
 
 ## Group ltw16g02
 
-- Afonso Domingues (up202207313) 60%
-- João Lamas (up202208948) 20%
-- Pedro Fernandes (up202207987) 20%
+- Afonso Domingues (up202207313) 50%
+- João Lamas (up202208948) 25%
+- Pedro Fernandes (up202207987) 25%
 
 ## Install Instructions
 
